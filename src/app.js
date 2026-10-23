@@ -1,11 +1,13 @@
 import { readBatch,validateBatch,exportRecords,exportIssues } from './validator.js';
 import { errorSample,validSample } from './sample.js';
+import { initTutorial } from './tutorial.js';
+initTutorial();
 const $=selector=>document.querySelector(selector);
 const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 let schema,rows=[],report,filter='all',page=1,history=[],editIndex,origin;
 const PAGE_SIZE=8;
 // El perfil llega por HTTP. Ninguna acción de datos debe adelantarse a esa carga.
-const controls=[...document.querySelectorAll('button,input')];
+const controls=[...document.querySelectorAll('button,input')].filter(control=>!control.closest('#tutorial-dialog')&&control.id!=='open-tutorial');
 controls.forEach(control=>control.disabled=true);
 $('#file-label').textContent='Cargando perfil de validación…';
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),4500);}
@@ -24,11 +26,50 @@ function render(){
   $('#empty-text').textContent=report.issues.length?'Cambiá el filtro o la búsqueda.':'No se encontraron incidencias con el perfil actual. El sistema destino puede aplicar otras reglas.';
   $('#page-label').textContent=list.length?`${(page-1)*PAGE_SIZE+1}–${Math.min(page*PAGE_SIZE,list.length)} de ${list.length} incidencias`:'0 incidencias';
   $('#previous').disabled=page===1;$('#next').disabled=page===pages;
+  renderOverview();
 }
+function priorityIssue(){return report?.issues.find(issue=>issue.code==='DUPLICATE')||report?.issues.find(issue=>issue.code==='REQUIRED')||report?.issues.find(issue=>issue.code==='PRICE')||report?.issues.find(issue=>issue.severity==='error')||report?.issues[0];}
+function renderOverview(){
+  const errors=new Set(report.issues.filter(issue=>issue.severity==='error').map(issue=>issue.row));
+  const warnings=new Set(report.issues.filter(issue=>issue.severity==='warning'&&!errors.has(issue.row)).map(issue=>issue.row));
+  const ready=rows.length-errors.size-warnings.size;
+  $('#batch-caption').textContent=`${rows.length} filas · ${report.summary.accepted} sin errores bloqueantes`;
+  $('#batch-visual').setAttribute('aria-label',`${rows.length} filas: ${ready} sin incidencias, ${warnings.size} con advertencias y ${errors.size} por corregir.`);
+  const groupSize=Math.max(1,Math.ceil(rows.length/40));const segments=[];
+  for(let start=0;start<rows.length;start+=groupSize){
+    const end=Math.min(rows.length,start+groupSize);let blocked=0,caution=0;
+    for(let index=start;index<end;index++){if(errors.has(index+2))blocked++;else if(warnings.has(index+2))caution++;}
+    const state=blocked?'blocked':caution?'caution':'ready';
+    const label=start+1===end?`Fila ${start+2}`:`Filas ${start+2}–${end+1}`;
+    segments.push(`<span class="batch-${state}" title="${label}: ${blocked} con errores, ${caution} con advertencias, ${end-start-blocked-caution} sin incidencias" aria-hidden="true"></span>`);
+  }
+  $('#batch-visual').innerHTML=segments.join('');
+  const duplicateRows=new Set(report.issues.filter(issue=>issue.code==='DUPLICATE').map(issue=>issue.row)).size;
+  const missing=report.issues.filter(issue=>issue.code==='REQUIRED').length;
+  const values=report.issues.filter(issue=>issue.severity==='error'&&!['DUPLICATE','REQUIRED'].includes(issue.code)).length;
+  $('#finding-duplicates').textContent=`${duplicateRows} ${duplicateRows===1?'fila':'filas'}`;
+  $('#finding-missing').textContent=`${missing} ${missing===1?'campo':'campos'}`;
+  $('#finding-values').textContent=`${values} ${values===1?'incidencia':'incidencias'}`;
+  const priority=priorityIssue();
+  $('#priority-message').textContent=duplicateRows?`Hay ${duplicateRows} filas con una clave repetida. Comparalas con tu planilla: Lote marca todas sus apariciones.`:missing?'Completá los campos obligatorios vacíos con los datos de tu fuente.':report.summary.errors?'Empezá por los valores fuera de regla. La ayuda de cada campo te dice qué revisar.':report.summary.warnings?'Las filas pueden exportarse. Revisá las advertencias antes de usar el resultado.':'No hay incidencias con este perfil. Ya podés descargar las filas revisadas.';
+  $('#review-priority').disabled=!priority;
+  $('#review-priority').textContent=priority?priority.severity==='warning'?'Ver advertencias ↘':'Revisar primero ↘':'Revisión sin incidencias ✓';
+}
+$('#review-priority').addEventListener('click',()=>{
+  const issue=priorityIssue();if(!issue)return;
+  filter=issue.severity;page=1;$('#search').value=issue.code;render();
+  $('.issue-toolbar').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  $('#search').focus({preventScroll:true});
+});
 function openDialog(dialog){origin=document.activeElement;dialog.showModal();document.documentElement.style.overflow='hidden';}
 function closeDialog(dialog){dialog.close();}
-for(const dialog of document.querySelectorAll('dialog')){
-  dialog.addEventListener('close',()=>{document.documentElement.style.overflow='';if(origin?.isConnected)origin.focus({preventScroll:true});});
+for(const dialog of document.querySelectorAll('dialog:not(#tutorial-dialog)')){
+  dialog.addEventListener('close',()=>{
+    document.documentElement.style.overflow='';
+    if(origin?.isConnected){origin.focus({preventScroll:true});return;}
+    const sameRow=dialog.id==='editor'?document.querySelector(`#issues button[data-row="${editIndex+2}"]`):null;
+    if(sameRow)sameRow.focus({preventScroll:true});else $('#results-title').focus();
+  });
   dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
 }
 $('#issues').addEventListener('click',event=>{
@@ -51,7 +92,7 @@ document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListen
 $('#search').addEventListener('input',()=>{page=1;render();});$('#previous').addEventListener('click',()=>{page--;render();});$('#next').addEventListener('click',()=>{page++;render();});
 $('#sample-errors').addEventListener('click',()=>{loadText(errorSample,'Ejemplo con errores');toast('Ejemplo con errores cargado.');});
 $('#sample-valid').addEventListener('click',()=>{loadText(validSample,'Ejemplo válido');toast('Ejemplo válido cargado.');});
-async function importFile(file){if(!file)return;try{if(file.size>2_000_000)throw new Error('El archivo supera 2 MB.');loadText(await file.text(),file.name);toast('Archivo revisado en este navegador.');}catch(error){toast(error.message);}}
+async function importFile(file){if(!file)return;if(!schema){toast('Esperá a que termine de cargar el perfil de revisión.');return;}try{if(/\.(xlsx?|ods)$/i.test(file.name))throw new Error('Exportá tu planilla como CSV. Lote no abre archivos XLSX, XLS ni ODS.');if(file.size>2_000_000)throw new Error('El archivo supera 2 MB.');loadText(await file.text(),file.name);toast('Archivo revisado en este navegador.');}catch(error){toast(error.message);}}
 $('#file').addEventListener('change',async event=>{await importFile(event.target.files[0]);event.target.value='';});
 $('#drop-zone').addEventListener('dragover',event=>{event.preventDefault();$('#drop-zone').classList.add('dragging');});
 $('#drop-zone').addEventListener('dragleave',()=>$('#drop-zone').classList.remove('dragging'));
@@ -65,4 +106,4 @@ try{
   $('#rules-list').innerHTML=schema.fields.map(field=>`<article class="rule"><strong>${escape(field.label)}</strong><small>${field.key}</small><p>${escape(field.hint)}</p></article>`).join('');
   controls.forEach(control=>control.disabled=false);
   loadText(errorSample,'Ejemplo con errores');
-}catch(error){toast(error.message);$('#results-title').textContent='No se pudo iniciar la revisión';document.querySelectorAll('button').forEach(button=>button.disabled=true);}
+}catch(error){toast(error.message);$('#results-title').textContent='No se pudo iniciar la revisión';controls.forEach(control=>control.disabled=true);}
