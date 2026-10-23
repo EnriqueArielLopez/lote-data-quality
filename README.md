@@ -71,3 +71,5 @@ Los números de fila son posiciones lógicas del CSV, incluida la cabecera. Un c
 La aplicación no consulta maestros reales ni verifica autorización, existencia de materiales o reglas dependientes de configuración SAP. Se debe adaptar el perfil y revisar los controles del destino antes de usar un lote real. No se incluyen datos, pantallas o código de clientes.
 
 Tipografía Manrope, SIL Open Font License (`assets/OFL.txt`).
+
+Validación del 22/10/2026: 11 pruebas aprobadas también en GitHub Actions. Demo publicada en GitHub Pages desde main; smoke externo de HTML, scripts y perfil. La interfaz bloquea acciones mientras carga el perfil para evitar una validación prematura. No se modificaron servicios corporativos.
