@@ -347,7 +347,7 @@ dialog::backdrop { background: #57344375; backdrop-filter: blur(10px); }
 .findings-types small { display: block; font-size: 10px; line-height: 1.6; color: var(--muted); }
 
 /* Una guía visual, con datos propios y controles de reproducción. */
-.tutorial-dialog { width: min(900px, calc(100% - 30px)); padding: 0 32px 24px; background: #fffaf5f5; }
+.tutorial-dialog { width: min(1000px, calc(100% - 30px)); padding: 0 32px 24px; background: #fffaf5f5; }
 .tutorial-top { position: sticky; top: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 0 16px; background: #fffaf5; border-bottom: 1px solid #e0cdd2; }
 .tutorial-top .eyebrow { font-size: 10px; margin-bottom: 6px; }
 .tutorial-top h2 { font-size: 26px; line-height: 1.3; }
@@ -425,6 +425,17 @@ dialog::backdrop { background: #57344375; backdrop-filter: blur(10px); }
 .tutorial-controls { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: stretch; gap: 10px; }
 .tutorial-controls .button { font-size: 13px; }
 .tutorial-hint { text-align: center; font-size: 11px; color: var(--muted); margin-top: 14px; line-height: 1.6; }
+@media (min-width: 900px) {
+  .tutorial-dialog[open] { display: grid; grid-template-columns: 1.2fr 1fr; column-gap: 24px; padding: 0 26px 16px; }
+  .tutorial-top, #tutorial-intro, .tutorial-chapters, .tutorial-controls, .tutorial-hint { grid-column: 1 / -1; }
+  .tutorial-top { padding-block: 16px 12px; }
+  #tutorial-intro { margin: 8px 0 12px; max-width: none; }
+  .tutorial-scene { grid-column: 1; grid-row: 3; padding: 16px; }
+  .tutorial-window-bar { padding-block: 7px; }
+  .tutorial-window-content { min-height: 250px; padding: 14px; gap: 8px; }
+  .tutorial-caption { grid-column: 2; grid-row: 3; align-self: center; min-height: 0; padding: 12px 0; }
+  .tutorial-chapters { margin-top: 10px; }
+}
 @media (max-width: 1250px) { .intro { gap: 30px; } .findings-overview { grid-template-columns: 1fr; gap: 20px; } .findings-types { padding-top: 16px; border-top: 1px solid #dcc4cf; } }
 @media (max-width: 860px) { .intro { grid-template-columns: 1fr; gap: 24px; } .profile-card { display: block; max-width: 540px; justify-self: center; padding: 0; width: 100%; } .profile-details { display: flex; } .review-illustration figcaption { margin-left: 30px; } .profile-details { margin-left: 30px; } }
 @media (max-width: 680px) {
@@ -504,3 +515,19 @@ dialog::backdrop { background: #57344375; backdrop-filter: blur(10px); }
 @media (max-width: 680px) { .findings-heading .findings-scope { font-size: 11px; } }
 .batch-help { font-size: 11px; line-height: 1.7; color: var(--muted); margin-top: 11px; }
 #results-title:focus-visible { outline: 3px solid #98536d; outline-offset: 5px; }
+
+/* El contenido se desplaza; los controles siguen a mano. */
+@media (min-width: 900px) {
+  .tutorial-scrollbody { display: contents; }
+  .tutorial-footer { grid-column: 1 / -1; }
+}
+@media (max-width: 899px) {
+  .tutorial-dialog[open] { display: flex; flex-direction: column; max-height: 90dvh; overflow: hidden; padding: 0 18px 16px; }
+  .tutorial-top { flex: 0 0 auto; position: relative; }
+  .tutorial-scrollbody { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding-right: 3px; scrollbar-width: thin; scrollbar-color: #cba8b3 transparent; }
+  .tutorial-scrollbody .tutorial-caption { padding-top: 8px; }
+  .tutorial-scrollbody .tutorial-scene { margin-top: 4px; }
+  .tutorial-footer { flex: 0 0 auto; background: #fffaf5; border-top: 1px solid #dfcbd2; padding-top: 13px; }
+  .tutorial-footer .tutorial-hint { margin-top: 9px; }
+  .tutorial-scrollbody .tutorial-chapters { padding-bottom: 13px; }
+}

@@ -77,12 +77,16 @@
   <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-head"><div><p class="eyebrow">PERFIL V1.0.0</p><h2 id="rules-title">Qué se revisa.</h2></div><button id="close-rules" aria-label="Cerrar reglas">×</button></div><div id="rules-list"></div><p class="editor-note">La clave material + centro debe ser única. El archivo rules.json permite adaptar este perfil; sus valores no son un estándar universal SAP.</p></dialog>
   <dialog id="tutorial-dialog" class="tutorial-dialog" aria-labelledby="tutorial-title" aria-describedby="tutorial-intro">
     <div class="tutorial-top"><div><p class="eyebrow">GUÍA VISUAL / EJEMPLO FICTICIO</p><h2 id="tutorial-title">Una planilla, paso a paso.</h2></div><button id="tutorial-close" type="button" aria-label="Cerrar tutorial" autofocus>×</button></div>
-    <p id="tutorial-intro">Mirá el recorrido completo con un ejemplo aparte. Tu archivo, tus correcciones y tu selección quedan como estaban.</p>
-    <div id="tutorial-scene" class="tutorial-scene"></div>
-    <div class="tutorial-caption" aria-live="polite" aria-atomic="true"><span id="tutorial-step-number" class="eyebrow">PASO 1 / 6</span><h3 id="tutorial-step-title"></h3><p id="tutorial-step-copy"></p></div>
-    <nav id="tutorial-chapters" class="tutorial-chapters" aria-label="Pasos del tutorial"></nav>
-    <div class="tutorial-controls"><button id="tutorial-prev" type="button" class="button" aria-label="Paso anterior">← Anterior</button><button id="tutorial-play" type="button" class="button primary" aria-pressed="false" aria-describedby="tutorial-playback-hint">▶ Reproducir</button><button id="tutorial-next" type="button" class="button">Siguiente →</button></div>
-    <p id="tutorial-playback-hint" class="tutorial-hint">La reproducción avanza un paso cada 13 segundos. Podés pausarla o elegir un paso.</p>
+    <div class="tutorial-scrollbody">
+      <p id="tutorial-intro">Mirá el recorrido completo con un ejemplo aparte. Tu archivo, tus correcciones y tu selección quedan como estaban.</p>
+      <div class="tutorial-caption" aria-live="polite" aria-atomic="true"><span id="tutorial-step-number" class="eyebrow">PASO 1 / 6</span><h3 id="tutorial-step-title"></h3><p id="tutorial-step-copy"></p></div>
+      <div id="tutorial-scene" class="tutorial-scene"></div>
+      <nav id="tutorial-chapters" class="tutorial-chapters" aria-label="Pasos del tutorial"></nav>
+    </div>
+    <div class="tutorial-footer">
+      <div class="tutorial-controls"><button id="tutorial-prev" type="button" class="button" aria-label="Paso anterior">← Anterior</button><button id="tutorial-play" type="button" class="button primary" aria-pressed="false" aria-describedby="tutorial-playback-hint">▶ Reproducir</button><button id="tutorial-next" type="button" class="button">Siguiente →</button></div>
+      <p id="tutorial-playback-hint" class="tutorial-hint">La reproducción avanza un paso cada 13 segundos. Podés pausarla o elegir un paso.</p>
+    </div>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>

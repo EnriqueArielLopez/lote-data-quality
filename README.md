@@ -12,7 +12,7 @@ No necesitás instalar nada ni crear una cuenta. Podés empezar con los ejemplos
 
 Abrí **Ver cómo funciona** en la pantalla de inicio o [entrar directamente a la guía visual](https://enriqueariellopez.github.io/lote-data-quality/?tutorial=1). La guía usa un ejemplo ficticio aparte: **no cambia tu archivo cargado, tus correcciones, la normalización ni tus filtros**.
 
-Tiene seis pasos: preparar el CSV, entender los problemas, normalizar, corregir un precio, decidir qué hacer con duplicados y exportar. Podés usar **Reproducir / Pausar**, **Anterior**, **Siguiente** o los seis capítulos. La reproducción avanza cada trece segundos; al abrir está pausada. Se detiene al cerrar la guía o al ocultar la pestaña. Con movimiento reducido, los pasos cambian sin animación. Cerrala con **×** o **Escape** para volver a tu revisión.
+Tiene seis pasos: preparar el CSV, entender los problemas, normalizar, corregir un precio, decidir qué hacer con duplicados y exportar. Podés usar **Reproducir / Pausar**, **Anterior**, **Siguiente** o los seis capítulos. La reproducción avanza cada trece segundos; al abrir está pausada. Se detiene al cerrar la guía o al ocultar la pestaña. Con movimiento reducido, los pasos cambian sin animación. En celulares y tablets, los controles de reproducción y avance quedan visibles mientras desplazás la explicación y la escena. Cerrala con **×** o **Escape** para volver a tu revisión.
 
 Por ejemplo, la guía muestra un precio `−7950` que se corrige a `7950` porque ése es el valor confirmado para el caso ficticio. No se deben cambiar precios ni centros solamente para quitar un error: usá tu fuente de datos para decidir qué corresponde.
 
