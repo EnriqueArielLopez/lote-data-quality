@@ -1,13 +1,79 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#272724"><title>Lote — Calidad de datos maestros</title><meta name="description" content="Validación de datos maestros CSV con reglas configurables, corrección por fila y CLI Python. Proyecto de demostración de Ariel López."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%234055ad'/%3E%3Cpath d='M18 16v32h30' fill='none' stroke='white' stroke-width='6'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="identity.css"><script type="module" src="src/app.js"></script></head>
-<body><a class="skip" href="#main">Saltar al contenido</a><header><a class="brand" href="./"><span class="brand-icon">⌑</span> lote<span class="brand-sub">DATA QUALITY</span></a><nav aria-label="Enlaces del proyecto"><a href="https://github.com/EnriqueArielLopez/lote-data-quality" target="_blank" rel="noopener">Repositorio ↗</a><span>Proyecto de Ariel López</span></nav></header>
-<main id="main"><div class="intro"><div><p class="eyebrow">LOTE / VALIDADOR DE ARCHIVOS CSV</p><h1>Revisión de materiales<span>/</span></h1><p>Cargá un archivo. Revisá las incidencias. Exportá las filas válidas.</p></div><div class="profile-card"><span class="profile-icon">▤</span><div><small>PERFIL DE VALIDACIÓN</small><strong>Maestro de materiales</strong><span>8 campos · clave material + centro</span></div><button id="show-rules" aria-label="Ver reglas de validación">↗</button></div></div>
-<div class="notice"><span>i</span><p>Perfil de demostración inspirado en procesos SAP. No se conecta a SAP ni sustituye las validaciones del sistema destino. Los datos de ejemplo son ficticios.</p></div>
-<div class="review-workspace"><section class="upload-panel" aria-labelledby="upload-title"><div class="step-heading"><span class="step">01</span><div><h2 id="upload-title">Archivo de entrada</h2><p>CSV en UTF-8, hasta 2 MB y 5.000 filas.</p></div></div><div class="upload-grid"><label class="file-zone" id="drop-zone"><span class="upload-icon">↑</span><strong>Subir un archivo CSV</strong><span>Elegí un archivo o arrastralo acá</span><input id="file" type="file" accept=".csv,text/csv"></label><div class="sample-box"><span class="eyebrow">¿PREFERÍS EXPLORAR PRIMERO?</span><p>Usá un lote preparado para ver errores, advertencias y correcciones.</p><div><button class="button primary" id="sample-errors">Cargar ejemplo con errores</button><button class="button" id="sample-valid">Ejemplo válido</button></div><a href="examples/materiales-validos.csv" download>Descargar plantilla CSV ↓</a></div></div></section>
-<section class="results-panel" aria-labelledby="results-title"><div class="result-heading"><div class="step-heading"><span class="step">02</span><div><h2 id="results-title">Informe de validación</h2><p id="file-label">Ejemplo con errores · 10 filas</p></div></div><div class="normalize"><label><input type="checkbox" id="normalize"> Normalizar espacios y mayúsculas</label><button id="undo" class="quiet" disabled>Deshacer corrección</button></div></div>
-<div class="summary-grid"><article class="score"><div class="score-head"><span id="score">—</span><small>filas sin errores</small></div><div class="track"><i id="score-bar"></i></div><p id="score-description"></p></article><article><span class="summary-label">LISTAS PARA EXPORTAR</span><strong id="accepted">—</strong><small>Las advertencias no bloquean</small></article><article><span class="summary-label">CON ERRORES</span><strong id="rejected" class="error-number">—</strong><small>Requieren una corrección</small></article><article><span class="summary-label">ADVERTENCIAS</span><strong id="warnings" class="warning-number">—</strong><small>Conviene revisarlas</small></article></div>
-<div class="issue-toolbar"><div class="tabs" role="group" aria-label="Filtrar incidencias"><button data-filter="all" aria-pressed="true">Todas <span id="all-count"></span></button><button data-filter="error" aria-pressed="false">Errores</button><button data-filter="warning" aria-pressed="false">Advertencias</button></div><label class="search"><span class="sr-only">Buscar incidencia</span><input type="search" id="search" placeholder="Buscar campo, valor o regla…"></label></div><div class="table-wrap"><table><thead><tr><th>Fila</th><th>Campo / regla</th><th>Valor encontrado</th><th>Qué revisar</th><th>Severidad</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody id="issues"></tbody></table></div><div id="empty" class="empty" hidden><span>✓</span><h3 id="empty-title">Sin incidencias</h3><p id="empty-text"></p></div><div class="pagination"><span id="page-label"></span><div><button id="previous" aria-label="Página anterior">←</button><button id="next" aria-label="Página siguiente">→</button></div></div>
-<div class="export-bar"><div><strong>03 / Salida del proceso</strong><p>Exportá solo las filas sin errores o llevate el detalle de la revisión.</p></div><div><button id="export-accepted" class="button primary">↓ Filas válidas CSV</button><button id="export-issues" class="button">↓ Incidencias CSV</button><button id="export-json" class="quiet">Reporte JSON</button></div></div></section></div>
-<footer><span><i></i> Tus archivos se procesan en este navegador. No se suben a un servidor.</span><a href="https://github.com/EnriqueArielLopez/lote-data-quality#uso-por-consola" target="_blank" rel="noopener">También disponible por consola Python ↗</a></footer></main>
-<dialog id="editor" aria-labelledby="editor-title"><div class="dialog-head"><div><p class="eyebrow">CORRECCIÓN LOCAL</p><h2 id="editor-title"></h2></div><button id="close-editor" aria-label="Cerrar edición">×</button></div><p class="editor-note">Los cambios se aplican a esta sesión. El archivo original conserva sus datos.</p><form id="editor-form"><div id="editor-fields"></div><div class="dialog-actions"><button type="button" id="cancel-edit" class="button">Cancelar</button><button class="button primary">Guardar y volver a validar</button></div></form></dialog>
-<dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-head"><div><p class="eyebrow">PERFIL V1.0.0</p><h2 id="rules-title">Reglas explícitas.</h2></div><button id="close-rules" aria-label="Cerrar reglas">×</button></div><div id="rules-list"></div><p class="editor-note">La clave material + centro debe ser única. Cambiá rules.json para adaptar el perfil a tu contexto; estos valores no son un estándar universal SAP.</p></dialog><div id="toast" class="toast" role="status" aria-live="polite"></div>
-</body></html>
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5eeeb">
+  <title>Lote — Revisá tus datos antes de cargarlos</title>
+  <meta name="description" content="Revisá un CSV de materiales, corregí las incidencias por fila y exportá los datos válidos. Una herramienta de demostración de Ariel López.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23743950'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="identity.css">
+  <script type="module" src="src/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Saltar al contenido</a>
+  <header>
+    <a class="brand" href="./" aria-label="Lote, inicio">
+      <svg class="brand-icon" viewBox="0 0 36 40" fill="none" aria-hidden="true"><path d="M7 3h15l8 9v25H7Z"/><path d="M21 3v10h9M12 23l5 5 9-10"/></svg>
+      <span>lote<span class="brand-dot">.</span></span>
+      <span class="brand-sub">CALIDAD DE DATOS</span>
+    </a>
+    <nav aria-label="Enlaces del proyecto"><span>Una herramienta de Ariel López</span><a href="https://github.com/EnriqueArielLopez/lote-data-quality" target="_blank" rel="noopener">Código y guía <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <div class="intro">
+      <div class="intro-copy"><p class="eyebrow"><span></span> REVISIÓN DE MATERIALES / CSV</p><h1>Datos en orden.<br>Antes de cargar.</h1><p>Encontrá qué falla en tu archivo, corregilo y llevate las filas listas para el siguiente paso.</p></div>
+      <div class="profile-card">
+        <svg class="document-art" viewBox="0 0 390 220" fill="none" aria-hidden="true">
+          <defs><linearGradient id="sheet" x1="132" y1="28" x2="250" y2="188" gradientUnits="userSpaceOnUse"><stop stop-color="white" stop-opacity=".95"/><stop offset="1" stop-color="#fff8ed" stop-opacity=".5"/></linearGradient><linearGradient id="seal" x1="271" y1="107" x2="323" y2="161" gradientUnits="userSpaceOnUse"><stop stop-color="#b76b74"/><stop offset="1" stop-color="#763b52"/></linearGradient></defs>
+          <ellipse cx="209" cy="193" rx="128" ry="11" fill="#b46e77" opacity=".08"/>
+          <g transform="rotate(-12 160 111)"><rect x="87" y="37" width="112" height="142" rx="12" fill="#edc6ab" fill-opacity=".6" stroke="#fff9f3" stroke-width="1.5"/><path d="M106 65h50m-50 13h65m-65 29h72m-72 15h72m-72 15h49" stroke="#ad785f" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/></g>
+          <g transform="rotate(9 238 112)"><rect x="183" y="31" width="112" height="142" rx="12" fill="#edc3ce" fill-opacity=".55" stroke="#fff9f3" stroke-width="1.5"/><path d="M204 59h49m-49 13h67m-67 29h67m-67 15h67m-67 15h42" stroke="#aa687b" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/></g>
+          <rect x="131" y="22" width="122" height="161" rx="13" fill="url(#sheet)" stroke="white" stroke-width="1.5"/>
+          <path d="M151 49h44m-44 11h70" stroke="#9b6c79" stroke-width="2" stroke-linecap="round"/><rect x="151" y="79" width="82" height="77" rx="5" fill="#f6e9e7" fill-opacity=".7" stroke="#cfa9ac" stroke-opacity=".6"/><path d="M151 98h82m-82 19h82m-82 19h82m-56-57v77" stroke="#cfa9ac" stroke-opacity=".6"/>
+          <rect x="177" y="100" width="54" height="15" rx="2" fill="#d3e0d4" fill-opacity=".9"/><path d="m187 108 3 3 6-7" stroke="#5e7868" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M269 83c35 4 46 19 44 40" stroke="#a66d75" stroke-dasharray="3 5" stroke-linecap="round"/><path d="m307 118 6 7 7-6" stroke="#a66d75" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="293" cy="151" r="28" fill="url(#seal)" stroke="#fff7ef" stroke-width="3"/><path d="m282 151 8 8 14-17" stroke="#fff7ef" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M74 39v12m-6-6h12M318 45v8m-4-4h8" stroke="#bc8589" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <div class="profile-details"><div><small>PERFIL DE REVISIÓN</small><strong>Maestro de materiales</strong><span>8 campos · clave material + centro</span></div><button id="show-rules" aria-label="Ver reglas de validación">Ver reglas <span aria-hidden="true">↗</span></button></div>
+      </div>
+    </div>
+    <nav class="workflow" aria-label="Cómo usar Lote">
+      <a href="#upload-title"><span class="workflow-number">01</span><span><strong>Elegí un archivo</strong><small>O probá con un ejemplo</small></span><span class="workflow-arrow" aria-hidden="true">→</span></a>
+      <a href="#results-title"><span class="workflow-number">02</span><span><strong>Revisá y corregí</strong><small>Cada incidencia tiene una explicación</small></span><span class="workflow-arrow" aria-hidden="true">→</span></a>
+      <a href="#export-title"><span class="workflow-number">03</span><span><strong>Exportá el resultado</strong><small>Datos válidos e informe de revisión</small></span><span class="workflow-arrow" aria-hidden="true">↘</span></a>
+    </nav>
+    <div class="review-workspace">
+      <section class="upload-panel" aria-labelledby="upload-title">
+        <div class="step-heading"><span class="step">01</span><div><h2 id="upload-title">Tu archivo de entrada</h2><p>CSV · hasta 2 MB y 5.000 filas</p></div></div>
+        <div class="upload-grid">
+          <label class="file-zone" id="drop-zone"><svg class="upload-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M10 20a5 5 0 0 1 5-5h14l6 6h14a5 5 0 0 1 5 5v23a5 5 0 0 1-5 5H15a5 5 0 0 1-5-5Z"/><path d="M32 44V29m-6 6 6-6 6 6"/></svg><strong>Elegir archivo CSV</strong><span>También podés arrastrarlo acá</span><input id="file" type="file" accept=".csv,text/csv" aria-label="Elegir un archivo CSV para revisar"></label>
+          <div class="sample-box"><span class="eyebrow">PRIMERA VEZ POR ACÁ</span><p>Explorá sin preparar nada. El ejemplo incluye errores para que pruebes cómo corregirlos.</p><div><button class="button primary" id="sample-errors">Probar con un ejemplo <span aria-hidden="true">→</span></button><button class="button" id="sample-valid">Cargar ejemplo válido</button></div><a href="examples/materiales-validos.csv" download>Descargar plantilla CSV <span aria-hidden="true">↓</span></a></div>
+        </div>
+        <p class="local-note"><span aria-hidden="true">⌁</span> El archivo se revisa en tu navegador.<br>No se sube a un servidor.</p>
+      </section>
+      <section class="results-panel" aria-labelledby="results-title">
+        <div class="result-heading"><div class="step-heading"><span class="step">02</span><div><h2 id="results-title">Mesa de revisión</h2><p id="file-label">Cargando perfil de validación…</p></div></div><div class="normalize"><label><input type="checkbox" id="normalize"> Normalizar espacios y mayúsculas</label><button id="undo" class="quiet" disabled>↶ Deshacer corrección</button></div></div>
+        <div class="summary-grid">
+          <article class="score"><div class="score-head"><span id="score">—</span><small>del lote sin errores</small></div><div class="track"><i id="score-bar"></i></div><p id="score-description"></p></article>
+          <article class="accepted-summary"><span class="summary-label">Listas para exportar</span><strong id="accepted">—</strong><small>Sin errores bloqueantes</small></article>
+          <article><span class="summary-label">Con errores</span><strong id="rejected" class="error-number">—</strong><small>Necesitan una corrección</small></article>
+          <article><span class="summary-label">Advertencias</span><strong id="warnings" class="warning-number">—</strong><small>Conviene revisarlas</small></article>
+        </div>
+        <div class="issue-toolbar"><div class="tabs" role="group" aria-label="Filtrar incidencias"><button data-filter="all" aria-pressed="true">Todas <span id="all-count"></span></button><button data-filter="error" aria-pressed="false">Errores</button><button data-filter="warning" aria-pressed="false">Advertencias</button></div><label class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="m12 12 5 5"/></svg><span class="sr-only">Buscar incidencia</span><input type="search" id="search" placeholder="Buscar en la revisión…"></label></div>
+        <p class="table-hint">Cada fila indica qué revisar. Abrí <span aria-hidden="true">↗</span> para corregir los datos.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Incidencias del archivo, tabla desplazable"><table><thead><tr><th>Fila</th><th>Campo / regla</th><th>Valor encontrado</th><th>Qué revisar</th><th>Severidad</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody id="issues"></tbody></table></div>
+        <div id="empty" class="empty" hidden><span aria-hidden="true">✓</span><h3 id="empty-title">Sin incidencias</h3><p id="empty-text"></p></div>
+        <div class="pagination"><span id="page-label"></span><div><button id="previous" aria-label="Página anterior">←</button><button id="next" aria-label="Página siguiente">→</button></div></div>
+        <div class="export-bar"><div><span class="eyebrow">03 / RESULTADO</span><h2 id="export-title">Llevate lo que revisaste.</h2><p>Las filas válidas incluyen advertencias. Revisalas antes de la carga.</p></div><div><button id="export-accepted" class="button primary">Filas válidas <span>CSV ↓</span></button><button id="export-issues" class="button">Incidencias <span>CSV ↓</span></button><button id="export-json" class="quiet">Reporte completo JSON ↓</button></div></div>
+      </section>
+    </div>
+    <footer><p>Perfil de demostración con datos ficticios. Inspirado en preparación de materiales para SAP; no se conecta a ese sistema.</p><a href="https://github.com/EnriqueArielLopez/lote-data-quality#uso-por-consola" target="_blank" rel="noopener">¿Preferís Python? Mirá la guía <span aria-hidden="true">↗</span></a></footer>
+  </main>
+  <dialog id="editor" aria-labelledby="editor-title"><div class="dialog-head"><div><p class="eyebrow">CORRECCIÓN EN ESTA SESIÓN</p><h2 id="editor-title"></h2></div><button id="close-editor" aria-label="Cerrar edición">×</button></div><p class="editor-note">El archivo original conserva sus datos. Al guardar, se vuelve a revisar todo el lote; podés deshacer la corrección.</p><form id="editor-form"><div id="editor-fields"></div><div class="dialog-actions"><button type="button" id="cancel-edit" class="button">Cancelar</button><button class="button primary">Guardar y volver a validar</button></div></form></dialog>
+  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-head"><div><p class="eyebrow">PERFIL V1.0.0</p><h2 id="rules-title">Qué se revisa.</h2></div><button id="close-rules" aria-label="Cerrar reglas">×</button></div><div id="rules-list"></div><p class="editor-note">La clave material + centro debe ser única. El archivo rules.json permite adaptar este perfil; sus valores no son un estándar universal SAP.</p></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
