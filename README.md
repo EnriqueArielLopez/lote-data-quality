@@ -6,7 +6,7 @@ Proyecto de demostración de Ariel López. Los datos son ficticios. El perfil es
 
 [Abrir demo](https://enriqueariellopez.github.io/lote-data-quality/)
 
-La transferencia del repositorio a `EnriqueArielLopez` fue solicitada; la URL de Pages indicada corresponde al destino y requiere completar esa transferencia y verificar la publicación.
+Transferencia a la cuenta personal `EnriqueArielLopez` completada y verificada por API el 23/10/2026. El repositorio conserva su historial y la configuración de Pages desde `main`. Los enlaces de esta versión apuntan a esa cuenta.
 
 La interfaz presenta una mesa de revisión de documentos: archivo de entrada en una columna y un informe de validación en la otra. `identity.css` define la paleta papel/tinta/terracota y la tipografía IBM Plex Mono para campos y metadatos; en pantallas pequeñas las columnas se apilan. Las reglas y el procesamiento no dependen del estilo.
 
