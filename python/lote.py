@@ -94,7 +94,7 @@ def validate_batch(rows, schema, normalize=False):
 
 def safe_cell(value):
     value = str(value)
-    return "'" + value if re.match(r"^\s*[=+@-]", value) else value
+    return "'" + value if re.match(r"^[\s\ufeff]*[=+@\-＝＋－＠\t\r\n]", value) else value
 
 
 def main(argv=None):
