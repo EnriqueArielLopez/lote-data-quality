@@ -1,12 +1,26 @@
 # Lote
 
-**Revisá un archivo de materiales, corregí lo que falla y descargá las filas válidas.**
+**Lote revisa el CSV de una planilla de productos o materiales. Te muestra los errores, te ayuda a corregirlos y descarga el resultado.**
 
-Lote sirve para encontrar problemas antes de preparar una carga de datos: campos vacíos, códigos fuera del perfil, precios inválidos o materiales repetidos dentro de un centro. Cada incidencia explica qué hay que revisar y permite abrir la fila para corregirla.
+Si tenés tus datos en Excel, Google Sheets u otra planilla, primero exportalos como **CSV**. Lote busca campos vacíos, precios inválidos, códigos fuera del perfil y materiales repetidos dentro de un centro. Abrís cada problema, corregís el dato y descargás las filas sin errores o el informe. **No abre XLSX ni carga datos en SAP.**
 
 ### [Abrir Lote en el navegador →](https://enriqueariellopez.github.io/lote-data-quality/)
 
 No necesitás instalar nada ni crear una cuenta. Podés empezar con los ejemplos incluidos, sin tener un archivo propio. Es un proyecto de demostración de [Ariel López](https://github.com/EnriqueArielLopez), con datos ficticios y un perfil inspirado en tareas de preparación de materiales para SAP.
+
+## Mirá cómo funciona
+
+Abrí **Ver cómo funciona** en la pantalla de inicio o [entrar directamente a la guía visual](https://enriqueariellopez.github.io/lote-data-quality/?tutorial=1). La guía usa un ejemplo ficticio aparte: **no cambia tu archivo cargado, tus correcciones, la normalización ni tus filtros**.
+
+Tiene seis pasos: preparar el CSV, entender los problemas, normalizar, corregir un precio, decidir qué hacer con duplicados y exportar. Podés usar **Reproducir / Pausar**, **Anterior**, **Siguiente** o los seis capítulos. La reproducción avanza cada trece segundos; al abrir está pausada. Se detiene al cerrar la guía o al ocultar la pestaña. Con movimiento reducido, los pasos cambian sin animación. En celulares y tablets, los controles de reproducción y avance quedan visibles mientras desplazás la explicación y la escena. Cerrala con **×** o **Escape** para volver a tu revisión.
+
+Por ejemplo, la guía muestra un precio `−7950` que se corrige a `7950` porque ése es el valor confirmado para el caso ficticio. No se deben cambiar precios ni centros solamente para quitar un error: usá tu fuente de datos para decidir qué corresponde.
+
+## Qué vas a encontrar en la revisión
+
+La barra de colores resume el estado de las filas: sin incidencias, con advertencias o por corregir. Las verdes y amarillas se pueden exportar; las rojas requieren una corrección. El bloque **Por dónde empezar** agrupa los errores en duplicados, campos vacíos y formatos/valores; una fila puede tener más de un error. **Revisar primero** filtra la lista por el problema prioritario, comenzando por las claves repetidas. Podés volver a ver todo borrando la búsqueda y eligiendo **Todas**.
+
+La lista de incidencias muestra los problemas detectados; no es una vista de todas las filas de la planilla. Los contadores y las prioridades siempre corresponden al archivo completo, aunque filtres esa lista.
 
 ## Probalo en tres pasos
 
@@ -14,11 +28,11 @@ No necesitás instalar nada ni crear una cuenta. Podés empezar con los ejemplos
 
 Al abrir la aplicación ya vas a ver un **ejemplo con errores**. Podés volver a cargarlo con **Probar con un ejemplo**, o elegir **Cargar ejemplo válido** para ver cómo queda una revisión sin incidencias.
 
-Para revisar tus datos, usá **Elegir archivo CSV** o arrastrá el archivo al recuadro. Si no sabés cómo armarlo, **Descargar plantilla CSV** te da un ejemplo con las ocho columnas esperadas. Abrilo en tu editor de planillas y conservá el formato CSV al guardar.
+Para revisar tus datos, usá **Elegir archivo CSV** o arrastrá el archivo al recuadro. Si tenés un XLSX, XLS u ODS, exportalo primero como CSV desde la planilla. Si no sabés cómo armarlo, **Descargar plantilla CSV** te da un ejemplo con las ocho columnas esperadas. Abrilo en tu editor de planillas y conservá el formato CSV al guardar.
 
 ### 2. Revisá y corregí
 
-La **Mesa de revisión** muestra cuántas filas pueden exportarse, cuántas tienen errores y cuántas advertencias se detectaron.
+El bloque **Qué encontró Lote** muestra cuántas filas pueden exportarse, cuántas tienen errores y cuántas advertencias se detectaron.
 
 - **Error:** bloquea la exportación de esa fila hasta que se corrija.
 - **Advertencia:** no bloquea la fila, pero conviene revisarla antes de usar los datos.
@@ -123,9 +137,9 @@ Los archivos de salida se crean en la ubicación que indiques; los nombres de es
 
 ## Para desarrollar o adaptar las reglas
 
-`rules.json` define los ocho campos, los catálogos, formatos, longitudes y la clave compuesta. Tanto JavaScript como Python leen ese archivo. `src/validator.js` contiene el validador, `src/app.js` maneja la interfaz y `python/lote.py` ofrece el mismo proceso por consola. No se incluyen datos ni código de clientes.
+`rules.json` define los ocho campos, los catálogos, formatos, longitudes y la clave compuesta. Tanto JavaScript como Python leen ese archivo. `src/validator.js` contiene el validador, `src/app.js` maneja la interfaz y `python/lote.py` ofrece el mismo proceso por consola. `src/tutorial.js` controla una guía ilustrada aislada del estado del lote, sin dependencias ni servicios remotos. No se incluyen datos ni código de clientes.
 
-La interfaz usa vidrio satinado, tonos perla y vino, una ilustración SVG propia y una guía de tres pasos. `style.css` define los componentes y la adaptación a pantallas; `identity.css` contiene las superficies y el ambiente visual. La marca y los títulos usan **Fraunces**, una serif de formas suaves; la interfaz, los campos, las tablas y los metadatos usan **Source Sans 3**. Los números usan cifras tabulares para facilitar la comparación. Las fuentes variables se sirven localmente, sin consultas a servicios de tipografías, y se precargan para reducir los saltos durante la apertura. Se incluyen las licencias SIL Open Font License correspondientes: [`assets/fraunces-OFL.txt`](assets/fraunces-OFL.txt) y [`assets/source-sans-3-OFL.txt`](assets/source-sans-3-OFL.txt). Los archivos originales provienen de los directorios oficiales de [Fraunces](https://github.com/google/fonts/tree/main/ofl/fraunces) y [Source Sans 3](https://github.com/google/fonts/tree/main/ofl/sourcesans3) en Google Fonts.
+La interfaz usa vidrio satinado, tonos perla y vino, una ilustración SVG propia del recorrido CSV → corrección, una guía visual de seis pasos y un resumen de incidencias por prioridad. `style.css` define los componentes y la adaptación a pantallas; `identity.css` contiene las superficies y el ambiente visual. La marca y los títulos usan **Fraunces**, una serif de formas suaves; la interfaz, los campos, las tablas y los metadatos usan **Source Sans 3**. Los números usan cifras tabulares para facilitar la comparación. Las fuentes variables se sirven localmente, sin consultas a servicios de tipografías, y se precargan para reducir los saltos durante la apertura. Se incluyen las licencias SIL Open Font License correspondientes: [`assets/fraunces-OFL.txt`](assets/fraunces-OFL.txt) y [`assets/source-sans-3-OFL.txt`](assets/source-sans-3-OFL.txt). Los archivos originales provienen de los directorios oficiales de [Fraunces](https://github.com/google/fonts/tree/main/ofl/fraunces) y [Source Sans 3](https://github.com/google/fonts/tree/main/ofl/sourcesans3) en Google Fonts.
 
 ### Pruebas
 

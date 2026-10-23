@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="335" viewBox="0 0 520 335" fill="none">
+  <defs><linearGradient id="paper" x1="94" y1="20" x2="360" y2="282" gradientUnits="userSpaceOnUse"><stop stop-color="#fffcf5"/><stop offset="1" stop-color="#f5e6e6" stop-opacity=".8"/></linearGradient><linearGradient id="correction" x1="240" y1="211" x2="460" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#fffdf8"/><stop offset="1" stop-color="#e3e9df"/></linearGradient></defs>
+  <ellipse cx="266" cy="311" rx="198" ry="12" fill="#9b5b70" opacity=".07"/>
+  <path d="M55 79C35 142 39 230 93 275M435 64c42 21 56 57 43 92" stroke="#b58490" stroke-dasharray="3 7" stroke-linecap="round"/>
+  <g transform="rotate(-5 234 146)">
+    <rect x="82" y="24" width="327" height="249" rx="17" fill="#dcbdc5" fill-opacity=".2" stroke="#fffaf6" stroke-width="2"/>
+    <rect x="72" y="14" width="327" height="249" rx="17" fill="url(#paper)" stroke="#fffdf8" stroke-width="2"/>
+    <path d="M72 69h327" stroke="#d6b6bf"/>
+    <path d="M94 34h13l5 6v16H94Z" stroke="#935d71" stroke-width="1.5"/><path d="M105 34v7h7" stroke="#935d71" stroke-width="1.5"/>
+    <text x="123" y="49" font-family="Arial,sans-serif" font-size="13" fill="#674452">materiales.csv</text>
+    <circle cx="375" cy="42" r="4" fill="#c792a0"/>
+    <text x="94" y="93" font-family="Arial,sans-serif" font-size="10" letter-spacing="1" fill="#906f7b">MATERIAL</text><text x="254" y="93" font-family="Arial,sans-serif" font-size="10" letter-spacing="1" fill="#906f7b">PRECIO</text>
+    <rect x="88" y="108" width="294" height="36" rx="6" fill="#efd5dc"/><text x="100" y="131" font-family="Arial,sans-serif" font-size="13" fill="#674452">MAT-315</text><text x="254" y="131" font-family="Arial,sans-serif" font-size="14" fill="#a0475e">−7950</text><circle cx="363" cy="126" r="8" stroke="#b87687"/><path d="M363 121v6m0 3v1" stroke="#a0475e" stroke-linecap="round"/>
+    <path d="M94 155h282" stroke="#dfc8cf"/>
+    <text x="100" y="178" font-family="Arial,sans-serif" font-size="13" fill="#674452">MAT-100</text><text x="254" y="178" font-family="Arial,sans-serif" font-size="13" fill="#85616e">1850</text>
+    <path d="M94 193h282" stroke="#dfc8cf"/>
+    <text x="100" y="216" font-family="Arial,sans-serif" font-size="13" fill="#674452">MAT-100</text><text x="254" y="216" font-family="Arial,sans-serif" font-size="13" fill="#85616e">1850</text>
+    <path d="M92 167h-8v53h8" stroke="#ad6d80" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="100" y="244" font-family="Arial,sans-serif" font-size="10" fill="#9a7482">Una fila repetida también cuenta.</text>
+  </g>
+  <path d="M382 140c49 7 58 32 45 65" stroke="#9f6c7f" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round"/><path d="m422 197 4 10 10-4" stroke="#9f6c7f" stroke-width="1.5" stroke-linecap="round"/>
+  <g transform="rotate(3 342 258)"><rect x="239" y="215" width="224" height="91" rx="14" fill="url(#correction)" stroke="white" stroke-width="2"/><text x="258" y="240" font-family="Arial,sans-serif" font-size="10" letter-spacing="1" fill="#6c7e6c">PRECIO CORREGIDO</text><text x="258" y="278" font-family="Georgia,serif" font-size="32" fill="#446955">7950</text><circle cx="429" cy="263" r="17" fill="#d1dfcd"/><path d="m421 263 6 6 10-13" stroke="#5a795c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <path d="M435 26v14m-7-7h14M43 250v10m-5-5h10" stroke="#b98995" stroke-width="1.5" stroke-linecap="round"/>
+</svg>
