@@ -49,6 +49,8 @@ h1 { font-size: clamp(38px, 4vw, 58px); line-height: 1.12; letter-spacing: -.065
 .upload-panel, .results-panel { border-radius: 20px; min-width: 0; }
 .upload-panel { position: sticky; top: 24px; padding: 25px 23px 21px; }
 .step-heading { display: flex; align-items: center; gap: 12px; }
+.step-heading, .step-heading > div { min-width: 0; }
+.step-heading { max-width: 100%; }
 .step { display: grid; place-items: center; flex: none; width: 33px; height: 33px; border-radius: 50%; background: #f2e3e4; color: var(--accent); font: 11px PlexMono, monospace; }
 h2 { font-size: 16px; font-weight: 600; line-height: 1.4; letter-spacing: -.035em; }
 .step-heading p { font-size: 11px; color: var(--muted); margin-top: 4px; }
@@ -72,8 +74,10 @@ h2 { font-size: 16px; font-weight: 600; line-height: 1.4; letter-spacing: -.035e
 .sample-box > a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 5px; font-size: 11px; color: var(--accent); text-decoration: underline; text-underline-offset: 4px; }
 .local-note { border-top: 1px solid #e2cfd1; margin-top: 19px; padding-top: 17px; font-size: 10px; color: var(--muted); line-height: 1.9; }
 .local-note > span { float: left; font-size: 25px; line-height: 1.4; margin-right: 10px; color: var(--accent); }
-.result-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding: 26px 26px 23px; }
-.normalize { display: flex; flex-direction: column; align-items: end; gap: 1px; }
+.result-heading { display: flex; align-items: start; justify-content: space-between; gap: 20px; padding: 26px 26px 23px; min-width: 0; }
+.result-heading > .step-heading { flex: 1 1 auto; }
+#file-label { overflow-wrap: anywhere; }
+.normalize { display: flex; flex-direction: column; align-items: end; gap: 1px; min-width: 0; max-width: 100%; flex: 0 0 auto; }
 .normalize label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 11px; color: var(--muted); min-height: 32px; }
 input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--accent); flex: none; }
 .quiet { color: var(--accent); font-size: 11px; min-height: 36px; text-decoration: underline; text-underline-offset: 4px; padding: 6px 0; }
