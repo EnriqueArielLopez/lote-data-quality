@@ -37,14 +37,18 @@ export function initTutorial() {
   const trigger = document.querySelector('#open-tutorial');
   if (!dialog || !trigger) return;
   const select = selector => dialog.querySelector(selector);
-  let step = 0, playing = false, timer, restoreFocus, previousOverflow = '';
+  let step = 0, renderedStep, playing = false, timer, restoreFocus, previousOverflow = '';
   const stopTimer = () => { clearTimeout(timer); timer = undefined; };
   function render() {
-    const chapter = chapters[step];
-    select('#tutorial-scene').innerHTML = `<div class="tutorial-window"><div class="tutorial-window-bar"><span class="demo-window-dots" aria-hidden="true">● ● ●</span><span>LOTE / EJEMPLO APARTE</span></div><div class="tutorial-window-content">${chapter.scene}</div></div>`;
-    select('#tutorial-step-number').textContent = `PASO ${step + 1} / ${chapters.length}`;
-    select('#tutorial-step-title').textContent = chapter.title;
-    select('#tutorial-step-copy').textContent = chapter.copy;
+    const sceneChanged = renderedStep !== step;
+    if (sceneChanged) {
+      const chapter = chapters[step];
+      select('#tutorial-scene').innerHTML = `<div class="tutorial-window"><div class="tutorial-window-bar"><span class="demo-window-dots" aria-hidden="true">● ● ●</span><span>LOTE / EJEMPLO APARTE</span></div><div class="tutorial-window-content">${chapter.scene}</div></div>`;
+      select('#tutorial-step-number').textContent = `PASO ${step + 1} / ${chapters.length}`;
+      select('#tutorial-step-title').textContent = chapter.title;
+      select('#tutorial-step-copy').textContent = chapter.copy;
+      renderedStep = step;
+    }
     const previousHadFocus = document.activeElement === select('#tutorial-prev');
     select('#tutorial-prev').disabled = step === 0;
     if (step === 0 && previousHadFocus) select('#tutorial-next').focus({preventScroll: true});
@@ -56,6 +60,7 @@ export function initTutorial() {
       if (index === step) button.setAttribute('aria-current', 'step'); else button.removeAttribute('aria-current');
       button.classList.toggle('completed', index < step);
     });
+    if (sceneChanged) select('.tutorial-scrollbody').scrollTop = 0;
   }
   function schedule() {
     stopTimer();
@@ -79,6 +84,7 @@ export function initTutorial() {
     previousOverflow = document.documentElement.style.overflow;
     chooseStep(0);
     dialog.showModal();
+    select('.tutorial-scrollbody').scrollTop = 0;
     document.documentElement.style.overflow = 'hidden';
   }
   select('#tutorial-chapters').innerHTML = chapters.map((chapter, index) => `<button type="button" data-tutorial-step="${index}" aria-label="Paso ${index + 1}: ${chapter.label}"><span>${index + 1}</span><small>${chapter.label}</small></button>`).join('');
