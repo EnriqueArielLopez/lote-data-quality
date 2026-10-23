@@ -4,6 +4,10 @@ const $=selector=>document.querySelector(selector);
 const escape=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 let schema,rows=[],report,filter='all',page=1,history=[],editIndex,origin;
 const PAGE_SIZE=8;
+// El perfil llega por HTTP. Ninguna acción de datos debe adelantarse a esa carga.
+const controls=[...document.querySelectorAll('button,input')];
+controls.forEach(control=>control.disabled=true);
+$('#file-label').textContent='Cargando perfil de validación…';
 function toast(message){$('#toast').textContent=message;$('#toast').classList.add('visible');clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('#toast').classList.remove('visible'),4500);}
 function updateReport(){report=validateBatch(rows,schema,$('#normalize').checked);render();}
 function loadText(text,name){const next=readBatch(text,schema);rows=next;history=[];page=1;filter='all';$('#search').value='';$('#file-label').textContent=`${name} · ${rows.length} filas`;updateReport();}
@@ -59,5 +63,6 @@ $('#export-json').addEventListener('click',()=>download(JSON.stringify({createdA
 try{
   const response=await fetch('rules.json');if(!response.ok)throw new Error('No se pudo cargar el perfil.');schema=await response.json();
   $('#rules-list').innerHTML=schema.fields.map(field=>`<article class="rule"><strong>${escape(field.label)}</strong><small>${field.key}</small><p>${escape(field.hint)}</p></article>`).join('');
+  controls.forEach(control=>control.disabled=false);
   loadText(errorSample,'Ejemplo con errores');
 }catch(error){toast(error.message);$('#results-title').textContent='No se pudo iniciar la revisión';document.querySelectorAll('button').forEach(button=>button.disabled=true);}
