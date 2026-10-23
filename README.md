@@ -135,9 +135,11 @@ Con **Node 20+** y **Python en PATH**:
 npm test
 ```
 
-No se necesita instalar dependencias. Si Python está en otra ubicación, indicá su ruta con la variable de entorno `LOTE_PYTHON` antes de ejecutar las pruebas. Hay **11 pruebas**, incluidas comparaciones de resultados entre JavaScript y Python, duplicados, normalización y exportación.
+No se necesita instalar dependencias. Si Python está en otra ubicación, indicá su ruta con la variable de entorno `LOTE_PYTHON` antes de ejecutar las pruebas. Hay **15 pruebas**, incluidas comparaciones de resultados entre JavaScript y Python, duplicados, normalización, exportación y protección de prefijos de fórmulas en CSV.
 
-Los datos de los CSV se muestran como texto, nunca como HTML ejecutable. Los CSV de salida neutralizan las fórmulas de planillas: cuando una descripción empieza con `=`, `+`, `-` o `@`, agregan una comilla simple de protección. Los códigos se mantienen como texto para conservar sus ceros iniciales.
+Los datos de los CSV se muestran como texto, nunca como HTML ejecutable. Los CSV de salida anteponen una comilla simple a celdas con prefijos de fórmula (`=`, `+`, `-`, `@` y sus variantes de ancho completo) o controles iniciales de tabulación y salto de línea. También se consideran espacios y BOM antes del prefijo. Las comillas y los separadores se escapan para conservar los límites de cada celda. Los códigos se mantienen como texto para conservar sus ceros iniciales.
+
+La protección se aplica al exportar desde el navegador y desde Python. Una planilla puede modificar esos escapes al guardar y volver a abrir un CSV; no existe una protección universal para todos los programas y consumidores. Las regresiones comprueban el contenido exportado y la paridad entre JavaScript y Python; no ejecutan Excel. Este alcance sigue la guía de [OWASP sobre CSV Injection](https://community.owasp.org/attacks/CSV_Injection).
 
 ### Publicación
 
