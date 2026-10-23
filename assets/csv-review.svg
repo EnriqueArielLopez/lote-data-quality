@@ -19,6 +19,6 @@
     <text x="100" y="244" font-family="Arial,sans-serif" font-size="10" fill="#9a7482">Una fila repetida también cuenta.</text>
   </g>
   <path d="M382 140c49 7 58 32 45 65" stroke="#9f6c7f" stroke-width="1.5" stroke-dasharray="3 5" stroke-linecap="round"/><path d="m422 197 4 10 10-4" stroke="#9f6c7f" stroke-width="1.5" stroke-linecap="round"/>
-  <g transform="rotate(3 342 258)"><rect x="239" y="215" width="224" height="91" rx="14" fill="url(#correction)" stroke="white" stroke-width="2"/><text x="258" y="240" font-family="Arial,sans-serif" font-size="10" letter-spacing="1" fill="#6c7e6c">PRECIO CORREGIDO</text><text x="258" y="278" font-family="Georgia,serif" font-size="32" fill="#446955">7950</text><circle cx="429" cy="263" r="17" fill="#d1dfcd"/><path d="m421 263 6 6 10-13" stroke="#5a795c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="rotate(3 342 258)"><rect x="239" y="215" width="224" height="91" rx="14" fill="url(#correction)" stroke="white" stroke-width="2"/><text x="258" y="240" font-family="Arial,sans-serif" font-size="10" letter-spacing="1" fill="#6c7e6c">PRECIO CORREGIDO</text><text x="258" y="278" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="32" fill="#446955">7950</text><circle cx="429" cy="263" r="17" fill="#d1dfcd"/><path d="m421 263 6 6 10-13" stroke="#5a795c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g>
   <path d="M435 26v14m-7-7h14M43 250v10m-5-5h10" stroke="#b98995" stroke-width="1.5" stroke-linecap="round"/>
 </svg>
