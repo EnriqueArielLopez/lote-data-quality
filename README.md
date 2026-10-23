@@ -4,7 +4,11 @@ Una revisión previa de archivos de materiales: encontrar errores por fila, corr
 
 Proyecto de demostración de Ariel López. Los datos son ficticios. El perfil está inspirado en tareas de preparación de datos para procesos SAP; **no es un conector SAP ni una especificación universal de ese sistema**.
 
-[Abrir demo](https://ariel-lopezPS.github.io/lote-data-quality/)
+[Abrir demo](https://enriqueariellopez.github.io/lote-data-quality/)
+
+La transferencia del repositorio a `EnriqueArielLopez` fue solicitada; la URL de Pages indicada corresponde al destino y requiere completar esa transferencia y verificar la publicación.
+
+La interfaz presenta una mesa de revisión de documentos: archivo de entrada en una columna y un informe de validación en la otra. `identity.css` define la paleta papel/tinta/terracota y la tipografía IBM Plex Mono para campos y metadatos; en pantallas pequeñas las columnas se apilan. Las reglas y el procesamiento no dependen del estilo.
 
 ## Flujo
 
@@ -70,6 +74,6 @@ Los números de fila son posiciones lógicas del CSV, incluida la cabecera. Un c
 
 La aplicación no consulta maestros reales ni verifica autorización, existencia de materiales o reglas dependientes de configuración SAP. Se debe adaptar el perfil y revisar los controles del destino antes de usar un lote real. No se incluyen datos, pantallas o código de clientes.
 
-Tipografía Manrope, SIL Open Font License (`assets/OFL.txt`).
+Tipografías Manrope e IBM Plex Mono, SIL Open Font License (`assets/OFL.txt` y `assets/plex-mono-OFL.txt`).
 
 Validación del 22/10/2026: 11 pruebas aprobadas también en GitHub Actions. Demo publicada en GitHub Pages desde main; smoke externo de HTML, scripts y perfil. La interfaz bloquea acciones mientras carga el perfil para evitar una validación prematura. No se modificaron servicios corporativos.
