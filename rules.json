@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "name": "Materiales · Perfil de demostración",
+  "unique": ["material", "centro"],
+  "fields": [
+    {"key":"material","label":"Material","required":true,"pattern":"^[A-Z0-9-]{1,18}$","uppercase":true,"hint":"De 1 a 18 caracteres: letras mayúsculas, números y guion."},
+    {"key":"descripcion","label":"Descripción","required":true,"maxLength":40,"hint":"Descripción de hasta 40 caracteres."},
+    {"key":"tipo","label":"Tipo","required":true,"enum":["FERT","HALB","ROH","HAWA"],"uppercase":true,"hint":"FERT, HALB, ROH o HAWA."},
+    {"key":"unidad","label":"Unidad","required":true,"enum":["UN","KG","LT","M"],"uppercase":true,"hint":"UN, KG, LT o M."},
+    {"key":"grupo","label":"Grupo","required":true,"pattern":"^[0-9]{3}$","hint":"Tres dígitos; se conservan los ceros iniciales."},
+    {"key":"centro","label":"Centro","required":true,"enum":["1000","2000"],"hint":"1000 o 2000 en este perfil de ejemplo."},
+    {"key":"precio","label":"Precio","required":true,"kind":"price","hint":"No negativo, punto decimal, hasta dos decimales y sin separadores de miles."},
+    {"key":"moneda","label":"Moneda","required":true,"enum":["ARS","USD"],"uppercase":true,"hint":"ARS o USD."}
+  ]
+}
