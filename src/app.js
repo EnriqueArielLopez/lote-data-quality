@@ -84,7 +84,7 @@ $('#editor-form').addEventListener('submit',event=>{
   rows[editIndex]=Object.fromEntries(schema.fields.map(field=>[field.key,event.target.elements[field.key].value]));
   updateReport();closeDialog($('#editor'));toast('Fila actualizada. Se revisó el lote completo, incluidas sus claves duplicadas.');
 });
-$('#undo').addEventListener('click',()=>{if(history.length){rows=history.pop();updateReport();toast('Se deshizo la última corrección.');}});
+$('#undo').addEventListener('click',()=>{if(history.length){rows=history.pop();updateReport();if(!history.length)$('#results-title').focus();toast('Se deshizo la última corrección.');}});
 $('#close-editor').addEventListener('click',()=>closeDialog($('#editor')));$('#cancel-edit').addEventListener('click',()=>closeDialog($('#editor')));
 $('#show-rules').addEventListener('click',()=>openDialog($('#rules-dialog')));$('#close-rules').addEventListener('click',()=>closeDialog($('#rules-dialog')));
 $('#normalize').addEventListener('change',()=>{page=1;updateReport();toast($('#normalize').checked?'Normalización activada. Los cambios se identifican como advertencias.':'Normalización desactivada. Se revisan los valores de origen.');});
