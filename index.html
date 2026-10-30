@@ -1,93 +1,423 @@
 <!doctype html>
 <html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="base-uri 'none'; object-src 'none'; form-action 'none'; script-src-attr 'none'">
-  <meta name="theme-color" content="#f5eeeb">
-  <title>Lote | Revisá tus datos antes de cargarlos</title>
-  <meta name="description" content="Revisá un CSV de materiales, corregí las incidencias por fila y exportá los datos válidos. Una herramienta de demostración de Ariel López.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23743950'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=20261023-type">
-  <link rel="stylesheet" href="identity.css?v=20261023-type">
-  <script type="module" src="src/app.js?v=20261023-type"></script>
-</head>
-<body>
-  <a class="skip" href="#main">Saltar al contenido</a>
-  <header>
-    <a class="brand" href="./" aria-label="Lote, inicio">
-      <svg class="brand-icon" viewBox="0 0 36 40" fill="none" aria-hidden="true"><path d="M7 3h15l8 9v25H7Z"/><path d="M21 3v10h9M12 23l5 5 9-10"/></svg>
-      <span>lote<span class="brand-dot">.</span></span>
-      <span class="brand-sub">CALIDAD DE DATOS</span>
-    </a>
-    <nav aria-label="Enlaces del proyecto"><span>Una herramienta de Ariel López</span><a href="https://github.com/EnriqueArielLopez/lote-data-quality" target="_blank" rel="noopener">Código y guía <span aria-hidden="true">↗</span></a></nav>
-  </header>
-  <main id="main">
-    <div class="intro">
-      <div class="intro-copy">
-        <p class="eyebrow"><span></span> PARA PLANILLAS DE PRODUCTOS Y MATERIALES</p>
-        <h1>Encontrá errores.<br>Entregá datos claros.</h1>
-        <p class="intro-explanation"><strong>Lote revisa el CSV que exportás de tu planilla.</strong> Encuentra datos repetidos, campos vacíos y precios inválidos. Los corregís acá y descargás las filas listas para continuar.</p>
-        <div class="intro-actions"><button id="open-tutorial" class="button primary tutorial-trigger" type="button"><span class="play-symbol" aria-hidden="true">▶</span> Ver cómo funciona <span class="tutorial-duration">6 pasos</span></button><a href="#results-title" class="intro-example">Explorar la revisión de ejemplo <span aria-hidden="true">↓</span></a></div>
-        <p class="format-note">Exportá tu planilla como <strong>CSV</strong>. Lote no abre XLSX ni carga datos en SAP.</p>
-      </div>
-      <div class="profile-card">
-        <figure class="review-illustration"><img src="assets/csv-review.svg" width="520" height="335" alt="Ejemplo ilustrado: un archivo CSV tiene un precio negativo y dos materiales repetidos. Una corrección cambia el precio de menos 7950 a 7950."><figcaption><span class="illustration-label">ASÍ SE VE UNA CORRECCIÓN</span><span>Un problema concreto. Una salida más clara.</span></figcaption></figure>
-        <div class="profile-details"><div><small>QUÉ REVISA ESTE EJEMPLO</small><strong>Datos de materiales</strong><span>8 columnas · material + centro sin repetir</span></div><button id="show-rules" aria-label="Ver reglas de validación">Ver reglas <span aria-hidden="true">↗</span></button></div>
-      </div>
-    </div>
-    <nav class="workflow" aria-label="Cómo usar Lote">
-      <a href="#upload-title"><span class="workflow-number">01</span><span><strong>Elegí un archivo</strong><small>O probá con un ejemplo</small></span><span class="workflow-arrow" aria-hidden="true">→</span></a>
-      <a href="#results-title"><span class="workflow-number">02</span><span><strong>Revisá y corregí</strong><small>Cada incidencia tiene una explicación</small></span><span class="workflow-arrow" aria-hidden="true">→</span></a>
-      <a href="#export-title"><span class="workflow-number">03</span><span><strong>Exportá el resultado</strong><small>Datos válidos e informe de revisión</small></span><span class="workflow-arrow" aria-hidden="true">↘</span></a>
-    </nav>
-    <div class="review-workspace">
-      <section class="upload-panel" aria-labelledby="upload-title">
-        <div class="step-heading"><span class="step">01</span><div><h2 id="upload-title">Tu archivo de entrada</h2><p>Exportado de una planilla · formato CSV</p></div></div>
-        <div class="upload-grid">
-          <label class="file-zone" id="drop-zone"><svg class="upload-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M10 20a5 5 0 0 1 5-5h14l6 6h14a5 5 0 0 1 5 5v23a5 5 0 0 1-5 5H15a5 5 0 0 1-5-5Z"/><path d="M32 44V29m-6 6 6-6 6 6"/></svg><strong>Elegir archivo CSV</strong><span>También podés arrastrarlo acá</span><small>Hasta 2 MB · 5.000 filas · no XLSX</small><input id="file" type="file" accept=".csv,text/csv" aria-label="Elegir un archivo CSV para revisar"></label>
-          <div class="sample-box"><span class="eyebrow">PRIMERA VEZ POR ACÁ</span><p>Explorá sin preparar nada. El ejemplo incluye errores para que pruebes cómo corregirlos.</p><div><button class="button primary" id="sample-errors">Probar con un ejemplo <span aria-hidden="true">→</span></button><button class="button" id="sample-valid">Cargar ejemplo válido</button></div><a href="examples/materiales-validos.csv" download>Descargar plantilla CSV <span aria-hidden="true">↓</span></a></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="base-uri 'none'; object-src 'none'; form-action 'none'; script-src-attr 'none'"
+    />
+    <meta name="theme-color" content="#f5eeeb" />
+    <title>Lote | Revisá tus datos antes de cargarlos</title>
+    <meta
+      name="description"
+      content="Revisá un CSV de materiales, corregí las incidencias por fila y exportá los datos válidos. Una herramienta de demostración de Ariel López."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23743950'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="assets/plus-jakarta-sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="stylesheet" href="style.css?v=20261030-workspace" />
+    <link rel="stylesheet" href="identity.css?v=20261030-workspace" />
+    <script type="module" src="src/app.js?v=20261030-workspace"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Saltar al contenido</a>
+    <header>
+      <a class="brand" href="./" aria-label="Lote, inicio">
+        <svg class="brand-icon" viewBox="0 0 36 40" fill="none" aria-hidden="true">
+          <path d="M7 3h15l8 9v25H7Z" />
+          <path d="M21 3v10h9M12 23l5 5 9-10" />
+        </svg>
+        <span>lote<span class="brand-dot">.</span></span>
+        <span class="brand-sub">CALIDAD DE DATOS</span>
+      </a>
+      <nav aria-label="Enlaces del proyecto">
+        <a
+          class="portfolio-return"
+          href="https://ariel-lopez-portfolio.chalkycove20.chatgpt.site/#proyecto-lote"
+          >← Portfolio</a
+        ><span>Una herramienta de Ariel López</span
+        ><a
+          href="https://github.com/EnriqueArielLopez/lote-data-quality"
+          target="_blank"
+          rel="noopener"
+          >Código y guía <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+    </header>
+    <main id="main">
+      <div class="intro">
+        <div class="intro-copy">
+          <p class="eyebrow"><span></span> PARA PLANILLAS DE PRODUCTOS Y MATERIALES</p>
+          <h1>Encontrá errores.<br />Entregá datos claros.</h1>
+          <p class="intro-explanation">
+            <strong>Lote revisa el CSV que exportás de tu planilla.</strong> Encuentra datos
+            repetidos, campos vacíos y precios inválidos. Los corregís acá y descargás las filas
+            listas para continuar.
+          </p>
+          <div class="intro-actions">
+            <button id="open-tutorial" class="button primary tutorial-trigger" type="button">
+              <span class="play-symbol" aria-hidden="true">▶</span> Ver cómo funciona
+              <span class="tutorial-duration">6 pasos</span></button
+            ><a href="#results-title" class="intro-example"
+              >Explorar la revisión de ejemplo <span aria-hidden="true">↓</span></a
+            >
+          </div>
+          <p class="format-note">
+            Exportá tu planilla como <strong>CSV</strong>. Lote no abre XLSX ni carga datos en SAP.
+          </p>
         </div>
-        <p class="local-note"><span aria-hidden="true">⌁</span> El archivo se revisa en tu navegador.<br>No se sube a un servidor.</p>
-      </section>
-      <section class="results-panel" aria-labelledby="results-title">
-        <div class="result-heading"><div class="step-heading"><span class="step">02</span><div><h2 id="results-title" tabindex="-1">Qué encontró Lote</h2><p id="file-label">Cargando perfil de validación…</p></div></div><div class="normalize"><label><input type="checkbox" id="normalize"> Normalizar espacios y mayúsculas</label><button id="undo" class="quiet" disabled>↶ Deshacer corrección</button></div></div>
-        <div class="batch-overview"><div class="batch-caption"><span>Una vista de tu archivo</span><span id="batch-caption">Preparando revisión…</span></div><div id="batch-visual" class="batch-visual" role="img" aria-label="Estado de las filas del archivo"></div><div class="batch-legend"><span><i class="batch-ready"></i>Sin incidencias</span><span><i class="batch-caution"></i>Con advertencias</span><span><i class="batch-blocked"></i>Por corregir</span></div><p class="batch-help">Las filas sin incidencias (verdes) y con advertencias (amarillas) se pueden exportar.</p></div>
-        <div class="summary-grid">
-          <article class="score"><div class="score-head"><span id="score">—</span><small>del lote sin errores</small></div><div class="track"><i id="score-bar"></i></div><p id="score-description"></p></article>
-          <article class="accepted-summary"><span class="summary-label">Listas para exportar</span><strong id="accepted">—</strong><small>Sin errores bloqueantes</small></article>
-          <article><span class="summary-label">Con errores</span><strong id="rejected" class="error-number">—</strong><small>Necesitan una corrección</small></article>
-          <article><span class="summary-label">Advertencias</span><strong id="warnings" class="warning-number">—</strong><small>Conviene revisarlas</small></article>
+        <div class="profile-card">
+          <figure class="review-illustration">
+            <img
+              src="assets/csv-review.svg"
+              width="520"
+              height="335"
+              alt="Ejemplo ilustrado: un archivo CSV tiene un precio negativo y dos materiales repetidos. Una corrección cambia el precio de menos 7950 a 7950."
+            />
+            <figcaption>
+              <span class="illustration-label">ASÍ SE VE UNA CORRECCIÓN</span
+              ><span>Un problema concreto. Una salida más clara.</span>
+            </figcaption>
+          </figure>
+          <div class="profile-details">
+            <div>
+              <small>QUÉ REVISA ESTE EJEMPLO</small><strong>Datos de materiales</strong
+              ><span>8 columnas · material + centro sin repetir</span>
+            </div>
+            <button id="show-rules" aria-label="Ver reglas de validación">
+              Ver reglas <span aria-hidden="true">↗</span>
+            </button>
+          </div>
         </div>
-        <div class="findings-overview" aria-labelledby="findings-title"><div class="findings-heading"><h3 id="findings-title">Por dónde empezar</h3><p id="priority-message">Revisá las filas con errores antes de exportar.</p><p class="findings-scope">Errores por tipo: una fila puede tener más de uno.</p><button id="review-priority" class="quiet" type="button">Revisar primero <span aria-hidden="true">↘</span></button></div><dl class="findings-types"><div><dt>Duplicados</dt><dd id="finding-duplicates">—</dd><small>Mismo material y centro</small></div><div><dt>Datos faltantes</dt><dd id="finding-missing">—</dd><small>Campos obligatorios vacíos</small></div><div><dt>Formatos y valores</dt><dd id="finding-values">—</dd><small>Precios, códigos o longitudes</small></div></dl></div>
-        <div class="issue-toolbar"><div class="tabs" role="group" aria-label="Filtrar incidencias"><button data-filter="all" aria-pressed="true">Todas <span id="all-count"></span></button><button data-filter="error" aria-pressed="false">Errores</button><button data-filter="warning" aria-pressed="false">Advertencias</button></div><label class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><path d="m12 12 5 5"/></svg><span class="sr-only">Buscar incidencia</span><input type="search" id="search" placeholder="Buscar en la revisión…"></label></div>
-        <p class="table-hint">Esta lista muestra los problemas, no todas las filas del archivo. Abrí <span aria-hidden="true">↗</span> para corregir una fila; la ayuda explica qué espera cada campo.</p>
-        <div class="table-wrap" tabindex="0" role="region" aria-label="Incidencias del archivo, tabla desplazable"><table><thead><tr><th>Fila</th><th>Campo / regla</th><th>Valor encontrado</th><th>Qué revisar</th><th>Severidad</th><th><span class="sr-only">Acción</span></th></tr></thead><tbody id="issues"></tbody></table></div>
-        <div id="empty" class="empty" hidden><span aria-hidden="true">✓</span><h3 id="empty-title">Sin incidencias</h3><p id="empty-text"></p></div>
-        <div class="pagination"><span id="page-label"></span><div><button id="previous" aria-label="Página anterior">←</button><button id="next" aria-label="Página siguiente">→</button></div></div>
-        <div class="export-bar"><div><span class="eyebrow">03 / RESULTADO</span><h2 id="export-title">Llevate lo que revisaste.</h2><p>Descargá las filas sin errores y, si lo necesitás, el informe. Las advertencias no bloquean la salida: revisalas antes de usar los datos.</p></div><div><button id="export-accepted" class="button primary">Filas válidas <span>CSV ↓</span></button><button id="export-issues" class="button">Incidencias <span>CSV ↓</span></button><button id="export-json" class="quiet">Reporte completo JSON ↓</button></div></div>
-      </section>
-    </div>
-    <footer><p>Perfil de demostración con datos ficticios. Inspirado en preparación de materiales para SAP; no se conecta a ese sistema.</p><a href="https://github.com/EnriqueArielLopez/lote-data-quality#uso-por-consola" target="_blank" rel="noopener">¿Preferís Python? Mirá la guía <span aria-hidden="true">↗</span></a></footer>
-  </main>
-  <dialog id="editor" aria-labelledby="editor-title"><div class="dialog-head"><div><p class="eyebrow">CORRECCIÓN EN ESTA SESIÓN</p><h2 id="editor-title"></h2></div><button id="close-editor" aria-label="Cerrar edición">×</button></div><p class="editor-note">El archivo original conserva sus datos. Al guardar, se vuelve a revisar todo el lote; podés deshacer la corrección.</p><form id="editor-form"><div id="editor-fields"></div><div class="dialog-actions"><button type="button" id="cancel-edit" class="button">Cancelar</button><button class="button primary">Guardar y volver a validar</button></div></form></dialog>
-  <dialog id="rules-dialog" aria-labelledby="rules-title"><div class="dialog-head"><div><p class="eyebrow">PERFIL V1.0.0</p><h2 id="rules-title">Qué se revisa.</h2></div><button id="close-rules" aria-label="Cerrar reglas">×</button></div><div id="rules-list"></div><p class="editor-note">La clave material + centro debe ser única. El archivo rules.json permite adaptar este perfil; sus valores no son un estándar universal SAP.</p></dialog>
-  <dialog id="tutorial-dialog" class="tutorial-dialog" aria-labelledby="tutorial-title" aria-describedby="tutorial-intro">
-    <div class="tutorial-top"><div><p class="eyebrow">GUÍA VISUAL / EJEMPLO FICTICIO</p><h2 id="tutorial-title">Una planilla, paso a paso.</h2></div><button id="tutorial-close" type="button" aria-label="Cerrar tutorial" autofocus>×</button></div>
-    <div class="tutorial-scrollbody">
-      <p id="tutorial-intro">Mirá el recorrido completo con un ejemplo aparte. Tu archivo, tus correcciones y tu selección quedan como estaban.</p>
-      <div class="tutorial-caption" aria-live="polite" aria-atomic="true"><span id="tutorial-step-number" class="eyebrow">PASO 1 / 6</span><h3 id="tutorial-step-title"></h3><p id="tutorial-step-copy"></p></div>
-      <div id="tutorial-scene" class="tutorial-scene"></div>
-      <nav id="tutorial-chapters" class="tutorial-chapters" aria-label="Pasos del tutorial"></nav>
-    </div>
-    <div class="tutorial-footer">
-      <div class="tutorial-controls"><button id="tutorial-prev" type="button" class="button" aria-label="Paso anterior">← Anterior</button><button id="tutorial-play" type="button" class="button primary" aria-pressed="false" aria-describedby="tutorial-playback-hint">▶ Reproducir</button><button id="tutorial-next" type="button" class="button">Siguiente →</button></div>
-      <p id="tutorial-playback-hint" class="tutorial-hint">La reproducción avanza un paso cada 13 segundos. Podés pausarla o elegir un paso.</p>
-    </div>
-  </dialog>
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
-</body>
+      </div>
+      <nav class="workflow" aria-label="Cómo usar Lote">
+        <a href="#upload-title"
+          ><span class="workflow-number">01</span
+          ><span><strong>Elegí un archivo</strong><small>O probá con un ejemplo</small></span
+          ><span class="workflow-arrow" aria-hidden="true">→</span></a
+        >
+        <a href="#results-title"
+          ><span class="workflow-number">02</span
+          ><span
+            ><strong>Revisá y corregí</strong
+            ><small>Cada incidencia tiene una explicación</small></span
+          ><span class="workflow-arrow" aria-hidden="true">→</span></a
+        >
+        <a href="#export-title"
+          ><span class="workflow-number">03</span
+          ><span
+            ><strong>Exportá el resultado</strong
+            ><small>Datos válidos e informe de revisión</small></span
+          ><span class="workflow-arrow" aria-hidden="true">↘</span></a
+        >
+      </nav>
+      <div class="review-workspace">
+        <section class="upload-panel" aria-labelledby="upload-title">
+          <div class="step-heading">
+            <span class="step">01</span>
+            <div>
+              <h2 id="upload-title">Tu archivo de entrada</h2>
+              <p>Exportado de una planilla · formato CSV</p>
+            </div>
+          </div>
+          <div class="upload-grid">
+            <label class="file-zone" id="drop-zone"
+              ><svg class="upload-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <path
+                  d="M10 20a5 5 0 0 1 5-5h14l6 6h14a5 5 0 0 1 5 5v23a5 5 0 0 1-5 5H15a5 5 0 0 1-5-5Z"
+                />
+                <path d="M32 44V29m-6 6 6-6 6 6" /></svg
+              ><strong>Elegir archivo CSV</strong><span>También podés arrastrarlo acá</span
+              ><small>Hasta 2 MB · 5.000 filas · no XLSX</small
+              ><input
+                id="file"
+                type="file"
+                accept=".csv,text/csv"
+                aria-label="Elegir un archivo CSV para revisar"
+            /></label>
+            <div class="sample-box">
+              <span class="eyebrow">PRIMERA VEZ POR ACÁ</span>
+              <p>
+                Explorá sin preparar nada. El ejemplo incluye errores para que pruebes cómo
+                corregirlos.
+              </p>
+              <div>
+                <button class="button primary" id="sample-errors">
+                  Probar con un ejemplo <span aria-hidden="true">→</span></button
+                ><button class="button" id="sample-valid">Cargar ejemplo válido</button>
+              </div>
+              <a href="examples/materiales-validos.csv" download
+                >Descargar plantilla CSV <span aria-hidden="true">↓</span></a
+              >
+            </div>
+          </div>
+          <p class="local-note">
+            <span aria-hidden="true">⌁</span> El archivo se revisa en tu navegador.<br />No se sube
+            a un servidor.
+          </p>
+        </section>
+        <section class="results-panel" aria-labelledby="results-title">
+          <div class="result-heading">
+            <div class="step-heading">
+              <span class="step">02</span>
+              <div>
+                <h2 id="results-title" tabindex="-1">Qué encontró Lote</h2>
+                <p id="file-label">Cargando perfil de validación…</p>
+              </div>
+            </div>
+            <div class="normalize">
+              <label
+                ><input type="checkbox" id="normalize" /> Normalizar espacios y mayúsculas</label
+              ><button id="undo" class="quiet" disabled>↶ Deshacer corrección</button>
+            </div>
+          </div>
+          <div class="batch-overview">
+            <div class="batch-caption">
+              <span>Una vista de tu archivo</span
+              ><span id="batch-caption">Preparando revisión…</span>
+            </div>
+            <div
+              id="batch-visual"
+              class="batch-visual"
+              role="img"
+              aria-label="Estado de las filas del archivo"
+            ></div>
+            <div class="batch-legend">
+              <span><i class="batch-ready"></i>Sin incidencias</span
+              ><span><i class="batch-caution"></i>Con advertencias</span
+              ><span><i class="batch-blocked"></i>Por corregir</span>
+            </div>
+            <p class="batch-help">
+              Las filas sin incidencias (verdes) y con advertencias (amarillas) se pueden exportar.
+            </p>
+          </div>
+          <div class="summary-grid">
+            <article class="score">
+              <div class="score-head">
+                <span id="score">—</span><small>del lote sin errores</small>
+              </div>
+              <div class="track"><i id="score-bar"></i></div>
+              <p id="score-description"></p>
+            </article>
+            <article class="accepted-summary">
+              <span class="summary-label">Listas para exportar</span><strong id="accepted">—</strong
+              ><small>Sin errores bloqueantes</small>
+            </article>
+            <article>
+              <span class="summary-label">Con errores</span
+              ><strong id="rejected" class="error-number">—</strong
+              ><small>Necesitan una corrección</small>
+            </article>
+            <article>
+              <span class="summary-label">Advertencias</span
+              ><strong id="warnings" class="warning-number">—</strong
+              ><small>Conviene revisarlas</small>
+            </article>
+          </div>
+          <div class="findings-overview" aria-labelledby="findings-title">
+            <div class="findings-heading">
+              <h3 id="findings-title">Por dónde empezar</h3>
+              <p id="priority-message">Revisá las filas con errores antes de exportar.</p>
+              <p class="findings-scope">Errores por tipo: una fila puede tener más de uno.</p>
+              <button id="review-priority" class="quiet" type="button">
+                Revisar primero <span aria-hidden="true">↘</span>
+              </button>
+            </div>
+            <dl class="findings-types">
+              <div>
+                <dt>Duplicados</dt>
+                <dd id="finding-duplicates">—</dd>
+                <small>Mismo material y centro</small>
+              </div>
+              <div>
+                <dt>Datos faltantes</dt>
+                <dd id="finding-missing">—</dd>
+                <small>Campos obligatorios vacíos</small>
+              </div>
+              <div>
+                <dt>Formatos y valores</dt>
+                <dd id="finding-values">—</dd>
+                <small>Precios, códigos o longitudes</small>
+              </div>
+            </dl>
+          </div>
+          <div class="issue-toolbar">
+            <div class="tabs" role="group" aria-label="Filtrar incidencias">
+              <button data-filter="all" aria-pressed="true">
+                Todas <span id="all-count"></span></button
+              ><button data-filter="error" aria-pressed="false">Errores</button
+              ><button data-filter="warning" aria-pressed="false">Advertencias</button>
+            </div>
+            <label class="search"
+              ><svg viewBox="0 0 20 20" aria-hidden="true">
+                <circle cx="8" cy="8" r="5.5" />
+                <path d="m12 12 5 5" /></svg
+              ><span class="sr-only">Buscar incidencia</span
+              ><input
+                type="search"
+                id="search"
+                placeholder="Buscar en la revisión…"
+                aria-keyshortcuts="/"
+            /></label>
+          </div>
+          <p class="table-hint">
+            Esta lista muestra los problemas, no todas las filas del archivo. Abrí
+            <span aria-hidden="true">↗</span> para corregir una fila; la ayuda explica qué espera
+            cada campo.
+          </p>
+          <div
+            class="table-wrap"
+            tabindex="0"
+            role="region"
+            aria-label="Incidencias del archivo, tabla desplazable"
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th>Fila</th>
+                  <th>Campo / regla</th>
+                  <th>Valor encontrado</th>
+                  <th>Qué revisar</th>
+                  <th>Severidad</th>
+                  <th><span class="sr-only">Acción</span></th>
+                </tr>
+              </thead>
+              <tbody id="issues"></tbody>
+            </table>
+          </div>
+          <div id="empty" class="empty" hidden>
+            <span aria-hidden="true">✓</span>
+            <h3 id="empty-title">Sin incidencias</h3>
+            <p id="empty-text"></p>
+          </div>
+          <div class="pagination">
+            <span id="page-label" role="status" aria-live="polite" aria-atomic="true"></span>
+            <div>
+              <button id="previous" aria-label="Página anterior">←</button
+              ><button id="next" aria-label="Página siguiente">→</button>
+            </div>
+          </div>
+          <div class="export-bar">
+            <div>
+              <span class="eyebrow">03 / RESULTADO</span>
+              <h2 id="export-title">Llevate lo que revisaste.</h2>
+              <p>
+                Descargá las filas sin errores y, si lo necesitás, el informe. Las advertencias no
+                bloquean la salida: revisalas antes de usar los datos.
+              </p>
+            </div>
+            <div>
+              <button id="export-accepted" class="button primary">
+                Filas válidas <span>CSV ↓</span></button
+              ><button id="export-issues" class="button">Incidencias <span>CSV ↓</span></button
+              ><button id="export-json" class="quiet">Reporte completo JSON ↓</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <p>
+          Perfil de demostración con datos ficticios. Inspirado en preparación de materiales para
+          SAP; no se conecta a ese sistema.
+        </p>
+        <a
+          href="https://github.com/EnriqueArielLopez/lote-data-quality#uso-por-consola"
+          target="_blank"
+          rel="noopener"
+          >¿Preferís Python? Mirá la guía <span aria-hidden="true">↗</span></a
+        >
+      </footer>
+    </main>
+    <dialog id="editor" aria-labelledby="editor-title">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">CORRECCIÓN EN ESTA SESIÓN</p>
+          <h2 id="editor-title"></h2>
+        </div>
+        <button id="close-editor" aria-label="Cerrar edición">×</button>
+      </div>
+      <p class="editor-note">
+        El archivo original conserva sus datos. Al guardar, se vuelve a revisar todo el lote; podés
+        deshacer la corrección.
+      </p>
+      <form id="editor-form">
+        <div id="editor-fields"></div>
+        <div class="dialog-actions">
+          <button type="button" id="cancel-edit" class="button">Cancelar</button
+          ><button class="button primary">Guardar y volver a validar</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="rules-dialog" aria-labelledby="rules-title">
+      <div class="dialog-head">
+        <div>
+          <p class="eyebrow">PERFIL V1.0.0</p>
+          <h2 id="rules-title">Qué se revisa.</h2>
+        </div>
+        <button id="close-rules" aria-label="Cerrar reglas">×</button>
+      </div>
+      <div id="rules-list"></div>
+      <p class="editor-note">
+        La clave material + centro debe ser única. El archivo rules.json permite adaptar este
+        perfil; sus valores no son un estándar universal SAP.
+      </p>
+    </dialog>
+    <dialog
+      id="tutorial-dialog"
+      class="tutorial-dialog"
+      aria-labelledby="tutorial-title"
+      aria-describedby="tutorial-intro"
+    >
+      <div class="tutorial-top">
+        <div>
+          <p class="eyebrow">GUÍA VISUAL / EJEMPLO FICTICIO</p>
+          <h2 id="tutorial-title">Una planilla, paso a paso.</h2>
+        </div>
+        <button id="tutorial-close" type="button" aria-label="Cerrar tutorial" autofocus>×</button>
+      </div>
+      <div class="tutorial-scrollbody">
+        <p id="tutorial-intro">
+          Mirá el recorrido completo con un ejemplo aparte. Tu archivo, tus correcciones y tu
+          selección quedan como estaban.
+        </p>
+        <div class="tutorial-caption" aria-live="polite" aria-atomic="true">
+          <span id="tutorial-step-number" class="eyebrow">PASO 1 / 6</span>
+          <h3 id="tutorial-step-title"></h3>
+          <p id="tutorial-step-copy"></p>
+        </div>
+        <div id="tutorial-scene" class="tutorial-scene"></div>
+        <nav id="tutorial-chapters" class="tutorial-chapters" aria-label="Pasos del tutorial"></nav>
+      </div>
+      <div class="tutorial-footer">
+        <div class="tutorial-controls">
+          <button id="tutorial-prev" type="button" class="button" aria-label="Paso anterior">
+            ← Anterior</button
+          ><button
+            id="tutorial-play"
+            type="button"
+            class="button primary"
+            aria-pressed="false"
+            aria-describedby="tutorial-playback-hint"
+          >
+            ▶ Reproducir</button
+          ><button id="tutorial-next" type="button" class="button">Siguiente →</button>
+        </div>
+        <p id="tutorial-playback-hint" class="tutorial-hint">
+          La reproducción avanza un paso cada 13 segundos. Podés pausarla o elegir un paso.
+        </p>
+      </div>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
 </html>

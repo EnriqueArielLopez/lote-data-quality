@@ -139,7 +139,7 @@ Los archivos de salida se crean en la ubicación que indiques; los nombres de es
 
 `rules.json` define los ocho campos, los catálogos, formatos, longitudes y la clave compuesta. Tanto JavaScript como Python leen ese archivo. `src/validator.js` contiene el validador, `src/app.js` maneja la interfaz y `python/lote.py` ofrece el mismo proceso por consola. `src/tutorial.js` controla una guía ilustrada aislada del estado del lote, sin dependencias ni servicios remotos. No se incluyen datos ni código de clientes.
 
-La interfaz usa vidrio satinado, tonos perla y vino, una ilustración SVG propia del recorrido CSV → corrección, una guía visual de seis pasos y un resumen de incidencias por prioridad. `style.css` define los componentes y la adaptación a pantallas; `identity.css` contiene las superficies y el ambiente visual. Los títulos y la marca usan **Plus Jakarta Sans**, el texto y las tablas **Inter**, y los códigos y valores **JetBrains Mono**. Las fuentes se sirven desde `assets/`, sin depender de servicios externos, con sus licencias SIL Open Font License incluidas ([Inter](assets/inter-OFL.txt), [Plus Jakarta Sans](assets/plus-jakarta-sans-OFL.txt), [JetBrains Mono](assets/jetbrains-mono-OFL.txt)).
+La interfaz usa superficies opacas de papel, tonos perla y vino, una ilustración SVG propia del recorrido CSV → corrección, una guía visual de seis pasos y un resumen de incidencias por prioridad. `style.css` define los componentes y la adaptación a pantallas; `identity.css` contiene las superficies y el ambiente visual. Los títulos y la marca usan **Plus Jakarta Sans**, el texto y las tablas **Inter**, y los códigos y valores **JetBrains Mono**. Las fuentes se sirven desde `assets/`, sin depender de servicios externos, con sus licencias SIL Open Font License incluidas ([Inter](assets/inter-OFL.txt), [Plus Jakarta Sans](assets/plus-jakarta-sans-OFL.txt), [JetBrains Mono](assets/jetbrains-mono-OFL.txt)).
 
 ### Pruebas
 
@@ -162,3 +162,10 @@ La página envía una política de referencia `no-referrer` e incluye una CSP pa
 ### Publicación
 
 El repositorio personal es [EnriqueArielLopez/lote-data-quality](https://github.com/EnriqueArielLopez/lote-data-quality). GitHub Pages sirve la aplicación desde `main`. El workflow de GitHub Actions ejecuta las pruebas en cada push y pull request. Este proyecto es independiente de los ambientes y servicios corporativos de la carpeta que lo contiene.
+
+
+## Revisión de interfaz · 30 de octubre de 2026
+
+La interfaz prioriza datos y tareas: superficies más simples, jerarquía tipográfica y un enlace de retorno al portfolio que funciona también en la demo integrada. La tecla `/` lleva a la búsqueda cuando no se está editando otro campo ni hay un diálogo abierto. Los resultados de filtros y paginación se anuncian mediante una región de estado accesible.
+
+`src/workspace.js` contiene estas mejoras de navegación, separado de las reglas de negocio. El código del frontend usa un formato consistente definido en `.prettierrc.json` y `.editorconfig`; no se añadieron dependencias de runtime. Las guías mantienen sus ejemplos separados de la sesión de trabajo.
