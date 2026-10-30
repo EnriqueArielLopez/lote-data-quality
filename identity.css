@@ -1,66 +1,96 @@
-/* Lote: a paper workspace. Semantic colors remain in style.css. */
-body {
-  background: #f2eee9;
+/* Product identity uses the material register as its visual reference. */
+.data-proof {
+  background: #fffdf7;
+  border: 1px solid #c6bcae;
+  padding: 18px 20px;
+  position: relative;
 }
-header {
-  border-bottom: 1px solid #d5ccc7;
+.proof-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 13px;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: #746756;
+}
+.proof-heading strong {
+  color: #473b2b;
+  font-weight: 500;
+}
+.data-proof table {
+  min-width: 0;
+  font-size: 12px;
+  white-space: normal;
+}
+.data-proof th {
+  background: transparent;
+  border-top: 0;
+  padding: 8px 6px;
+  font-size: 10px;
+}
+.data-proof td {
+  padding: 12px 6px;
+  font-variant-numeric: tabular-nums;
+}
+.data-proof td:last-child {
+  text-align: right;
+}
+.proof-duplicate {
+  text-decoration: underline;
+  text-decoration-color: #c7a86b;
+  text-underline-offset: 5px;
+}
+.proof-invalid {
+  color: #a23f26;
+  font-weight: 500;
+}
+.proof-note {
+  margin-top: 15px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #716553;
 }
 .profile-card {
   border-left: 1px solid var(--line);
+  padding-left: 28px;
+  min-width: 0;
 }
-.upload-panel,
-.results-panel {
-  background: #fffdf9;
-  border: 1px solid #ddd5ce;
-  box-shadow: none;
-  border-radius: 4px;
+.profile-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  padding-top: 16px;
 }
-.file-zone {
-  background: #f4f0eb;
-  box-shadow: none;
-  border-radius: 3px;
+.profile-details > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
-.file-zone:hover,
-.file-zone.dragging {
-  background: #eee7df;
-  border-color: var(--accent);
+.profile-details small {
+  font-size: 9px;
+  color: var(--muted);
 }
-dialog {
-  background: #fffdf9;
+.profile-details strong {
+  font: 500 13px/1.5 var(--ui);
 }
-.toast {
-  background: #382d35;
-  color: #fffaf5;
+.profile-details span {
+  font-size: 10px;
+  color: var(--muted);
 }
-.portfolio-return {
+.profile-details button {
+  font-size: 11px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  min-height: 40px;
   white-space: nowrap;
-}
-.workflow a {
-  transition: background 0.2s;
-}
-.workflow a:hover {
-  background: #e9e2dc;
-}
-.issue-toolbar {
-  border-top: 1px solid var(--line);
-  padding-top: 20px;
 }
 @media (max-width: 900px) {
   .profile-card {
     border-left: 0;
-  }
-}
-@media (max-width: 680px) {
-  header nav {
-    gap: 18px;
-    flex-wrap: wrap;
-  }
-  header nav > span {
-    display: none;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .workflow a {
-    transition: none;
+    padding: 0;
+    max-width: 560px;
   }
 }

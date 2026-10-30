@@ -8,7 +8,7 @@
       http-equiv="Content-Security-Policy"
       content="base-uri 'none'; object-src 'none'; form-action 'none'; script-src-attr 'none'"
     />
-    <meta name="theme-color" content="#f5eeeb" />
+    <meta name="theme-color" content="#f3f0e8" />
     <title>Lote | Revisá tus datos antes de cargarlos</title>
     <meta
       name="description"
@@ -16,19 +16,14 @@
     />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23743950'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23895126'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E"
     />
-    <link rel="preload" href="assets/inter.woff2" as="font" type="font/woff2" crossorigin />
-    <link
-      rel="preload"
-      href="assets/plus-jakarta-sans.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link rel="stylesheet" href="style.css?v=20261030-workspace" />
-    <link rel="stylesheet" href="identity.css?v=20261030-workspace" />
-    <script type="module" src="src/app.js?v=20261030-workspace"></script>
+    <link rel="preload" href="assets/roboto.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="assets/montserrat.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="style.css?v=20261030-register-2" />
+    <link rel="stylesheet" href="tutorial.css?v=20261030-register-2" />
+    <link rel="stylesheet" href="identity.css?v=20261030-register-2" />
+    <script type="module" src="src/app.js?v=20261030-register-2"></script>
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -39,7 +34,7 @@
           <path d="M21 3v10h9M12 23l5 5 9-10" />
         </svg>
         <span>lote<span class="brand-dot">.</span></span>
-        <span class="brand-sub">CALIDAD DE DATOS</span>
+        <span class="brand-sub">REVISIÓN DE MATERIALES</span>
       </a>
       <nav aria-label="Enlaces del proyecto">
         <a
@@ -78,18 +73,41 @@
           </p>
         </div>
         <div class="profile-card">
-          <figure class="review-illustration">
-            <img
-              src="assets/csv-review.svg"
-              width="520"
-              height="335"
-              alt="Ejemplo ilustrado: un archivo CSV tiene un precio negativo y dos materiales repetidos. Una corrección cambia el precio de menos 7950 a 7950."
-            />
-            <figcaption>
-              <span class="illustration-label">ASÍ SE VE UNA CORRECCIÓN</span
-              ><span>Un problema concreto. Una salida más clara.</span>
-            </figcaption>
-          </figure>
+          <div class="data-proof" aria-label="Fragmento ilustrativo del CSV de ejemplo">
+            <div class="proof-heading">
+              <strong>materiales.csv</strong><span>FRAGMENTO DE EJEMPLO</span>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Material</th>
+                  <th>Centro</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="proof-duplicate">MAT-100</td>
+                  <td>1000</td>
+                  <td>1850</td>
+                </tr>
+                <tr>
+                  <td class="proof-duplicate">MAT-100</td>
+                  <td>1000</td>
+                  <td>1850</td>
+                </tr>
+                <tr>
+                  <td>MAT-315</td>
+                  <td>2000</td>
+                  <td class="proof-invalid">−7950</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="proof-note">
+              Una clave repetida. Un precio inválido.<br />La revisión te muestra qué corregir y en
+              qué fila.
+            </p>
+          </div>
           <div class="profile-details">
             <div>
               <small>QUÉ REVISA ESTE EJEMPLO</small><strong>Datos de materiales</strong
