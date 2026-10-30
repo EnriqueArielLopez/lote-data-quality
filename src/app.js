@@ -1,9 +1,11 @@
 import { icon } from './icons.js';
+import { initVideoDemos } from './video.js';
 import { readBatch, validateBatch, exportRecords, exportIssues } from './validator.js';
 import { errorSample, validSample } from './sample.js';
 import { initTutorial } from './tutorial.js?v=20261030-icons-1';
 import { initWorkspace } from './workspace.js';
 initWorkspace();
+initVideoDemos();
 initTutorial();
 const $ = (selector) => document.querySelector(selector);
 const escape = (value) =>

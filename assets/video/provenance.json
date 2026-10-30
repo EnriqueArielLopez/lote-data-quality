@@ -1,0 +1,49 @@
+{
+  "project": "lote",
+  "voice": "es-AR-ElenaNeural",
+  "rate": "-3%",
+  "narration": "Synthetic Spanish narration via edge-tts 7.3.1 and Microsoft public TTS.",
+  "visuals": "Scene 01 is an actual application capture. Scenes 02–06 are clearly labeled explanatory diagrams with fictitious data; they are not screen recordings.",
+  "duration_seconds": 55.556575,
+  "captions": 15,
+  "format": "H264, yuv420p limited range, 1280x720 at 30 fps; AAC stereo 44.1 kHz; faststart",
+  "sha256": "525e33878b16d1d328e839ca23ff70dff94a412d280999f87611d178d412d990",
+  "scenes": [
+    {
+      "title": "Revisar la planilla antes de continuar",
+      "text": "Antes de cargar una planilla, Lote te ayuda a revisar sus datos. Este ejemplo tiene diez filas.",
+      "index": 1,
+      "duration": 8.533333
+    },
+    {
+      "title": "3 listas para exportar · 7 con errores",
+      "text": "El informe separa errores y advertencias. Hay tres filas listas para exportar y siete que necesitan correcciones.",
+      "index": 2,
+      "duration": 9.1
+    },
+    {
+      "title": "Corregir el precio de la fila 4",
+      "text": "Abrimos el precio negativo de la fila cuatro. Lo cambiamos de menos siete mil novecientos cincuenta a siete mil novecientos cincuenta.",
+      "index": 3,
+      "duration": 9.766689
+    },
+    {
+      "title": "Volver a validar el lote completo",
+      "text": "Guardamos y volvemos a validar. Ahora hay cuatro filas listas. Cada incidencia explica qué espera el campo.",
+      "index": 4,
+      "duration": 9.5
+    },
+    {
+      "title": "Deshacer una corrección si hace falta",
+      "text": "Si te equivocaste, Deshacer restaura el cambio anterior. En este ejemplo, volvemos a tres filas listas.",
+      "index": 5,
+      "duration": 9.0
+    },
+    {
+      "title": "Exportar datos e informe",
+      "text": "Al terminar, descargá las filas válidas, las incidencias o el reporte completo. La revisión ocurre en tu navegador.",
+      "index": 6,
+      "duration": 9.633333
+    }
+  ]
+}

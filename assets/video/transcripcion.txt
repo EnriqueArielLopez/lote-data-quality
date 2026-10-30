@@ -1,0 +1,17 @@
+1. Revisar la planilla antes de continuar
+Antes de cargar una planilla, Lote te ayuda a revisar sus datos. Este ejemplo tiene diez filas.
+
+2. 3 listas para exportar · 7 con errores
+El informe separa errores y advertencias. Hay tres filas listas para exportar y siete que necesitan correcciones.
+
+3. Corregir el precio de la fila 4
+Abrimos el precio negativo de la fila cuatro. Lo cambiamos de menos siete mil novecientos cincuenta a siete mil novecientos cincuenta.
+
+4. Volver a validar el lote completo
+Guardamos y volvemos a validar. Ahora hay cuatro filas listas. Cada incidencia explica qué espera el campo.
+
+5. Deshacer una corrección si hace falta
+Si te equivocaste, Deshacer restaura el cambio anterior. En este ejemplo, volvemos a tres filas listas.
+
+6. Exportar datos e informe
+Al terminar, descargá las filas válidas, las incidencias o el reporte completo. La revisión ocurre en tu navegador.

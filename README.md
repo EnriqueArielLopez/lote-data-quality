@@ -173,3 +173,10 @@ La interfaz prioriza datos y tareas: superficies más simples, jerarquía tipogr
 La revisión tipográfica posterior retira la ilustración decorativa, conserva las explicaciones funcionales y organiza las superficies como un registro de materiales. Las tablas mantienen su desplazamiento dentro del componente; no amplían el ancho de la página.
 
 Las flechas y los controles de reproducción usan un sprite SVG local (`assets/icons.svg`) y el helper `src/icons.js` para el contenido dinámico. Conservan el color del control y no dependen de los glifos emoji del teléfono. Los iconos son decorativos; las etiquetas y los estados accesibles siguen describiendo cada acción.
+
+
+## Demo narrada
+
+Lote incluye un recorrido explicado de aproximadamente 55 segundos, con una captura real, diagramas ilustrativos y narración sintética en español. El reproductor nativo no tiene autoplay, usa subtítulos WebVTT y permite descargar la transcripción. Cerrar el panel pausa el video. Los medios y su procedencia viven en `assets/video/`; `src/video.js` contiene únicamente el comportamiento del panel.
+
+El [proceso de generación versionado](https://github.com/EnriqueArielLopez/portfolio-ariel-lopez/tree/main/scripts/media) mantiene guion, capturas y fuentes de los diagramas. La generación no forma parte del runtime de esta app.
