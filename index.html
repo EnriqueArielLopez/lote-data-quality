@@ -20,10 +20,10 @@
     />
     <link rel="preload" href="assets/roboto.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="assets/montserrat.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="style.css?v=20261030-register-2" />
-    <link rel="stylesheet" href="tutorial.css?v=20261030-register-2" />
-    <link rel="stylesheet" href="identity.css?v=20261030-register-2" />
-    <script type="module" src="src/app.js?v=20261030-register-2"></script>
+    <link rel="stylesheet" href="style.css?v=20261030-icons-1" />
+    <link rel="stylesheet" href="tutorial.css?v=20261030-icons-1" />
+    <link rel="stylesheet" href="identity.css?v=20261030-icons-1" />
+    <script type="module" src="src/app.js?v=20261030-icons-1"></script>
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -40,14 +40,34 @@
         <a
           class="portfolio-return"
           href="https://ariel-lopez-portfolio.chalkycove20.chatgpt.site/#proyecto-lote"
-          >← Portfolio</a
+          ><svg
+            class="icon"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <use href="assets/icons.svg#arrow-left"></use>
+          </svg>
+          Portfolio</a
         ><span>Una herramienta de Ariel López</span
         ><a
           href="https://github.com/EnriqueArielLopez/lote-data-quality"
           target="_blank"
           rel="noopener"
-          >Código y guía <span aria-hidden="true">↗</span></a
-        >
+          >Código y guía
+          <span aria-hidden="true"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-up-right"></use></svg></span
+        ></a>
       </nav>
     </header>
     <main id="main">
@@ -62,11 +82,31 @@
           </p>
           <div class="intro-actions">
             <button id="open-tutorial" class="button primary tutorial-trigger" type="button">
-              <span class="play-symbol" aria-hidden="true">▶</span> Ver cómo funciona
-              <span class="tutorial-duration">6 pasos</span></button
+              <span class="play-symbol" aria-hidden="true"
+                ><svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#play"></use></svg
+              ></span>
+              Ver cómo funciona <span class="tutorial-duration">6 pasos</span></button
             ><a href="#results-title" class="intro-example"
-              >Explorar la revisión de ejemplo <span aria-hidden="true">↓</span></a
-            >
+              >Explorar la revisión de ejemplo
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#arrow-down"></use></svg></span
+            ></a>
           </div>
           <p class="format-note">
             Exportá tu planilla como <strong>CSV</strong>. Lote no abre XLSX ni carga datos en SAP.
@@ -114,7 +154,18 @@
               ><span>8 columnas · material + centro sin repetir</span>
             </div>
             <button id="show-rules" aria-label="Ver reglas de validación">
-              Ver reglas <span aria-hidden="true">↗</span>
+              Ver reglas
+              <span aria-hidden="true"
+                ><svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#arrow-up-right"></use></svg
+              ></span>
             </button>
           </div>
         </div>
@@ -123,22 +174,49 @@
         <a href="#upload-title"
           ><span class="workflow-number">01</span
           ><span><strong>Elegí un archivo</strong><small>O probá con un ejemplo</small></span
-          ><span class="workflow-arrow" aria-hidden="true">→</span></a
-        >
+          ><span class="workflow-arrow" aria-hidden="true"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-right"></use></svg></span
+        ></a>
         <a href="#results-title"
           ><span class="workflow-number">02</span
           ><span
             ><strong>Revisá y corregí</strong
             ><small>Cada incidencia tiene una explicación</small></span
-          ><span class="workflow-arrow" aria-hidden="true">→</span></a
-        >
+          ><span class="workflow-arrow" aria-hidden="true"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-right"></use></svg></span
+        ></a>
         <a href="#export-title"
           ><span class="workflow-number">03</span
           ><span
             ><strong>Exportá el resultado</strong
             ><small>Datos válidos e informe de revisión</small></span
-          ><span class="workflow-arrow" aria-hidden="true">↘</span></a
-        >
+          ><span class="workflow-arrow" aria-hidden="true"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-down-right"></use></svg></span
+        ></a>
       </nav>
       <div class="review-workspace">
         <section class="upload-panel" aria-labelledby="upload-title">
@@ -172,12 +250,33 @@
               </p>
               <div>
                 <button class="button primary" id="sample-errors">
-                  Probar con un ejemplo <span aria-hidden="true">→</span></button
+                  Probar con un ejemplo
+                  <span aria-hidden="true"
+                    ><svg
+                      class="icon"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <use href="assets/icons.svg#arrow-right"></use></svg
+                  ></span></button
                 ><button class="button" id="sample-valid">Cargar ejemplo válido</button>
               </div>
               <a href="examples/materiales-validos.csv" download
-                >Descargar plantilla CSV <span aria-hidden="true">↓</span></a
-              >
+                >Descargar plantilla CSV
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="assets/icons.svg#arrow-down"></use></svg></span
+              ></a>
             </div>
           </div>
           <p class="local-note">
@@ -197,7 +296,19 @@
             <div class="normalize">
               <label
                 ><input type="checkbox" id="normalize" /> Normalizar espacios y mayúsculas</label
-              ><button id="undo" class="quiet" disabled>↶ Deshacer corrección</button>
+              ><button id="undo" class="quiet" disabled>
+                <svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#undo"></use>
+                </svg>
+                Deshacer corrección
+              </button>
             </div>
           </div>
           <div class="batch-overview">
@@ -249,7 +360,18 @@
               <p id="priority-message">Revisá las filas con errores antes de exportar.</p>
               <p class="findings-scope">Errores por tipo: una fila puede tener más de uno.</p>
               <button id="review-priority" class="quiet" type="button">
-                Revisar primero <span aria-hidden="true">↘</span>
+                Revisar primero
+                <span aria-hidden="true"
+                  ><svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="assets/icons.svg#arrow-down-right"></use></svg
+                ></span>
               </button>
             </div>
             <dl class="findings-types">
@@ -290,9 +412,8 @@
             /></label>
           </div>
           <p class="table-hint">
-            Esta lista muestra los problemas, no todas las filas del archivo. Abrí
-            <span aria-hidden="true">↗</span> para corregir una fila; la ayuda explica qué espera
-            cada campo.
+            Esta lista muestra los problemas, no todas las filas del archivo. Abrí el detalle de una
+            incidencia para corregir la fila; la ayuda explica qué espera cada campo.
           </p>
           <div
             class="table-wrap"
@@ -322,8 +443,29 @@
           <div class="pagination">
             <span id="page-label" role="status" aria-live="polite" aria-atomic="true"></span>
             <div>
-              <button id="previous" aria-label="Página anterior">←</button
-              ><button id="next" aria-label="Página siguiente">→</button>
+              <button id="previous" aria-label="Página anterior">
+                <svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#arrow-left"></use>
+                </svg></button
+              ><button id="next" aria-label="Página siguiente">
+                <svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#arrow-right"></use>
+                </svg>
+              </button>
             </div>
           </div>
           <div class="export-bar">
@@ -337,9 +479,46 @@
             </div>
             <div>
               <button id="export-accepted" class="button primary">
-                Filas válidas <span>CSV ↓</span></button
-              ><button id="export-issues" class="button">Incidencias <span>CSV ↓</span></button
-              ><button id="export-json" class="quiet">Reporte completo JSON ↓</button>
+                Filas válidas
+                <span
+                  >CSV
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="assets/icons.svg#arrow-down"></use></svg
+                ></span></button
+              ><button id="export-issues" class="button">
+                Incidencias
+                <span
+                  >CSV
+                  <svg
+                    class="icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <use href="assets/icons.svg#arrow-down"></use></svg
+                ></span></button
+              ><button id="export-json" class="quiet">
+                Reporte completo JSON
+                <svg
+                  class="icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <use href="assets/icons.svg#arrow-down"></use>
+                </svg>
+              </button>
             </div>
           </div>
         </section>
@@ -353,8 +532,18 @@
           href="https://github.com/EnriqueArielLopez/lote-data-quality#uso-por-consola"
           target="_blank"
           rel="noopener"
-          >¿Preferís Python? Mirá la guía <span aria-hidden="true">↗</span></a
-        >
+          >¿Preferís Python? Mirá la guía
+          <span aria-hidden="true"
+            ><svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-up-right"></use></svg></span
+        ></a>
       </footer>
     </main>
     <dialog id="editor" aria-labelledby="editor-title">
@@ -420,7 +609,17 @@
       <div class="tutorial-footer">
         <div class="tutorial-controls">
           <button id="tutorial-prev" type="button" class="button" aria-label="Paso anterior">
-            ← Anterior</button
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-left"></use>
+            </svg>
+            Anterior</button
           ><button
             id="tutorial-play"
             type="button"
@@ -428,8 +627,30 @@
             aria-pressed="false"
             aria-describedby="tutorial-playback-hint"
           >
-            ▶ Reproducir</button
-          ><button id="tutorial-next" type="button" class="button">Siguiente →</button>
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#play"></use>
+            </svg>
+            Reproducir</button
+          ><button id="tutorial-next" type="button" class="button">
+            Siguiente
+            <svg
+              class="icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="assets/icons.svg#arrow-right"></use>
+            </svg>
+          </button>
         </div>
         <p id="tutorial-playback-hint" class="tutorial-hint">
           La reproducción avanza un paso cada 13 segundos. Podés pausarla o elegir un paso.

@@ -171,3 +171,5 @@ La interfaz prioriza datos y tareas: superficies más simples, jerarquía tipogr
 `src/workspace.js` contiene estas mejoras de navegación, separado de las reglas de negocio. El código del frontend usa un formato consistente definido en `.prettierrc.json` y `.editorconfig`; no se añadieron dependencias de runtime. Las guías mantienen sus ejemplos separados de la sesión de trabajo.
 
 La revisión tipográfica posterior retira la ilustración decorativa, conserva las explicaciones funcionales y organiza las superficies como un registro de materiales. Las tablas mantienen su desplazamiento dentro del componente; no amplían el ancho de la página.
+
+Las flechas y los controles de reproducción usan un sprite SVG local (`assets/icons.svg`) y el helper `src/icons.js` para el contenido dinámico. Conservan el color del control y no dependen de los glifos emoji del teléfono. Los iconos son decorativos; las etiquetas y los estados accesibles siguen describiendo cada acción.
