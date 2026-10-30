@@ -410,6 +410,10 @@
   padding: 21px 0 16px;
   min-height: 151px;
 }
+.tutorial-controls .icon {
+  width: 16px;
+  height: 16px;
+}
 .tutorial-caption .eyebrow {
   display: block;
   font-size: 12px;

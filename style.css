@@ -78,6 +78,24 @@ button:disabled {
 [hidden] {
   display: none !important;
 }
+/* Local line icons keep the same shape on desktop and mobile. */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  vertical-align: -0.15em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.button > .icon,
+.edit-row > .icon {
+  width: 16px;
+  height: 16px;
+}
 .sr-only {
   position: absolute;
   width: 1px;

@@ -1,3 +1,4 @@
+import { icon } from './icons.js';
 // Guía ilustrada independiente: no recibe ni modifica el archivo o el estado de la revisión.
 const chapters = [
   {
@@ -16,13 +17,13 @@ const chapters = [
     label: 'Normalizar',
     title: 'Sacá espacios y ordená las mayúsculas.',
     copy: 'Activá “Normalizar espacios y mayúsculas” para los códigos que lo requieren. Cada cambio queda identificado como advertencia. Es opcional y podés volver a desactivarlo.',
-    scene: `<div class="demo-setting"><span aria-hidden="true">✓</span> Normalizar espacios y mayúsculas</div><div class="demo-before-after"><div><small>VALOR DE ORIGEN</small><strong class="demo-raw">mat-220<span class="visible-space">␠</span></strong><span>Un espacio al final y letras minúsculas</span></div><span class="demo-transform" aria-hidden="true">→</span><div><small>VALOR NORMALIZADO</small><strong class="demo-good">MAT-220</strong><span>La advertencia deja registro del cambio</span></div></div><div class="demo-inline-values"><span>roh → <b>ROH</b></span><span>m → <b>M</b></span><span>ars → <b>ARS</b></span></div>`,
+    scene: `<div class="demo-setting"><span aria-hidden="true">✓</span> Normalizar espacios y mayúsculas</div><div class="demo-before-after"><div><small>VALOR DE ORIGEN</small><strong class="demo-raw">mat-220<span class="visible-space">␠</span></strong><span>Un espacio al final y letras minúsculas</span></div><span class="demo-transform" aria-hidden="true">${icon('arrow-right')}</span><div><small>VALOR NORMALIZADO</small><strong class="demo-good">MAT-220</strong><span>La advertencia deja registro del cambio</span></div></div><div class="demo-inline-values"><span>roh pasa a <b>ROH</b></span><span>m pasa a <b>M</b></span><span>ars pasa a <b>ARS</b></span></div>`,
   },
   {
     label: 'Corregir',
     title: 'Corregí una fila, con ayuda en cada campo.',
-    copy: 'Abrí la incidencia con ↗. En este ejemplo, el precio correcto es 7950: reemplazá −7950 y guardá. Lote revisa todo el archivo otra vez. Si te equivocás, usá “Deshacer corrección”.',
-    scene: `<div class="demo-editor-head"><span>REVISAR FILA 4</span><strong>MAT-315 · Placa técnica</strong></div><div class="demo-price-edit"><div><small>ANTES</small><strong class="demo-danger">−7950</strong></div><span class="demo-transform" aria-hidden="true">→</span><div><small>PRECIO CORREGIDO</small><strong class="demo-good">7950<span class="demo-caret" aria-hidden="true"></span></strong></div></div><p class="demo-field-help">Precio no negativo, punto decimal y hasta dos decimales.</p><div class="demo-editor-bottom"><span>↶ Deshacer corrección</span><span class="demo-button">Guardar y volver a validar ✓</span></div><p class="demo-footnote">Confirmá el precio correcto con tu fuente. La guía muestra un caso ficticio.</p>`,
+    copy: 'Abrí el detalle de la incidencia. En este ejemplo, el precio correcto es 7950: reemplazá −7950 y guardá. Lote revisa todo el archivo otra vez. Si te equivocás, usá “Deshacer corrección”.',
+    scene: `<div class="demo-editor-head"><span>REVISAR FILA 4</span><strong>MAT-315 · Placa técnica</strong></div><div class="demo-price-edit"><div><small>ANTES</small><strong class="demo-danger">−7950</strong></div><span class="demo-transform" aria-hidden="true">${icon('arrow-right')}</span><div><small>PRECIO CORREGIDO</small><strong class="demo-good">7950<span class="demo-caret" aria-hidden="true"></span></strong></div></div><p class="demo-field-help">Precio no negativo, punto decimal y hasta dos decimales.</p><div class="demo-editor-bottom"><span>${icon('undo')} Deshacer corrección</span><span class="demo-button">Guardar y volver a validar ✓</span></div><p class="demo-footnote">Confirmá el precio correcto con tu fuente. La guía muestra un caso ficticio.</p>`,
   },
   {
     label: 'Duplicados',
@@ -34,7 +35,7 @@ const chapters = [
     label: 'Exportar',
     title: 'Llevate los datos revisados y el informe.',
     copy: '“Filas válidas” descarga solo las filas sin errores bloqueantes. Pueden tener advertencias: revisalas. También podés descargar las incidencias CSV o el reporte JSON. Lote no carga estos datos en SAP.',
-    scene: `<div class="demo-output-heading"><span>✓</span><div><strong>El resultado sale en archivos.</strong><p>Vos decidís cómo continuar con los datos.</p></div></div><div class="demo-output"><span class="demo-file-icon">CSV</span><div><strong>Filas válidas</strong><span>Materiales sin errores bloqueantes</span></div><span aria-hidden="true">↓</span></div><div class="demo-output"><span class="demo-file-icon muted">CSV</span><div><strong>Incidencias</strong><span>Fila, campo y qué hay que revisar</span></div><span aria-hidden="true">↓</span></div><div class="demo-output"><span class="demo-file-icon muted">JSON</span><div><strong>Reporte completo</strong><span>Detalle estructurado de la revisión</span></div><span aria-hidden="true">↓</span></div>`,
+    scene: `<div class="demo-output-heading"><span>✓</span><div><strong>El resultado sale en archivos.</strong><p>Vos decidís cómo continuar con los datos.</p></div></div><div class="demo-output"><span class="demo-file-icon">CSV</span><div><strong>Filas válidas</strong><span>Materiales sin errores bloqueantes</span></div><span aria-hidden="true">${icon('arrow-down')}</span></div><div class="demo-output"><span class="demo-file-icon muted">CSV</span><div><strong>Incidencias</strong><span>Fila, campo y qué hay que revisar</span></div><span aria-hidden="true">${icon('arrow-down')}</span></div><div class="demo-output"><span class="demo-file-icon muted">JSON</span><div><strong>Reporte completo</strong><span>Detalle estructurado de la revisión</span></div><span aria-hidden="true">${icon('arrow-down')}</span></div>`,
   },
 ];
 
@@ -67,13 +68,13 @@ export function initTutorial() {
     const previousHadFocus = document.activeElement === select('#tutorial-prev');
     select('#tutorial-prev').disabled = step === 0;
     if (step === 0 && previousHadFocus) select('#tutorial-next').focus({ preventScroll: true });
-    select('#tutorial-next').textContent =
-      step === chapters.length - 1 ? 'Volver a mi revisión' : 'Siguiente →';
-    select('#tutorial-play').textContent = playing
-      ? 'Ⅱ Pausar'
+    select('#tutorial-next').innerHTML =
+      step === chapters.length - 1 ? 'Volver a mi revisión' : `Siguiente ${icon('arrow-right')}`;
+    select('#tutorial-play').innerHTML = playing
+      ? `${icon('pause')} Pausar`
       : step === chapters.length - 1
-        ? '↻ Volver a ver'
-        : '▶ Reproducir';
+        ? `${icon('restart')} Volver a ver`
+        : `${icon('play')} Reproducir`;
     select('#tutorial-play').setAttribute('aria-pressed', String(playing));
     select('#tutorial-play').setAttribute(
       'aria-label',

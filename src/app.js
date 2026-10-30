@@ -1,6 +1,7 @@
+import { icon } from './icons.js';
 import { readBatch, validateBatch, exportRecords, exportIssues } from './validator.js';
 import { errorSample, validSample } from './sample.js';
-import { initTutorial } from './tutorial.js';
+import { initTutorial } from './tutorial.js?v=20261030-icons-1';
 import { initWorkspace } from './workspace.js';
 initWorkspace();
 initTutorial();
@@ -82,7 +83,7 @@ function render() {
     .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
     .map(
       (issue) =>
-        `<tr><td>${issue.row}</td><td>${escape(issue.field)}<small>${escape(issue.code)}</small></td><td><span class="bad-value" title="${escape(issue.value)}">${issue.value ? escape(issue.value) : '— vacío —'}</span></td><td class="issue-description">${escape(issue.message)}</td><td><span class="badge ${issue.severity}">${issue.severity === 'error' ? 'Error' : 'Advertencia'}</span></td><td><button class="edit-row" data-row="${issue.row}" aria-label="Revisar fila ${issue.row}, ${escape(issue.field)}">↗</button></td></tr>`,
+        `<tr><td>${issue.row}</td><td>${escape(issue.field)}<small>${escape(issue.code)}</small></td><td><span class="bad-value" title="${escape(issue.value)}">${issue.value ? escape(issue.value) : '— vacío —'}</span></td><td class="issue-description">${escape(issue.message)}</td><td><span class="badge ${issue.severity}">${issue.severity === 'error' ? 'Error' : 'Advertencia'}</span></td><td><button class="edit-row" data-row="${issue.row}" aria-label="Revisar fila ${issue.row}, ${escape(issue.field)}">${icon('arrow-up-right')}</button></td></tr>`,
     )
     .join('');
   $('#empty').hidden = !!list.length;
@@ -163,11 +164,9 @@ function renderOverview() {
           ? 'Las filas pueden exportarse. Revisá las advertencias antes de usar el resultado.'
           : 'No hay incidencias con este perfil. Ya podés descargar las filas revisadas.';
   $('#review-priority').disabled = !priority;
-  $('#review-priority').textContent = priority
-    ? priority.severity === 'warning'
-      ? 'Ver advertencias ↘'
-      : 'Revisar primero ↘'
-    : 'Revisión sin incidencias ✓';
+  $('#review-priority').innerHTML = priority
+    ? `${priority.severity === 'warning' ? 'Ver advertencias' : 'Revisar primero'} ${icon('arrow-down-right')}`
+    : `Revisión sin incidencias ${icon('check')}`;
 }
 $('#review-priority').addEventListener('click', () => {
   const issue = priorityIssue();
