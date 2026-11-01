@@ -192,3 +192,7 @@ Validado en Local: 15 pruebas; ejemplo válido con 6 filas exportables; correcci
 ## Segunda revisión visual · 1 de noviembre de 2026
 
 Se reemplaza la dirección anterior por una interfaz de trabajo con Manrope regular, espaciado tipográfico moderado, títulos de 28–40 px, controles legibles y superficies neutras. `direction.css` reúne esta dirección visual. La revisión toma las proporciones tipográficas de Nexus Creative y distingue la presentación del portfolio de la densidad necesaria en una aplicación. Las reglas y los datos no cambian.
+
+## Ajuste de color y tipografía · 1 de noviembre de 2026
+
+Lote combina un fondo cálido con azul suave en las áreas de entrada y reglas, y títulos de peso medio. Se conserva la composición compacta de la segunda revisión. No cambian reglas ni interacciones.
