@@ -224,3 +224,9 @@ Lote tiene una entrada editorial oscura, Newsreader en el título principal y Ma
 ## Tipografía de revisión · 01/11/2026
 
 La entrada se identifica como Revisión de materiales y usa IBM Plex Mono en marca, títulos y etapas; Manrope se mantiene en lectura y controles. Se retiraron la frase Cada fila cuenta y la serif Newsreader de la dirección actual. La ficha del archivo deja de flotar y conserva el pulso de sus líneas con pausa. Se mantiene el recorrido funcional y se actualiza la captura completa.
+
+## Mapa editable de filas · 01/11/2026
+
+La revisión incluye botones por fila con estado real (error, advertencia o sin incidencias). Cada botón abre el editor existente, incluso para filas válidas; después de guardar recupera el foco en la celda actualizada. El mapa muestra hasta las primeras 48 filas e informa explícitamente el límite; la tabla conserva todas las incidencias. Se mantienen las reglas compartidas, corrección y deshacer. Los ejemplos son botones de archivo y la zona de carga tiene foco y respuesta visual propios.
+
+Validación local: 15 pruebas, mapa de 10 filas, corrección y deshacer desde la fila 4 (3 → 4 → 3 filas aceptadas), retorno de foco, apertura de una fila válida y revisión móvil sin desbordes.

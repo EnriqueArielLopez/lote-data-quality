@@ -136,23 +136,27 @@ function renderOverview() {
     'aria-label',
     `${rows.length} filas: ${ready} sin incidencias, ${warnings.size} con advertencias y ${errors.size} por corregir.`,
   );
-  const groupSize = Math.max(1, Math.ceil(rows.length / 40));
-  const segments = [];
-  for (let start = 0; start < rows.length; start += groupSize) {
-    const end = Math.min(rows.length, start + groupSize);
-    let blocked = 0,
-      caution = 0;
-    for (let index = start; index < end; index++) {
-      if (errors.has(index + 2)) blocked++;
-      else if (warnings.has(index + 2)) caution++;
-    }
-    const state = blocked ? 'blocked' : caution ? 'caution' : 'ready';
-    const label = start + 1 === end ? `Fila ${start + 2}` : `Filas ${start + 2}–${end + 1}`;
-    segments.push(
-      `<span class="batch-${state}" title="${label}: ${blocked} con errores, ${caution} con advertencias, ${end - start - blocked - caution} sin incidencias" aria-hidden="true"></span>`,
-    );
-  }
-  $('#batch-visual').innerHTML = segments.join('');
+  const limit = Math.min(rows.length, 48);
+  $('#batch-visual').setAttribute('role', 'group');
+  $('#batch-visual').setAttribute(
+    'aria-label',
+    `Abrir una fila del archivo. ${rows.length} filas en total.`,
+  );
+  $('#batch-visual').innerHTML = Array.from({ length: limit }, (_, index) => {
+    const row = index + 2;
+    const state = errors.has(row) ? 'blocked' : warnings.has(row) ? 'caution' : 'ready';
+    const label =
+      state === 'blocked'
+        ? 'con errores'
+        : state === 'caution'
+          ? 'con advertencias'
+          : 'sin incidencias';
+    return `<button type="button" class="batch-row batch-${state}" data-row="${row}" aria-label="Abrir fila ${row}, ${label}"><span>${String(row).padStart(2, '0')}</span><i aria-hidden="true">${state === 'blocked' ? '!' : state === 'caution' ? '·' : '✓'}</i></button>`;
+  }).join('');
+  $('#batch-map-note').textContent =
+    rows.length > limit
+      ? `Se muestran las primeras ${limit} filas de ${rows.length}. La tabla inferior contiene todas las incidencias.`
+      : 'Elegí una fila para consultar o corregir sus datos.';
   const duplicateRows = new Set(
     report.issues.filter((issue) => issue.code === 'DUPLICATE').map((issue) => issue.row),
   ).size;
@@ -211,7 +215,12 @@ for (const dialog of document.querySelectorAll('dialog:not(#tutorial-dialog)')) 
       dialog.id === 'editor'
         ? document.querySelector(`#issues button[data-row="${editIndex + 2}"]`)
         : null;
-    if (sameRow) sameRow.focus({ preventScroll: true });
+    const mapButton =
+      dialog.id === 'editor' && mapOrigin
+        ? document.querySelector(`#batch-visual button[data-row="${mapOrigin}"]`)
+        : null;
+    if (mapButton) mapButton.focus({ preventScroll: true });
+    else if (sameRow) sameRow.focus({ preventScroll: true });
     else $('#results-title').focus();
   });
   dialog.addEventListener('click', (event) => {
@@ -227,10 +236,11 @@ for (const dialog of document.querySelectorAll('dialog:not(#tutorial-dialog)')) 
     }
   });
 }
-$('#issues').addEventListener('click', (event) => {
-  const button = event.target.closest('[data-row]');
-  if (!button) return;
-  editIndex = Number(button.dataset.row) - 2;
+let mapOrigin = null;
+function editRow(rowNumber, fromMap = false) {
+  if (!Number.isInteger(rowNumber) || rowNumber < 2 || rowNumber >= rows.length + 2) return;
+  mapOrigin = fromMap ? rowNumber : null;
+  editIndex = rowNumber - 2;
   $('#editor-title').textContent = `Revisar fila ${editIndex + 2}`;
   $('#editor-fields').innerHTML =
     '<div class="field-group">' +
@@ -242,7 +252,16 @@ $('#issues').addEventListener('click', (event) => {
       .join('') +
     '</div>';
   openDialog($('#editor'));
+}
+$('#issues').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-row]');
+  if (button) editRow(Number(button.dataset.row));
 });
+$('#batch-visual').addEventListener('click', (event) => {
+  const button = event.target.closest('[data-row]');
+  if (button) editRow(Number(button.dataset.row), true);
+});
+
 $('#editor-form').addEventListener('submit', (event) => {
   event.preventDefault();
   history.push(structuredClone(rows));
