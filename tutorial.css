@@ -2,7 +2,7 @@
 .tutorial-dialog {
   width: min(1000px, calc(100% - 30px));
   padding: 0 32px 24px;
-  background: #fdfaf7f5;
+  background: #f8fafff5;
 }
 .tutorial-top {
   position: sticky;
@@ -13,8 +13,8 @@
   justify-content: space-between;
   gap: 20px;
   padding: 22px 0 16px;
-  background: #fdfaf7;
-  border-bottom: 1px solid #dcd7d1;
+  background: #f8faff;
+  border-bottom: 1px solid #dce2ec;
 }
 .tutorial-top .eyebrow {
   font-size: 12px;
@@ -29,7 +29,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #eae6e1;
+  background: #e8edf5;
   font-size: 26px;
   color: var(--accent);
 }
@@ -42,9 +42,9 @@
 }
 .tutorial-scene {
   min-width: 0;
-  border: 1px solid #dbd6d0;
+  border: 1px solid #d6dfea;
   border-radius: 15px;
-  background: radial-gradient(ellipse at 0 100%, #dfd2c455, transparent 68%), #f0ede9;
+  background: radial-gradient(ellipse at 0 100%, #d7e2f555, transparent 68%), #eef2f8;
   padding: 22px;
 }
 .tutorial-window {
@@ -53,7 +53,7 @@
   margin: auto;
   border: 1px solid #fefdfc;
   border-radius: 10px;
-  background: #fdfcfae8;
+  background: #ffffffe8;
   box-shadow: 0 9px 28px #74635213;
   overflow: hidden;
 }
@@ -62,15 +62,15 @@
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  border-bottom: 1px solid #ddd7d1;
-  background: #f7f4f1e6;
+  border-bottom: 1px solid #d8e0eb;
+  background: #f2f5fae6;
   padding: 10px 17px;
   font-size: 11px;
   letter-spacing: 0.06em;
-  color: #81786e;
+  color: #606d81;
 }
 .demo-window-dots {
-  color: #b0a395;
+  color: #8c9bb2;
   letter-spacing: 0.16em;
 }
 .tutorial-window-content {
@@ -869,7 +869,7 @@
   }
   .tutorial-footer {
     flex: 0 0 auto;
-    background: #fdfaf7;
+    background: #f8faff;
     border-top: 1px solid #dad5cf;
     padding-top: 13px;
   }

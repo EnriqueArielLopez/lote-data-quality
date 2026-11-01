@@ -1,31 +1,25 @@
+@font-face {
+  font-family: Manrope;
+  src: url('assets/manrope.ttf') format('truetype');
+  font-weight: 200 800;
+  font-display: swap;
+}
 /* Lote: a material register and its review desk. */
-@font-face {
-  font-family: Montserrat;
-  src: url('assets/montserrat.ttf') format('truetype');
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: Roboto;
-  src: url('assets/roboto.ttf') format('truetype');
-  font-weight: 100 900;
-  font-display: swap;
-}
 :root {
-  --ink: #342f27;
-  --muted: #746b5d;
-  --accent: #895126;
-  --accent-dark: #673b1c;
-  --line: #d8d0c3;
+  --ink: #252b37;
+  --muted: #606977;
+  --accent: #3158ad;
+  --accent-dark: #24458d;
+  --line: #dce0e7;
   --green: #42664b;
   --amber: #956526;
-  --ui: Roboto, Arial, sans-serif;
-  --display: Montserrat, Arial, sans-serif;
+  --ui: Manrope, Arial, sans-serif;
+  --display: Manrope, Arial, sans-serif;
   color-scheme: light;
   font-family: var(--ui);
   font-variant-numeric: tabular-nums;
   color: var(--ink);
-  background: #f3f0e8;
+  background: #f6f7fa;
   font-synthesis: none;
 }
 * {
@@ -72,7 +66,7 @@ button:disabled {
   cursor: default;
 }
 :focus-visible {
-  outline: 3px solid #a15e31;
+  outline: 3px solid #3158ad;
   outline-offset: 4px;
 }
 [hidden] {
@@ -146,7 +140,7 @@ header {
   color: var(--accent);
 }
 .brand-sub {
-  border-left: 1px solid #bcb19e;
+  border-left: 1px solid #d0d6e1;
   padding-left: 16px;
   margin-left: 12px;
   max-width: 140px;
@@ -180,8 +174,8 @@ main {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  gap: 60px;
-  padding: 36px 0 30px;
+  gap: 72px;
+  padding: 48px 0 36px;
 }
 .eyebrow {
   font: 500 10px/1.6 var(--ui);
@@ -195,15 +189,15 @@ main {
   display: none;
 }
 h1 {
-  font: 600 clamp(27px, 2.8vw, 40px) / 1.18 var(--display);
-  letter-spacing: -0.05em;
+  font: 500 clamp(32px, 3.5vw, 52px) / 1.12 var(--display);
+  letter-spacing: -0.055em;
   max-width: 620px;
 }
 .intro-explanation {
-  max-width: 560px;
-  margin-top: 18px;
+  max-width: 53ch;
+  margin-top: 20px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 .intro-explanation strong {
@@ -238,18 +232,18 @@ h1 {
   gap: 12px;
   min-height: 44px;
   padding: 10px 14px;
-  border: 1px solid #c8bdac;
+  border: 1px solid #ccd3df;
   border-radius: 3px;
-  background: #fffdf7;
+  background: #ffffff;
   font-size: 12px;
   font-weight: 500;
   transition: background 0.2s;
 }
 .button:hover:not(:disabled) {
-  background: #eae2d5;
+  background: #e8edf5;
 }
 .primary {
-  color: #fffdf7;
+  color: #ffffff;
   border-color: var(--accent);
   background: var(--accent);
 }
@@ -266,7 +260,7 @@ h1 {
   height: 20px;
   border: 1px solid #ffffff70;
   border-radius: 50%;
-  font-size: 8px;
+  font-size: 11px;
   padding-left: 1px;
 }
 .tutorial-duration {
@@ -277,7 +271,7 @@ h1 {
 }
 .workflow {
   display: flex;
-  border-block: 1px solid #bdb09a;
+  border-block: 1px solid #ccd3df;
   margin-bottom: 28px;
 }
 .workflow a {
@@ -293,7 +287,7 @@ h1 {
 }
 .workflow-number {
   font: 500 20px/1 var(--ui);
-  color: #ac9271;
+  color: #8592ab;
 }
 .workflow strong {
   display: block;
@@ -308,7 +302,7 @@ h1 {
 }
 .workflow-arrow {
   margin-left: auto;
-  color: #99764d;
+  color: #526b9b;
 }
 .review-workspace {
   display: grid;
@@ -318,13 +312,13 @@ h1 {
 }
 .upload-panel {
   border: 1px solid var(--line);
-  background: #eee9dd;
+  background: #f0f3f9;
   padding: 22px 20px;
   min-width: 0;
 }
 .results-panel {
-  border-top: 2px solid #887050;
-  background: #fffdf8;
+  border-top: 2px solid #3158ad;
+  background: #ffffff;
   padding: 24px;
   min-width: 0;
 }
@@ -339,10 +333,10 @@ h1 {
   width: 24px;
   height: 24px;
   flex: none;
-  border: 1px solid #c1b49d;
+  border: 1px solid #ccd5e5;
   font-size: 11px;
   border-radius: 50%;
-  color: #8b6a42;
+  color: #526b9b;
 }
 h2 {
   font: 600 16px/1.4 var(--display);
@@ -364,9 +358,9 @@ h2 {
   text-align: center;
   justify-content: center;
   padding: 28px 12px;
-  border: 1px dashed #a99980;
+  border: 1px dashed #a6b3ca;
   min-height: 190px;
-  background: #f7f3eb;
+  background: #f8faff;
   cursor: pointer;
 }
 .file-zone input {
@@ -378,18 +372,18 @@ h2 {
   cursor: pointer;
 }
 .file-zone:focus-within {
-  outline: 3px solid #a15e31;
+  outline: 3px solid #3158ad;
   outline-offset: 4px;
 }
 .file-zone:hover,
 .file-zone.dragging {
-  background: #e5decc;
+  background: #eaf0fc;
   border-color: var(--accent);
 }
 .upload-icon {
   width: 38px;
   height: 38px;
-  stroke: #94764f;
+  stroke: #526b9b;
   stroke-width: 1.6;
   margin-bottom: 15px;
 }
@@ -408,7 +402,7 @@ h2 {
   margin-top: 11px;
 }
 .sample-box {
-  border-top: 1px solid #cbbfa9;
+  border-top: 1px solid #d0d7e4;
   margin-top: 23px;
   padding-top: 20px;
 }
@@ -435,7 +429,7 @@ h2 {
   padding-top: 17px;
 }
 .local-note {
-  border-top: 1px solid #cbbfa9;
+  border-top: 1px solid #d0d7e4;
   margin-top: 25px;
   padding-top: 19px;
   color: var(--muted);
@@ -548,7 +542,7 @@ h2 {
   display: block;
   margin-top: 8px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
 }
 .accepted-summary strong {
   color: var(--green);
@@ -569,18 +563,18 @@ h2 {
   letter-spacing: -0.04em;
 }
 .score-head small {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
 }
 .track {
   height: 3px;
-  background: #e7e0d4;
+  background: #e6ebf3;
   margin-top: 14px;
 }
 .track i {
   height: 100%;
   display: block;
-  background: #9e7c54;
+  background: #5575b7;
 }
 .score > p {
   margin-top: 9px;
@@ -605,7 +599,7 @@ h2 {
   margin-top: 7px;
 }
 .findings-heading .findings-scope {
-  font-size: 10px;
+  font-size: 11px;
 }
 .findings-types {
   display: grid;
@@ -623,7 +617,7 @@ h2 {
   letter-spacing: -0.04em;
 }
 .findings-types small {
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
   color: var(--muted);
   display: block;
@@ -651,13 +645,13 @@ h2 {
   border-bottom-color: var(--accent);
 }
 .tabs button > span {
-  font-size: 10px;
+  font-size: 11px;
   margin-left: 4px;
 }
 .search {
   display: flex;
   align-items: center;
-  border: 1px solid #cbbfa9;
+  border: 1px solid #d0d7e4;
   padding: 0 10px;
   max-width: 220px;
   border-radius: 3px;
@@ -665,7 +659,7 @@ h2 {
 .search svg {
   width: 15px;
   height: 15px;
-  stroke: #9a866a;
+  stroke: #6a7c9e;
   fill: none;
   stroke-width: 1.5;
   flex: none;
@@ -698,21 +692,21 @@ table {
 }
 th {
   text-align: left;
-  background: #f0ece2;
+  background: #f1f4f9;
   font-size: 11px;
   font-weight: 500;
   padding: 11px 12px;
-  color: #6d5e4a;
+  color: #58677e;
   border-block: 1px solid var(--line);
 }
 td {
   padding: 13px 12px;
-  border-bottom: 1px solid #e9e3d8;
+  border-bottom: 1px solid #e4e8ef;
   vertical-align: top;
 }
 td small {
   display: block;
-  font-size: 10px;
+  font-size: 11px;
   margin-top: 5px;
   color: var(--muted);
 }
@@ -727,13 +721,13 @@ td small {
   min-width: 170px;
   max-width: 260px;
   font-size: 11px;
-  color: #685c4d;
+  color: #59677b;
 }
 .badge {
   display: inline-flex;
   align-items: center;
   padding: 3px 6px;
-  font-size: 10px;
+  font-size: 11px;
   border-radius: 2px;
   background: #f3e5d9;
   color: #9b4f31;
@@ -745,11 +739,11 @@ td small {
 .edit-row {
   width: 30px;
   height: 30px;
-  border: 1px solid #cbbfa9;
+  border: 1px solid #d0d7e4;
   border-radius: 3px;
 }
 .edit-row:hover {
-  background: #eee5d5;
+  background: #eaf0fa;
 }
 .empty {
   padding: 35px 20px;
@@ -792,7 +786,7 @@ td small {
   align-items: center;
   margin-top: 25px;
   padding-top: 25px;
-  border-top: 1px solid #c3b497;
+  border-top: 1px solid #cdd6e5;
 }
 .export-bar h2 {
   font-size: 19px;
@@ -815,7 +809,7 @@ td small {
   font-size: 11px;
 }
 .export-bar .button span {
-  font-size: 10px;
+  font-size: 11px;
 }
 footer {
   display: flex;
@@ -838,13 +832,13 @@ dialog {
   max-height: 90dvh;
   overflow: auto;
   padding: 0 26px 26px;
-  background: #fffdf7;
+  background: #ffffff;
   color: var(--ink);
-  border: 1px solid #c6b89e;
+  border: 1px solid #ccd5e5;
   border-radius: 5px;
 }
 dialog::backdrop {
-  background: #30251880;
+  background: #18243880;
   backdrop-filter: blur(3px);
 }
 .dialog-head {
@@ -884,11 +878,11 @@ dialog::backdrop {
 }
 .field-group input {
   min-width: 0;
-  border: 1px solid #c5b89f;
+  border: 1px solid #ccd5e5;
   padding: 10px 12px;
   border-radius: 3px;
   color: var(--ink);
-  background: #fffdf7;
+  background: #ffffff;
 }
 .field-group small {
   color: var(--muted);
@@ -927,8 +921,8 @@ dialog::backdrop {
   max-width: calc(100% - 32px);
   width: max-content;
   padding: 13px 20px;
-  background: #493d2d;
-  color: #fffdf5;
+  background: #252b37;
+  color: #ffffff;
   border-radius: 3px;
   font-size: 12px;
   opacity: 0;

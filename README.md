@@ -8,6 +8,8 @@ Si tenés tus datos en Excel, Google Sheets u otra planilla, primero exportalos 
 
 No necesitás instalar nada ni crear una cuenta. Podés empezar con los ejemplos incluidos, sin tener un archivo propio. Es un proyecto de demostración de [Ariel López](https://github.com/EnriqueArielLopez), con datos ficticios y un perfil inspirado en tareas de preparación de materiales para SAP.
 
+![Lote: revisión de datos e incidencias](assets/preview.jpg)
+
 ## Mirá cómo funciona
 
 Abrí **Ver cómo funciona** en la pantalla de inicio o [entrar directamente a la guía visual](https://enriqueariellopez.github.io/lote-data-quality/?tutorial=1). La guía usa un ejemplo ficticio aparte: **no cambia tu archivo cargado, tus correcciones, la normalización ni tus filtros**.
@@ -139,7 +141,7 @@ Los archivos de salida se crean en la ubicación que indiques; los nombres de es
 
 `rules.json` define los ocho campos, los catálogos, formatos, longitudes y la clave compuesta. Tanto JavaScript como Python leen ese archivo. `src/validator.js` contiene el validador, `src/app.js` maneja la interfaz y `python/lote.py` ofrece el mismo proceso por consola. `src/tutorial.js` controla una guía ilustrada aislada del estado del lote, sin dependencias ni servicios remotos. No se incluyen datos ni código de clientes.
 
-La interfaz se presenta como una mesa de revisión de materiales: papel, tinta cálida, un fragmento realista de CSV y una jerarquía centrada en incidencias. Conserva sus instrucciones y sus guías de seis pasos. `style.css` contiene los componentes de la aplicación; `tutorial.css` aísla la guía, e `identity.css` define el fragmento de archivo y la marca. Los títulos usan Montserrat y los textos, controles y datos usan Roboto. Ambas fuentes variables originales se sirven localmente, con sus licencias SIL OFL en `assets/montserrat-OFL.txt` y `assets/roboto-OFL.txt`, desde el repositorio oficial [Google Fonts](https://github.com/google/fonts).
+La interfaz organiza la revisión en archivo de entrada, incidencias y exportación. Usa superficies claras, azul para acciones y una muestra de CSV. `style.css` contiene los componentes de la aplicación; `tutorial.css` aísla la guía, e `identity.css` define el fragmento de archivo y la marca. Manrope se sirve localmente con su licencia SIL OFL en `assets/manrope-OFL.txt`, desde el repositorio oficial [Google Fonts](https://github.com/google/fonts).
 
 ### Pruebas
 
@@ -180,3 +182,9 @@ Las flechas y los controles de reproducción usan un sprite SVG local (`assets/i
 Lote incluye un recorrido explicado de aproximadamente 55 segundos, con una captura real, diagramas ilustrativos y narración sintética en español. El reproductor nativo no tiene autoplay, usa subtítulos WebVTT y permite descargar la transcripción. Cerrar el panel pausa el video. Los medios y su procedencia viven en `assets/video/`; `src/video.js` contiene únicamente el comportamiento del panel.
 
 El [proceso de generación versionado](https://github.com/EnriqueArielLopez/portfolio-ariel-lopez/tree/main/scripts/media) mantiene guion, capturas y fuentes de los diagramas. La generación no forma parte del runtime de esta app.
+
+## Revisión visual · 1 de noviembre de 2026
+
+Manrope unifica títulos, instrucciones y controles. La entrada y los resultados se distinguen por estructura y líneas; los colores de error, advertencia y aceptación mantienen su función. El video queda después de la herramienta y señala que muestra la interfaz anterior. No cambian reglas, archivos, edición ni exportación.
+
+Validado en Local: 15 pruebas; ejemplo válido con 6 filas exportables; corrección de un precio negativo (3 → 4 filas exportables), deshacer y guía interactiva; revisión responsive y editor en móvil. Las capturas muestran datos ficticios.
