@@ -220,3 +220,7 @@ Validación local: 15 pruebas, ejemplo válido (6 filas), ejemplo con errores (1
 ## Espacio de archivos · 01/11/2026
 
 Lote tiene una entrada editorial oscura, Newsreader en el título principal y Manrope en controles. El archivo se prepara en un único espacio a la derecha de la introducción; revisión y descarga conservan pantallas propias. La ficha CSV es un dibujo CSS, separado de los resultados reales, con pausa, movimiento reducido y detención fuera de pantalla o al ocultar la pestaña. Newsreader y su licencia OFL se sirven localmente. Captura actualizada. Validación: 15 pruebas, ejemplo válido, navegación a descarga, corrección y deshacer de precio; sin cambios en las reglas.
+
+## Tipografía de revisión · 01/11/2026
+
+La entrada se identifica como Revisión de materiales y usa IBM Plex Mono en marca, títulos y etapas; Manrope se mantiene en lectura y controles. Se retiraron la frase Cada fila cuenta y la serif Newsreader de la dirección actual. La ficha del archivo deja de flotar y conserva el pulso de sus líneas con pausa. Se mantiene el recorrido funcional y se actualiza la captura completa.
