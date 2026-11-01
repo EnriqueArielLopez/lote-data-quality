@@ -188,3 +188,7 @@ El [proceso de generación versionado](https://github.com/EnriqueArielLopez/port
 Manrope unifica títulos, instrucciones y controles. La entrada y los resultados se distinguen por estructura y líneas; los colores de error, advertencia y aceptación mantienen su función. El video queda después de la herramienta y señala que muestra la interfaz anterior. No cambian reglas, archivos, edición ni exportación.
 
 Validado en Local: 15 pruebas; ejemplo válido con 6 filas exportables; corrección de un precio negativo (3 → 4 filas exportables), deshacer y guía interactiva; revisión responsive y editor en móvil. Las capturas muestran datos ficticios.
+
+## Segunda revisión visual · 1 de noviembre de 2026
+
+Se reemplaza la dirección anterior por una interfaz de trabajo con Manrope regular, espaciado tipográfico moderado, títulos de 28–40 px, controles legibles y superficies neutras. `direction.css` reúne esta dirección visual. La revisión toma las proporciones tipográficas de Nexus Creative y distingue la presentación del portfolio de la densidad necesaria en una aplicación. Las reglas y los datos no cambian.
