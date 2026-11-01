@@ -19,14 +19,15 @@
     <link rel="stylesheet" href="style.css?v=20261101-type-1" />
     <link rel="stylesheet" href="tutorial.css?v=20261101-type-1" />
     <link rel="stylesheet" href="identity.css?v=20261101-type-1" />
-    <script type="module" src="src/app.js?v=20261101-products-1"></script>
-    <link rel="stylesheet" href="direction.css?v=20261101-products-1" />
+    <script type="module" src="src/app.js?v=20261101-distinct-1"></script>
+    <link rel="stylesheet" href="direction.css?v=20261101-distinct-1" />
     <link rel="stylesheet" href="video.css?v=20261101-type-1" />
-    <script type="module" src="src/brand-motion.js?v=20261101-products-1"></script>
-    <link rel="stylesheet" href="brand-lab.css?v=20261101-products-1" />
-    <script type="module" src="src/brand-lab.js?v=20261101-products-1"></script>
-    <link rel="stylesheet" href="workspace.css?v=20261101-products-1" />
-    <link rel="stylesheet" href="product.css?v=20261101-products-1" />
+    <script type="module" src="src/brand-motion.js?v=20261101-distinct-1"></script>
+    <link rel="stylesheet" href="brand-lab.css?v=20261101-distinct-1" />
+    <script type="module" src="src/brand-lab.js?v=20261101-distinct-1"></script>
+    <link rel="stylesheet" href="workspace.css?v=20261101-distinct-1" />
+    <link rel="stylesheet" href="product.css?v=20261101-distinct-1" />
+    <script type="module" src="src/interface-motion.js?v=20261101-distinct-1"></script>
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -77,7 +78,7 @@
           <div class="brand-word" aria-hidden="true">
             l<span class="letter-o">o</span>te<span class="brand-dot">*</span>
           </div>
-          <h1>Revisión de <br />materiales.</h1>
+          <h1>Cada fila<br /><em>cuenta.</em></h1>
           <p class="intro-explanation">
             Revisá duplicados, campos vacíos y precios inválidos antes de la próxima carga. Corregí
             cada fila y descargá los datos válidos.
@@ -243,8 +244,13 @@
               <p>Exportado de una planilla · formato CSV</p>
             </div>
           </div>
+          <button type="button" class="interface-motion" data-interface-motion aria-pressed="false">
+            Pausar dibujo
+          </button>
           <div class="upload-grid">
             <label class="file-zone" id="drop-zone"
+              ><span class="csv-emblem" aria-hidden="true"
+                ><b>CSV</b><i></i><i></i><i></i><i></i></span
               ><svg class="upload-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true">
                 <path
                   d="M10 20a5 5 0 0 1 5-5h14l6 6h14a5 5 0 0 1 5 5v23a5 5 0 0 1-5 5H15a5 5 0 0 1-5-5Z"

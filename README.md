@@ -216,3 +216,7 @@ La revisión del 01/11/2026 usa IBM Plex Mono en marca y títulos e IBM Plex San
 La aplicación separa **Archivo**, **Revisar** y **Descargar**. Cargar un ejemplo o un CSV lleva a revisión; los resultados mantienen filtros, normalización, corrección por fila y deshacer. La descarga tiene su propia pantalla con el resumen real de filas exportables. Se puede volver a cualquier etapa sin perder la revisión. Las reglas compartidas y los datos originales no cambian.
 
 Validación local: 15 pruebas, ejemplo válido (6 filas), ejemplo con errores (10 filas), navegación entre etapas, corrección de precio y deshacer (3 → 4 → 3 filas aceptadas). Revisión visual a 1280 px y 390 px, sin desbordamiento general.
+
+## Espacio de archivos · 01/11/2026
+
+Lote tiene una entrada editorial oscura, Newsreader en el título principal y Manrope en controles. El archivo se prepara en un único espacio a la derecha de la introducción; revisión y descarga conservan pantallas propias. La ficha CSV es un dibujo CSS, separado de los resultados reales, con pausa, movimiento reducido y detención fuera de pantalla o al ocultar la pestaña. Newsreader y su licencia OFL se sirven localmente. Captura actualizada. Validación: 15 pruebas, ejemplo válido, navegación a descarga, corrección y deshacer de precio; sin cambios en las reglas.
