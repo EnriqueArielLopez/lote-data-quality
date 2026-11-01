@@ -1,3 +1,4 @@
+import { initReviewFlow } from './review-flow.js';
 import { icon } from './icons.js';
 import { initVideoDemos } from './video.js';
 import { readBatch, validateBatch, exportRecords, exportIssues } from './validator.js';
@@ -7,6 +8,8 @@ import { initWorkspace } from './workspace.js';
 initWorkspace();
 initVideoDemos();
 initTutorial();
+const reviewFlow = initReviewFlow();
+let initialBatch = true;
 const $ = (selector) => document.querySelector(selector);
 const escape = (value) =>
   String(value).replace(
@@ -50,6 +53,8 @@ function loadText(text, name) {
   $('#search').value = '';
   $('#file-label').textContent = `${name} · ${rows.length} filas`;
   updateReport();
+  if (!initialBatch) reviewFlow.show('review');
+  initialBatch = false;
 }
 function filteredIssues() {
   const needle = $('#search').value.trim().toLocaleLowerCase('es');
@@ -104,6 +109,7 @@ function render() {
   $('#previous').disabled = page === 1;
   $('#next').disabled = page === pages;
   renderOverview();
+  reviewFlow.update(report, $('#file-label').textContent);
 }
 function priorityIssue() {
   return (
@@ -372,5 +378,6 @@ try {
 } catch (error) {
   toast(error.message);
   $('#results-title').textContent = 'No se pudo iniciar la revisión';
+  reviewFlow.show('review', false);
   controls.forEach((control) => (control.disabled = true));
 }
