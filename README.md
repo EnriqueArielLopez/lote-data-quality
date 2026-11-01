@@ -196,3 +196,9 @@ Se reemplaza la dirección anterior por una interfaz de trabajo con Manrope regu
 ## Ajuste de color y tipografía · 1 de noviembre de 2026
 
 Lote combina un fondo cálido con azul suave en las áreas de entrada y reglas, y títulos de peso medio. Se conserva la composición compacta de la segunda revisión. No cambian reglas ni interacciones.
+
+## Identidad propia y movimiento · 1 de noviembre de 2026
+
+Lote tiene una marca modular y una cabecera negra con lavanda y menta. Space Grotesk se usa en marca y títulos, y Manrope en datos e instrucciones. El símbolo de módulos y el esquema de clasificación son SVG originales (`assets/brand-mark.svg` y `assets/brand-art.svg`). La licencia de la fuente nueva está en `assets/space-grotesk-OFL.txt`; se sirve localmente.
+
+El escáner y las filas son una ilustración; no sustituyen el resultado real de la validación. **Pausar dibujo** detiene la escena. Se respetan movimiento reducido, visibilidad de la página y salida del área visible. `src/brand-motion.js` mantiene estas interacciones separadas del validador. El botón de pausa es independiente de la carga del perfil JSON.

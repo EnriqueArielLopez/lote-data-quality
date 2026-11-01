@@ -8,32 +8,27 @@
       http-equiv="Content-Security-Policy"
       content="base-uri 'none'; object-src 'none'; form-action 'none'; script-src-attr 'none'"
     />
-    <meta name="theme-color" content="#f6f7fa" />
+    <meta name="theme-color" content="#141721" />
     <title>Lote | Revisá tus datos antes de cargarlos</title>
     <meta
       name="description"
       content="Revisá un CSV de materiales, corregí las incidencias por fila y exportá los datos válidos. Una herramienta de demostración de Ariel López."
     />
-    <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23895126'/%3E%3Cpath d='M20 16h18l8 9v23H20Z' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3Cpath d='m26 34 5 5 10-11' fill='none' stroke='%23fff5ea' stroke-width='3'/%3E%3C/svg%3E"
-    />
+    <link rel="icon" href="assets/brand-mark.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/manrope.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="stylesheet" href="style.css?v=20261101-type-1" />
     <link rel="stylesheet" href="tutorial.css?v=20261101-type-1" />
     <link rel="stylesheet" href="identity.css?v=20261101-type-1" />
-    <script type="module" src="src/app.js?v=20261101-type-1"></script>
-    <link rel="stylesheet" href="direction.css?v=20261101-warmth-1" />
+    <script type="module" src="src/app.js?v=20261101-identities-1"></script>
+    <link rel="stylesheet" href="direction.css?v=20261101-identities-1" />
     <link rel="stylesheet" href="video.css?v=20261101-type-1" />
+    <script type="module" src="src/brand-motion.js?v=20261101-identities-1"></script>
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
     <header>
       <a class="brand" href="./" aria-label="Lote, inicio">
-        <svg class="brand-icon" viewBox="0 0 36 40" fill="none" aria-hidden="true">
-          <path d="M7 3h15l8 9v25H7Z" />
-          <path d="M21 3v10h9M12 23l5 5 9-10" />
-        </svg>
+        <img class="brand-icon" src="assets/brand-mark.svg" width="36" height="36" alt="" />
         <span>lote<span class="brand-dot">.</span></span>
         <span class="brand-sub">REVISIÓN DE DATOS</span>
       </a>
@@ -72,9 +67,12 @@
       </nav>
     </header>
     <main id="main">
-      <div class="intro">
+      <div class="intro" data-brand-stage>
         <div class="intro-copy">
           <p class="eyebrow"><span></span> CONTROL DE CALIDAD / ARCHIVOS CSV</p>
+          <div class="brand-word" aria-hidden="true">
+            l<span class="letter-o">o</span>te<span class="brand-dot">*</span>
+          </div>
           <h1>Revisión de <br />materiales.</h1>
           <p class="intro-explanation">
             Revisá duplicados, campos vacíos y precios inválidos antes de la próxima carga. Corregí
@@ -113,6 +111,63 @@
           </p>
         </div>
         <div class="profile-card">
+          <figure class="brand-drawing">
+            <svg
+              class="brand-art lote-art"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 400 200"
+              fill="none"
+              aria-hidden="true"
+            >
+              <g transform="translate(22 30) rotate(-7 60 70)">
+                <rect width="112" height="142" rx="4" fill="#f5f3ff" />
+                <path d="M14 29h84" stroke="#151a29" stroke-width="2" />
+                <text x="14" y="20" fill="#151a29" font-size="11" font-family="monospace">
+                  MATERIALES.CSV
+                </text>
+                <g fill="#9299e8">
+                  <rect x="14" y="42" width="84" height="10" />
+                  <rect x="14" y="62" width="84" height="10" />
+                  <rect x="14" y="102" width="84" height="10" />
+                </g>
+                <rect x="14" y="82" width="84" height="10" fill="#f29b8c" />
+                <path d="M14 123h51" stroke="#151a29" stroke-width="2" />
+              </g>
+              <path
+                d="M144 101h94m-12-10 12 10-12 10"
+                stroke="#aab1ff"
+                stroke-width="2"
+                stroke-dasharray="5 5"
+              />
+              <g class="scan-beam">
+                <path d="M182 18v164" stroke="#c3f6c9" stroke-width="3" />
+                <path d="M172 18h20m-20 164h20" stroke="#c3f6c9" stroke-width="3" />
+              </g>
+              <g transform="translate(262 31)">
+                <g class="sorted-row sorted-row-one">
+                  <rect width="116" height="32" rx="3" fill="#c3f6c9" />
+                  <path d="m12 15 5 5 10-11m12 7h61" stroke="#151a29" stroke-width="2" />
+                </g>
+                <g class="sorted-row sorted-row-two" transform="translate(0 48)">
+                  <rect width="116" height="32" rx="3" fill="#aab1ff" />
+                  <path d="M12 10h12v12H12zm28 6h61" stroke="#151a29" stroke-width="2" />
+                </g>
+                <g class="sorted-row sorted-row-three" transform="translate(0 96)">
+                  <rect width="116" height="32" rx="3" fill="#f29b8c" />
+                  <path d="m13 10 12 12m0-12L13 22m26-6h61" stroke="#151a29" stroke-width="2" />
+                </g>
+              </g>
+              <g fill="#aab1ff">
+                <circle cx="27" cy="191" r="2" />
+                <circle cx="37" cy="191" r="2" />
+                <circle cx="47" cy="191" r="2" />
+              </g>
+            </svg>
+            <figcaption>Esquema ilustrativo de clasificación</figcaption>
+          </figure>
+          <button class="brand-motion-toggle" data-brand-motion aria-pressed="false" hidden>
+            Pausar dibujo
+          </button>
           <div class="data-proof" aria-label="Fragmento ilustrativo del CSV de ejemplo">
             <div class="proof-heading">
               <strong>materiales.csv</strong><span>FRAGMENTO DE EJEMPLO</span>

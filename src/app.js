@@ -24,7 +24,10 @@ let schema,
 const PAGE_SIZE = 8;
 // El perfil llega por HTTP. Ninguna acción de datos debe adelantarse a esa carga.
 const controls = [...document.querySelectorAll('button,input')].filter(
-  (control) => !control.closest('#tutorial-dialog') && control.id !== 'open-tutorial',
+  (control) =>
+    !control.closest('#tutorial-dialog') &&
+    control.id !== 'open-tutorial' &&
+    !control.matches('[data-brand-motion]'),
 );
 controls.forEach((control) => (control.disabled = true));
 $('#file-label').textContent = 'Cargando perfil de validación…';
