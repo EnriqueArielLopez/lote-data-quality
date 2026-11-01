@@ -11,8 +11,8 @@ document.querySelectorAll('[data-brand-stage]').forEach((stage) => {
     toggle.textContent = reduced.matches
       ? 'Movimiento reducido'
       : paused
-        ? 'Animar dibujo'
-        : 'Pausar dibujo';
+        ? 'Activar efectos'
+        : 'Pausar efectos';
   }
   toggle.hidden = false;
   toggle.addEventListener('click', () => {
