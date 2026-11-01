@@ -1,7 +1,13 @@
+@font-face {
+  font-family: LoteSans;
+  src: url('assets/instrument-sans.ttf') format('truetype');
+  font-weight: 400 700;
+  font-display: swap;
+}
 /* Lote is a file inspector: a quiet rail and a light document canvas. */
 :root {
   --ui: Arial, Helvetica, sans-serif;
-  --display: Georgia, 'Times New Roman', serif;
+  --display: LoteSans, Arial, sans-serif;
   --ink: #26342c;
   --muted: #637066;
   --line: #cbd2c6;
@@ -33,9 +39,9 @@ header {
 .brand {
   color: #f0f3e8;
   font:
-    italic 34px/1 Georgia,
-    'Times New Roman',
-    serif;
+    600 34px/1 LoteSans,
+    Arial,
+    sans-serif;
   letter-spacing: -0.06em;
 }
 .brand-sub,
@@ -82,9 +88,9 @@ body:not([data-review-step='upload']) .intro {
 body:not([data-review-step='upload']) .intro h1 {
   color: #26342c;
   font:
-    400 49px/1.06 Georgia,
-    'Times New Roman',
-    serif;
+    500 49px/1.06 LoteSans,
+    Arial,
+    sans-serif;
   letter-spacing: -0.045em;
 }
 .intro h1 br {
@@ -141,7 +147,7 @@ body[data-review-step='upload'] .flow-nav > button {
 }
 .flow-nav button > span {
   font:
-    italic 19px Georgia,
+    500 19px LoteSans,
     serif;
   color: #6a8060;
 }
@@ -176,7 +182,7 @@ body:not([data-review-step='upload']) .review-workspace {
 .export-stage h2 {
   color: #26342c;
   font:
-    400 27px/1.2 Georgia,
+    400 27px/1.2 LoteSans,
     serif;
   letter-spacing: -0.025em;
 }
@@ -353,7 +359,7 @@ tbody tr:hover {
 .flow-export-summary {
   color: #345d43;
   font:
-    400 32px Georgia,
+    400 32px LoteSans,
     serif;
 }
 main > .technical-note,
@@ -511,7 +517,7 @@ td small,
 dialog h2,
 dialog h3 {
   color: #26342c;
-  font-family: Georgia, serif;
+  font-family: LoteSans, Arial, sans-serif;
 }
 dialog p,
 dialog label,
@@ -564,4 +570,63 @@ body[data-review-step='upload'] .intro {
 .findings-types,
 .batch-overview {
   border-color: #cbd2c6;
+}
+
+body,
+body button,
+body input,
+body select,
+body p,
+body td,
+body th {
+  font-family: LoteSans, Arial, sans-serif;
+}
+header {
+  background: #171c18;
+  border-color: #383e37;
+}
+.brand {
+  font-family: LoteSans, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.055em;
+}
+.intro h1,
+body:not([data-review-step='upload']) .intro h1,
+body[data-review-step='upload'] .intro h1 {
+  font-family: LoteSans, Arial, sans-serif;
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: -0.045em;
+}
+.upload-panel h2,
+.results-panel h2,
+.export-stage h2,
+#editor h2 {
+  font-family: LoteSans, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+}
+.flow-nav > button[aria-current='step'] {
+  border-color: #b8d28d;
+  background: #d8eead;
+  color: #25371c;
+}
+.flow-nav button > span {
+  font-family: LoteSans, Arial, sans-serif;
+  font-style: normal;
+}
+.file-zone,
+#drop-zone {
+  background: #eaf0df;
+  border: 1px solid #b9c7a3;
+}
+.file-zone strong,
+.button.primary {
+  background: #22331d;
+  border-color: #22331d;
+}
+.file-zone .csv-emblem {
+  filter: grayscale(1);
+  opacity: 0.65;
 }
