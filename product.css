@@ -967,3 +967,103 @@ h3 {
     transform: none;
   }
 }
+
+/* File inspection: a neutral tool canvas, not an order dashboard. */
+:root,
+body {
+  background: #151917;
+  --ink: #e5e9df;
+  --muted: #a8b2a2;
+  --line: #3a443a;
+  --accent: #d0edac;
+}
+header {
+  background: #151917;
+  border-color: #3a443a;
+}
+body[data-review-step='upload'] .intro {
+  border-right: 1px solid #3a443a;
+  padding-right: 36px;
+}
+.intro h1 {
+  font-size: clamp(32px, 3.7vw, 49px);
+  letter-spacing: -0.075em;
+  color: #eff3e8;
+}
+.intro-explanation {
+  color: #b8c0b3;
+}
+.flow-nav {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #3a443a;
+  border-radius: 0;
+  padding: 0;
+  gap: 20px;
+}
+.flow-nav > button {
+  border-radius: 0;
+  padding: 14px 4px;
+  border-bottom: 2px solid transparent;
+}
+.flow-nav > button[aria-current='step'] {
+  background: transparent;
+  border-bottom-color: #d0edac;
+  color: #d0edac;
+}
+.upload-panel,
+.results-panel,
+.export-stage {
+  background: #1c221e;
+  border-color: #3a443a;
+  border-radius: 2px;
+  box-shadow: none;
+}
+.dropzone {
+  background: #151917;
+  border: 1px dashed #687b60;
+  border-radius: 0;
+}
+.sample-buttons button {
+  border-radius: 0;
+  background: #293329;
+  border-color: #4c5c46;
+  box-shadow: none;
+}
+.sample-buttons button::before {
+  background: #d0edac;
+  color: #202b1b;
+  border-radius: 0;
+}
+.batch-visual {
+  gap: 3px;
+}
+.batch-row {
+  border-radius: 0;
+}
+.batch-ready {
+  background: #243a25;
+  color: #d0edac;
+}
+.batch-blocked {
+  background: #422b28;
+  color: #efb09b;
+}
+.issues-table th {
+  font:
+    10px PlexMono,
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+@media (min-width: 1000px) {
+  body:not([data-review-step='upload']) main {
+    max-width: 1440px;
+  }
+}
+@media (max-width: 700px) {
+  body[data-review-step='upload'] .intro {
+    border: 0;
+    padding-right: 0;
+  }
+}
