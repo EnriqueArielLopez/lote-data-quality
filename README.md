@@ -205,3 +205,6 @@ El escáner y las filas son una ilustración; no sustituyen el resultado real de
 # Ejemplo interactivo de corrección
 
 La portada incluye una ficha de CSV que alterna un código con espacios y minúsculas por `MAT-220`. El ejemplo se puede revertir y no modifica la tabla de incidencias ni los archivos del usuario. El botón queda fuera del bloqueo de carga del perfil, al igual que la pausa visual. Cambios anunciados con `aria-live`; transiciones compatibles con movimiento reducido y pausa. Validado junto con las 15 pruebas del proyecto.
+# Consola de revisión actual
+
+La revisión del 01/11/2026 usa IBM Plex Mono en marca y títulos e IBM Plex Sans en datos. La cabecera compacta, la ficha de código y el espacio de revisión verde oscuro se definen en `workspace.css`; el tutorial conserva su superficie clara. Se revisó el contraste de tabla y formulario de corrección, sin cambiar datos. Fuentes oficiales Google Fonts y licencias OFL locales. Validación: 15 pruebas y revisión de escritorio/móvil a 390 px.
