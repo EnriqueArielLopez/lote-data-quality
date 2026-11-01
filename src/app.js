@@ -27,7 +27,7 @@ const controls = [...document.querySelectorAll('button,input')].filter(
   (control) =>
     !control.closest('#tutorial-dialog') &&
     control.id !== 'open-tutorial' &&
-    !control.matches('[data-brand-motion]'),
+    !control.matches('[data-brand-motion], [data-clean-sample]'),
 );
 controls.forEach((control) => (control.disabled = true));
 $('#file-label').textContent = 'Cargando perfil de validación…';

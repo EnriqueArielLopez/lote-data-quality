@@ -202,3 +202,6 @@ Lote combina un fondo cálido con azul suave en las áreas de entrada y reglas, 
 Lote tiene una marca modular y una cabecera negra con lavanda y menta. Space Grotesk se usa en marca y títulos, y Manrope en datos e instrucciones. El símbolo de módulos y el esquema de clasificación son SVG originales (`assets/brand-mark.svg` y `assets/brand-art.svg`). La licencia de la fuente nueva está en `assets/space-grotesk-OFL.txt`; se sirve localmente.
 
 El escáner y las filas son una ilustración; no sustituyen el resultado real de la validación. **Pausar dibujo** detiene la escena. Se respetan movimiento reducido, visibilidad de la página y salida del área visible. `src/brand-motion.js` mantiene estas interacciones separadas del validador. El botón de pausa es independiente de la carga del perfil JSON.
+# Ejemplo interactivo de corrección
+
+La portada incluye una ficha de CSV que alterna un código con espacios y minúsculas por `MAT-220`. El ejemplo se puede revertir y no modifica la tabla de incidencias ni los archivos del usuario. El botón queda fuera del bloqueo de carga del perfil, al igual que la pausa visual. Cambios anunciados con `aria-live`; transiciones compatibles con movimiento reducido y pausa. Validado junto con las 15 pruebas del proyecto.

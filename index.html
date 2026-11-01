@@ -19,10 +19,12 @@
     <link rel="stylesheet" href="style.css?v=20261101-type-1" />
     <link rel="stylesheet" href="tutorial.css?v=20261101-type-1" />
     <link rel="stylesheet" href="identity.css?v=20261101-type-1" />
-    <script type="module" src="src/app.js?v=20261101-identities-1"></script>
-    <link rel="stylesheet" href="direction.css?v=20261101-identities-1" />
+    <script type="module" src="src/app.js?v=20261101-assembly-1"></script>
+    <link rel="stylesheet" href="direction.css?v=20261101-assembly-1" />
     <link rel="stylesheet" href="video.css?v=20261101-type-1" />
-    <script type="module" src="src/brand-motion.js?v=20261101-identities-1"></script>
+    <script type="module" src="src/brand-motion.js?v=20261101-assembly-1"></script>
+    <link rel="stylesheet" href="brand-lab.css?v=20261101-assembly-1" />
+    <script type="module" src="src/brand-lab.js?v=20261101-assembly-1"></script>
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -163,11 +165,22 @@
                 <circle cx="47" cy="191" r="2" />
               </g>
             </svg>
-            <figcaption>Esquema ilustrativo de clasificación</figcaption>
+            <figcaption>Archivo de ejemplo</figcaption>
           </figure>
           <button class="brand-motion-toggle" data-brand-motion aria-pressed="false" hidden>
             Pausar dibujo
           </button>
+          <div class="row-play" data-clean="false" aria-label="Ejemplo de corrección de un código">
+            <div class="row-file"><span>materiales.csv</span><span>FILA 03</span></div>
+            <div class="row-code">
+              <span class="row-gutter">03</span><code data-code-sample> mat-220 </code
+              ><span class="row-stamp" aria-hidden="true">✓</span>
+            </div>
+            <p class="row-feedback" aria-live="polite">Espacios de más y minúsculas.</p>
+            <button type="button" data-clean-sample aria-pressed="false">
+              Corregir este ejemplo <span aria-hidden="true">↗</span>
+            </button>
+          </div>
           <div class="data-proof" aria-label="Fragmento ilustrativo del CSV de ejemplo">
             <div class="proof-heading">
               <strong>materiales.csv</strong><span>FRAGMENTO DE EJEMPLO</span>
