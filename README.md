@@ -230,3 +230,5 @@ La entrada se identifica como Revisión de materiales y usa IBM Plex Mono en mar
 La revisión incluye botones por fila con estado real (error, advertencia o sin incidencias). Cada botón abre el editor existente, incluso para filas válidas; después de guardar recupera el foco en la celda actualizada. El mapa muestra hasta las primeras 48 filas e informa explícitamente el límite; la tabla conserva todas las incidencias. Se mantienen las reglas compartidas, corrección y deshacer. Los ejemplos son botones de archivo y la zona de carga tiene foco y respuesta visual propios.
 
 Validación local: 15 pruebas, mapa de 10 filas, corrección y deshacer desde la fila 4 (3 → 4 → 3 filas aceptadas), retorno de foco, apertura de una fila válida y revisión móvil sin desbordes.
+
+La revisión del carrusel usa interface.css: archivo claro, etapas laterales en escritorio, títulos Georgia y controles Arial. En móvil las etapas se organizan arriba. Revisión local de ejemplo, editor y descarga sin guardar correcciones.
