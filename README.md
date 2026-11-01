@@ -232,3 +232,5 @@ La revisión incluye botones por fila con estado real (error, advertencia o sin 
 Validación local: 15 pruebas, mapa de 10 filas, corrección y deshacer desde la fila 4 (3 → 4 → 3 filas aceptadas), retorno de foco, apertura de una fila válida y revisión móvil sin desbordes.
 
 La revisión del carrusel usa interface.css: archivo claro, etapas laterales en escritorio, títulos Georgia y controles Arial. En móvil las etapas se organizan arriba. Revisión local de ejemplo, editor y descarga sin guardar correcciones.
+
+La revisión de dirección gráfica reemplaza las cursivas por Instrument Sans alojada localmente con su licencia OFL. Conserva el panel de etapas y la revisión clara con acento lima. Validación local: archivo de ejemplo, revisión, descarga y ancho móvil de 390 px sin desbordes.
