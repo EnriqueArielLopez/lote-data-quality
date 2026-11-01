@@ -1,12 +1,6 @@
-@font-face {
-  font-family: Newsreader;
-  src: url('assets/newsreader.ttf') format('truetype');
-  font-weight: 200 800;
-  font-display: swap;
-}
 :root {
   --ui: Manrope, Arial, sans-serif;
-  --display: SpaceGrotesk, Arial, sans-serif;
+  --display: PlexMono, Arial, sans-serif;
   --ink: #e9e9f1;
   --muted: #a6adbf;
   --line: #34415a;
@@ -28,7 +22,7 @@ header {
 }
 .brand {
   font:
-    600 32px SpaceGrotesk,
+    600 32px PlexMono,
     sans-serif;
   color: #e9e9f1;
 }
@@ -63,11 +57,10 @@ main {
 }
 .intro h1 {
   font:
-    400 clamp(48px, 5.5vw, 76px) / 0.98 Newsreader,
-    Georgia,
-    serif;
+    400 clamp(30px, 3.3vw, 44px) / 1.2 PlexMono,
+    monospace;
   letter-spacing: -0.04em;
-  color: #f4f0e6;
+  color: #e8edf5;
 }
 .intro h1 em {
   font-style: italic;
@@ -183,7 +176,7 @@ main {
 .results-panel h2,
 h2,
 h3 {
-  font-family: SpaceGrotesk, sans-serif;
+  font-family: PlexMono, sans-serif;
   color: #e8edf5;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -242,7 +235,7 @@ h3 {
 }
 .csv-emblem b {
   font:
-    500 14px SpaceGrotesk,
+    500 14px PlexMono,
     sans-serif;
   margin-bottom: 3px;
 }
@@ -347,7 +340,7 @@ h3 {
 .summary-grid strong,
 .score-head > span {
   color: #c3ecd2;
-  font-family: SpaceGrotesk, sans-serif;
+  font-family: PlexMono, sans-serif;
 }
 .summary-grid > article {
   background: transparent;
@@ -414,8 +407,8 @@ input::placeholder {
 }
 .flow-export-summary {
   font:
-    400 36px/1.15 Newsreader,
-    serif;
+    400 28px/1.4 PlexMono,
+    monospace;
   color: #e6f3e9;
   padding-bottom: 24px;
   border-bottom: 1px solid #34415a;
@@ -695,5 +688,91 @@ body[data-review-step='upload'] main > .cli-link {
   }
   .intro h1 {
     line-height: 1;
+  }
+}
+
+.brand {
+  font:
+    400 27px PlexMono,
+    monospace;
+  letter-spacing: -0.055em;
+}
+.brand > span:not(.brand-sub):before {
+  content: '[';
+  color: #a2b7d0;
+}
+.brand > span:not(.brand-sub):after {
+  content: ']';
+  color: #a2b7d0;
+}
+.brand-dot {
+  display: none;
+}
+.intro-copy > .eyebrow {
+  letter-spacing: 0.04em;
+  font-family: PlexMono, monospace;
+}
+.intro h1 em {
+  font-style: normal;
+  color: inherit;
+}
+.intro-explanation {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.upload-panel h2,
+.results-panel h2,
+h2,
+h3 {
+  font-family: PlexMono, monospace;
+  font-size: 17px;
+  letter-spacing: -0.025em;
+}
+.flow-nav {
+  border-radius: 3px;
+}
+.flow-nav > button {
+  border-radius: 2px;
+  font-family: PlexMono, monospace;
+  font-size: 11px;
+}
+.upload-panel,
+.results-panel,
+.export-stage {
+  border-radius: 3px;
+}
+.button {
+  border-radius: 2px;
+}
+.file-zone {
+  border-radius: 2px;
+}
+.csv-emblem {
+  border-radius: 0;
+  box-shadow: 5px 5px 0 #2a3b50;
+  transform: none;
+}
+.file-zone[data-animate='true'] .csv-emblem {
+  animation: none;
+}
+.file-zone[data-animate='true'] .csv-emblem i {
+  animation: csv-line 3s ease-in-out infinite;
+}
+@media (max-width: 680px) {
+  .intro h1 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+  .brand {
+    font-size: 25px;
+  }
+  .upload-panel,
+  .results-panel,
+  .export-stage {
+    border-radius: 3px;
+  }
+  .flow-nav > button {
+    font-size: 10px;
   }
 }
