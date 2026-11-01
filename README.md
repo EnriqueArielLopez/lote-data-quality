@@ -208,3 +208,11 @@ La portada incluye una ficha de CSV que alterna un código con espacios y minús
 # Consola de revisión actual
 
 La revisión del 01/11/2026 usa IBM Plex Mono en marca y títulos e IBM Plex Sans en datos. La cabecera compacta, la ficha de código y el espacio de revisión verde oscuro se definen en `workspace.css`; el tutorial conserva su superficie clara. Se revisó el contraste de tabla y formulario de corrección, sin cambiar datos. Fuentes oficiales Google Fonts y licencias OFL locales. Validación: 15 pruebas y revisión de escritorio/móvil a 390 px.
+
+## Recorrido actual de revisión · 1 de noviembre de 2026
+
+`product.css` reemplaza la consola anterior por superficies claras y lavanda, títulos Space Grotesk y controles Manrope. La cabecera ilustrada anterior queda oculta para priorizar el archivo y sus resultados.
+
+La aplicación separa **Archivo**, **Revisar** y **Descargar**. Cargar un ejemplo o un CSV lleva a revisión; los resultados mantienen filtros, normalización, corrección por fila y deshacer. La descarga tiene su propia pantalla con el resumen real de filas exportables. Se puede volver a cualquier etapa sin perder la revisión. Las reglas compartidas y los datos originales no cambian.
+
+Validación local: 15 pruebas, ejemplo válido (6 filas), ejemplo con errores (10 filas), navegación entre etapas, corrección de precio y deshacer (3 → 4 → 3 filas aceptadas). Revisión visual a 1280 px y 390 px, sin desbordamiento general.
