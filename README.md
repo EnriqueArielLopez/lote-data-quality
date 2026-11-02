@@ -27,16 +27,16 @@ material,descripcion,tipo,unidad,grupo,centro,precio,moneda
 MAT-100,Kit de fijación,FERT,UN,010,1000,1850.00,ARS
 ```
 
-| Campo | Regla del perfil incluido |
-| --- | --- |
-| `material` | De 1 a 18 letras mayúsculas, números o guiones |
-| `descripcion` | Texto de hasta 40 caracteres |
-| `tipo` | FERT, HALB, ROH o HAWA |
-| `unidad` | UN, KG, LT o M |
-| `grupo` | Tres dígitos, conservando ceros iniciales |
-| `centro` | 1000 o 2000 |
-| `precio` | No negativo, punto decimal y hasta dos decimales, sin miles; cero advierte |
-| `moneda` | ARS o USD |
+| Campo         | Regla del perfil incluido                                                  |
+| ------------- | -------------------------------------------------------------------------- |
+| `material`    | De 1 a 18 letras mayúsculas, números o guiones                             |
+| `descripcion` | Texto de hasta 40 caracteres                                               |
+| `tipo`        | FERT, HALB, ROH o HAWA                                                     |
+| `unidad`      | UN, KG, LT o M                                                             |
+| `grupo`       | Tres dígitos, conservando ceros iniciales                                  |
+| `centro`      | 1000 o 2000                                                                |
+| `precio`      | No negativo, punto decimal y hasta dos decimales, sin miles; cero advierte |
+| `moneda`      | ARS o USD                                                                  |
 
 Todos los campos son obligatorios. La combinación `material + centro` debe ser única. La primera fila de datos es la 2; un campo multilínea sigue contando como una sola fila. Consultá **Reglas del archivo** desde la aplicación.
 
@@ -73,18 +73,18 @@ Códigos de salida: 0 sin errores bloqueantes (puede haber advertencias), 1 con 
 
 ## Código y pruebas
 
-| Ruta | Función |
-| --- | --- |
-| `rules.json` | Perfil compartido por el navegador y Python |
-| `src/validator.js`, `python/lote.py` | Lectura, reglas y exportación |
-| `src/app.js` | Revisión, correcciones e historial |
-| `src/file-preview.js` | Tabla de muestra con valores tratados como texto |
-| `src/review-flow.js` | Navegación entre archivo, revisión y descarga |
-| `src/tutorial.js` | Guía independiente de la revisión |
-| `style.css`, `interface.css` | Base y presentación de la aplicación |
-| `tests/` | CSV, reglas y comparación JavaScript/Python |
+| Ruta                                 | Función                                          |
+| ------------------------------------ | ------------------------------------------------ |
+| `rules.json`                         | Perfil compartido por el navegador y Python      |
+| `src/validator.js`, `python/lote.py` | Lectura, reglas y exportación                    |
+| `src/app.js`                         | Revisión, correcciones e historial               |
+| `src/file-preview.js`                | Tabla de muestra con valores tratados como texto |
+| `src/review-flow.js`                 | Navegación entre archivo, revisión y descarga    |
+| `src/tutorial.js`                    | Guía independiente de la revisión                |
+| `style.css`, `interface.css`         | Base y presentación de la aplicación             |
+| `tests/`                             | CSV, reglas y comparación JavaScript/Python      |
 
-La interfaz oscura usa Public Sans y cifras en IBM Plex Mono, servidas localmente; su licencia SIL OFL está en `assets/`.
+La interfaz oscura usa IBM Plex Sans y cifras en IBM Plex Mono, servidas localmente; su licencia SIL OFL está en `assets/`.
 
 Con Node 22+ y Python 3.10+, sin instalar paquetes:
 
@@ -95,3 +95,5 @@ npm test
 `LOTE_PYTHON` permite indicar otro ejecutable de Python al runner. Las pruebas incluyen claves duplicadas, normalización, límites de precio, exportación y paridad entre implementaciones. La exportación protege posibles prefijos de fórmulas; las pruebas verifican el archivo, no todas las aplicaciones de planillas. La CSP de la página es parcial.
 
 GitHub Pages publica `main` después de la revisión y las pruebas. El workflow vigente usa Node 20; su migración requiere un permiso de GitHub que no tiene la credencial de esta sesión.
+
+La portada usa una fotografía de referencia, con sus créditos en [assets/PHOTOS.md](assets/PHOTOS.md). Las imágenes y fuentes se sirven desde el proyecto. Los formularios y las tablas mantienen fondos sin fotografías.

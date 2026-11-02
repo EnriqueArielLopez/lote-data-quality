@@ -1,12 +1,12 @@
 @font-face {
-  font-family: PublicSans;
-  src: url('assets/public-sans.ttf') format('truetype');
+  font-family: PlexSans;
+  src: url('assets/ibm-plex-sans.ttf') format('truetype');
   font-weight: 100 900;
   font-display: swap;
 }
 :root {
-  --ui: PublicSans, Arial, sans-serif;
-  --display: PublicSans, Arial, sans-serif;
+  --ui: PlexSans, Arial, sans-serif;
+  --display: PlexSans, Arial, sans-serif;
   --ink: #e5eeeb;
   --muted: #9cb1ba;
   --line: #30454e;

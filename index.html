@@ -15,12 +15,13 @@
       content="Revisá un CSV de materiales, corregí las incidencias por fila y exportá los datos válidos. Una herramienta de demostración de Ariel López."
     />
     <link rel="icon" href="assets/brand-mark.svg" type="image/svg+xml" />
-    <link rel="preload" href="assets/public-sans.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="style.css?v=20261102-life-1" />
-    <link rel="stylesheet" href="tutorial.css?v=20261102-life-1" />
-    <script type="module" src="src/app.js?v=20261102-life-1"></script>
-    <link rel="stylesheet" href="video.css?v=20261102-life-1" />
-    <link rel="stylesheet" href="interface.css?v=20261102-life-1" />
+    <link rel="preload" href="assets/ibm-plex-sans.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="style.css?v=20261102-photo-1" />
+    <link rel="stylesheet" href="tutorial.css?v=20261102-photo-1" />
+    <script type="module" src="src/app.js?v=20261102-photo-1"></script>
+    <link rel="stylesheet" href="video.css?v=20261102-photo-1" />
+    <link rel="stylesheet" href="interface.css?v=20261102-photo-1" />
+    <link rel="stylesheet" href="cover.css?v=20261102-photo-1" />
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -66,17 +67,27 @@
     </header>
     <main id="main">
       <div class="intro" data-brand-stage>
+        <img
+          class="network-photo"
+          src="assets/network-1600.webp"
+          srcset="assets/network-800.webp 800w, assets/network-1600.webp 1600w"
+          sizes="(max-width: 680px) 100vw, 65vw"
+          width="1600"
+          height="898"
+          alt=""
+          decoding="async"
+        />
         <div class="intro-copy">
           <p class="eyebrow"><span></span> CONTROL DE CALIDAD / ARCHIVOS CSV</p>
-          <h1>
-            Revisión<br />
-            de materiales.
-          </h1>
+          <h1>Antes de cargar,<br /><span>revisá.</span></h1>
           <p class="intro-explanation">
             Revisá duplicados, campos vacíos y precios inválidos antes de la próxima carga. Corregí
             cada fila y descargá los datos válidos.
           </p>
           <div class="intro-actions">
+            <a class="review-enter" href="#upload-title"
+              >Revisar un archivo <span aria-hidden="true">↘</span></a
+            >
             <button id="open-tutorial" class="button primary tutorial-trigger" type="button">
               <span class="play-symbol" aria-hidden="true"
                 ><svg
@@ -101,8 +112,8 @@
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <use href="assets/icons.svg#arrow-down"></use></svg></span></a
-            ><button id="show-rules" class="rules-link" type="button">Reglas del archivo</button>
+                  <use href="assets/icons.svg#arrow-down"></use></svg></span
+            ></a>
           </div>
           <p class="format-note">
             Exportá tu planilla como <strong>CSV</strong>. Lote no abre XLSX ni carga datos en SAP.
@@ -119,6 +130,7 @@
             <div>
               <h2 id="upload-title">Tu archivo de entrada</h2>
               <p>Exportado de una planilla · formato CSV</p>
+              <button id="show-rules" class="file-rules" type="button">Reglas del archivo ↗</button>
             </div>
           </div>
           <div class="upload-grid">
