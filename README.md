@@ -84,7 +84,7 @@ Códigos de salida: 0 sin errores bloqueantes (puede haber advertencias), 1 con 
 | `style.css`, `interface.css` | Base y presentación de la aplicación |
 | `tests/` | CSV, reglas y comparación JavaScript/Python |
 
-La interfaz usa Manrope servida localmente; su licencia SIL OFL está en `assets/`.
+La interfaz usa Public Sans servida localmente; su licencia SIL OFL está en `assets/`.
 
 Con Node 22+ y Python 3.10+, sin instalar paquetes:
 

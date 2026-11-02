@@ -1,6 +1,12 @@
+@font-face {
+  font-family: PublicSans;
+  src: url('assets/public-sans.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
 :root {
-  --ui: Manrope, Arial, sans-serif;
-  --display: Manrope, Arial, sans-serif;
+  --ui: PublicSans, Arial, sans-serif;
+  --display: PublicSans, Arial, sans-serif;
   --ink: #26354b;
   --muted: #8391a6;
   --line: #e1e7ef;
@@ -43,7 +49,7 @@ header {
   align-items: center;
   gap: 10px;
   font: 700 29px/1 var(--ui);
-  letter-spacing: -0.06em;
+  letter-spacing: -0.035em;
   color: #eef4ff;
 }
 .brand-icon {
@@ -101,7 +107,7 @@ main {
 }
 .intro h1 {
   font: 600 clamp(27px, 3vw, 38px) / 1.2 var(--ui);
-  letter-spacing: -0.045em;
+  letter-spacing: -0.025em;
 }
 .intro h1 br {
   display: none;
