@@ -1,3 +1,4 @@
+import { renderFilePreview } from './file-preview.js';
 import { initReviewFlow } from './review-flow.js';
 import { icon } from './icons.js';
 import { initVideoDemos } from './video.js';
@@ -27,10 +28,7 @@ let schema,
 const PAGE_SIZE = 8;
 // El perfil llega por HTTP. Ninguna acción de datos debe adelantarse a esa carga.
 const controls = [...document.querySelectorAll('button,input')].filter(
-  (control) =>
-    !control.closest('#tutorial-dialog') &&
-    control.id !== 'open-tutorial' &&
-    !control.matches('[data-brand-motion], [data-clean-sample]'),
+  (control) => !control.closest('#tutorial-dialog') && control.id !== 'open-tutorial',
 );
 controls.forEach((control) => (control.disabled = true));
 $('#file-label').textContent = 'Cargando perfil de validación…';
@@ -68,6 +66,12 @@ function filteredIssues() {
   );
 }
 function render() {
+  renderFilePreview(
+    document.querySelector('#file-preview'),
+    rows,
+    schema,
+    document.querySelector('#file-label').textContent,
+  );
   const { summary } = report;
   const score = summary.rows ? Math.round((summary.accepted / summary.rows) * 100) : 0;
   $('#score').textContent = score + '%';
