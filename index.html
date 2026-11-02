@@ -16,19 +16,11 @@
     />
     <link rel="icon" href="assets/brand-mark.svg" type="image/svg+xml" />
     <link rel="preload" href="assets/manrope.ttf" as="font" type="font/ttf" crossorigin />
-    <link rel="stylesheet" href="style.css?v=20261101-type-1" />
-    <link rel="stylesheet" href="tutorial.css?v=20261101-type-1" />
-    <link rel="stylesheet" href="identity.css?v=20261101-type-1" />
-    <script type="module" src="src/app.js?v=20261101-art-1"></script>
-    <link rel="stylesheet" href="direction.css?v=20261101-art-1" />
-    <link rel="stylesheet" href="video.css?v=20261101-type-1" />
-    <script type="module" src="src/brand-motion.js?v=20261101-art-1"></script>
-    <link rel="stylesheet" href="brand-lab.css?v=20261101-art-1" />
-    <script type="module" src="src/brand-lab.js?v=20261101-art-1"></script>
-    <link rel="stylesheet" href="workspace.css?v=20261101-art-1" />
-    <link rel="stylesheet" href="product.css?v=20261101-art-1" />
-    <script type="module" src="src/interface-motion.js?v=20261101-art-1"></script>
-    <link rel="stylesheet" href="interface.css?v=20261101-art-1" />
+    <link rel="stylesheet" href="style.css?v=20261102-ui-1" />
+    <link rel="stylesheet" href="tutorial.css?v=20261102-ui-1" />
+    <script type="module" src="src/app.js?v=20261102-ui-1"></script>
+    <link rel="stylesheet" href="video.css?v=20261102-ui-1" />
+    <link rel="stylesheet" href="interface.css?v=20261102-ui-1" />
   </head>
   <body>
     <a class="skip" href="#main">Saltar al contenido</a>
@@ -76,9 +68,6 @@
       <div class="intro" data-brand-stage>
         <div class="intro-copy">
           <p class="eyebrow"><span></span> CONTROL DE CALIDAD / ARCHIVOS CSV</p>
-          <div class="brand-word" aria-hidden="true">
-            l<span class="letter-o">o</span>te<span class="brand-dot">*</span>
-          </div>
           <h1>
             Revisión<br />
             de materiales.
@@ -112,133 +101,14 @@
                   aria-hidden="true"
                   focusable="false"
                 >
-                  <use href="assets/icons.svg#arrow-down"></use></svg></span
-            ></a>
+                  <use href="assets/icons.svg#arrow-down"></use></svg></span></a
+            ><button id="show-rules" class="rules-link" type="button">Reglas del archivo</button>
           </div>
           <p class="format-note">
             Exportá tu planilla como <strong>CSV</strong>. Lote no abre XLSX ni carga datos en SAP.
           </p>
         </div>
-        <div class="profile-card">
-          <button class="brand-motion-toggle" data-brand-motion aria-pressed="false" hidden>
-            Pausar dibujo
-          </button>
-          <div class="row-play" data-clean="false" aria-label="Ejemplo de corrección de un código">
-            <div class="row-file"><span>materiales.csv</span><span>FILA 03</span></div>
-            <div class="row-code">
-              <span class="row-gutter">03</span><code data-code-sample> mat-220 </code
-              ><span class="row-stamp" aria-hidden="true">✓</span>
-            </div>
-            <p class="row-feedback" aria-live="polite">Espacios de más y minúsculas.</p>
-            <button type="button" data-clean-sample aria-pressed="false">
-              Corregir este ejemplo <span aria-hidden="true">↗</span>
-            </button>
-          </div>
-          <div class="data-proof" aria-label="Fragmento ilustrativo del CSV de ejemplo">
-            <div class="proof-heading">
-              <strong>materiales.csv</strong><span>FRAGMENTO DE EJEMPLO</span>
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Material</th>
-                  <th>Centro</th>
-                  <th>Precio</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td class="proof-duplicate">MAT-100</td>
-                  <td>1000</td>
-                  <td>1850</td>
-                </tr>
-                <tr>
-                  <td class="proof-duplicate">MAT-100</td>
-                  <td>1000</td>
-                  <td>1850</td>
-                </tr>
-                <tr>
-                  <td>MAT-315</td>
-                  <td>2000</td>
-                  <td class="proof-invalid">−7950</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="proof-note">
-              Una clave repetida. Un precio inválido.<br />La revisión te muestra qué corregir y en
-              qué fila.
-            </p>
-          </div>
-          <div class="profile-details">
-            <div>
-              <small>QUÉ REVISA ESTE EJEMPLO</small><strong>Datos de materiales</strong
-              ><span>8 columnas · material + centro sin repetir</span>
-            </div>
-            <button id="show-rules" aria-label="Ver reglas de validación">
-              Ver reglas
-              <span aria-hidden="true"
-                ><svg
-                  class="icon"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <use href="assets/icons.svg#arrow-up-right"></use></svg
-              ></span>
-            </button>
-          </div>
-        </div>
       </div>
-      <nav class="workflow" aria-label="Cómo usar Lote">
-        <a href="#upload-title"
-          ><span class="workflow-number">01</span
-          ><span><strong>Elegí un archivo</strong><small>O probá con un ejemplo</small></span
-          ><span class="workflow-arrow" aria-hidden="true"
-            ><svg
-              class="icon"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <use href="assets/icons.svg#arrow-right"></use></svg></span
-        ></a>
-        <a href="#results-title"
-          ><span class="workflow-number">02</span
-          ><span
-            ><strong>Revisá y corregí</strong
-            ><small>Cada incidencia tiene una explicación</small></span
-          ><span class="workflow-arrow" aria-hidden="true"
-            ><svg
-              class="icon"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <use href="assets/icons.svg#arrow-right"></use></svg></span
-        ></a>
-        <a href="#export-title"
-          ><span class="workflow-number">03</span
-          ><span
-            ><strong>Exportá el resultado</strong
-            ><small>Datos válidos e informe de revisión</small></span
-          ><span class="workflow-arrow" aria-hidden="true"
-            ><svg
-              class="icon"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <use href="assets/icons.svg#arrow-down-right"></use></svg></span
-        ></a>
-      </nav>
       <div class="review-workspace">
         <section class="upload-panel" aria-labelledby="upload-title">
           <div class="step-heading">
@@ -248,9 +118,6 @@
               <p>Exportado de una planilla · formato CSV</p>
             </div>
           </div>
-          <button type="button" class="interface-motion" data-interface-motion aria-pressed="false">
-            Pausar dibujo
-          </button>
           <div class="upload-grid">
             <label class="file-zone" id="drop-zone"
               ><span class="csv-emblem" aria-hidden="true"
@@ -305,6 +172,11 @@
               ></a>
             </div>
           </div>
+          <aside
+            class="data-preview"
+            id="file-preview"
+            aria-label="Vista previa del archivo"
+          ></aside>
           <p class="local-note">
             <span aria-hidden="true">⌁</span> El archivo se revisa en tu navegador.<br />No se sube
             a un servidor.
