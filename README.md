@@ -8,7 +8,7 @@ Revisión de archivos CSV de materiales. Detecta campos vacíos, claves repetida
 
 ## Uso
 
-1. **Archivo:** elegí un CSV o uno de los ejemplos. La vista previa muestra las primeras seis filas; la revisión procesa el archivo completo.
+1. **Archivo:** elegí un CSV o uno de los ejemplos. La vista previa muestra las primeras seis filas; podés abrir cualquiera para consultar o corregir sus datos. La revisión procesa el archivo completo.
 2. **Revisar:** consultá las incidencias y abrí una fila para corregirla. Cada cambio vuelve a validar todo el lote. Podés deshacer las últimas 20 correcciones.
 3. **Descargar:** exportá las filas sin errores bloqueantes, las incidencias en CSV o el reporte completo en JSON.
 
@@ -84,7 +84,7 @@ Códigos de salida: 0 sin errores bloqueantes (puede haber advertencias), 1 con 
 | `style.css`, `interface.css` | Base y presentación de la aplicación |
 | `tests/` | CSV, reglas y comparación JavaScript/Python |
 
-La interfaz usa Public Sans servida localmente; su licencia SIL OFL está en `assets/`.
+La interfaz oscura usa Public Sans y cifras en IBM Plex Mono, servidas localmente; su licencia SIL OFL está en `assets/`.
 
 Con Node 22+ y Python 3.10+, sin instalar paquetes:
 

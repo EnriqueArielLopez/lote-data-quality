@@ -1,4 +1,4 @@
-import { renderFilePreview } from './file-preview.js';
+import { renderFilePreview } from './file-preview.js?v=20261102-life-1';
 import { initReviewFlow } from './review-flow.js';
 import { icon } from './icons.js';
 import { initVideoDemos } from './video.js';
@@ -71,6 +71,7 @@ function render() {
     rows,
     schema,
     document.querySelector('#file-label').textContent,
+    { issues: report.issues, onReview: (rowNumber) => editRow(rowNumber, false, true) },
   );
   const { summary } = report;
   const score = summary.rows ? Math.round((summary.accepted / summary.rows) * 100) : 0;
@@ -215,6 +216,14 @@ for (const dialog of document.querySelectorAll('dialog:not(#tutorial-dialog)')) 
       origin.focus({ preventScroll: true });
       return;
     }
+    const previewButton =
+      dialog.id === 'editor' && previewOrigin
+        ? document.querySelector(`#file-preview button[data-preview-row="${previewOrigin}"]`)
+        : null;
+    if (previewButton) {
+      previewButton.focus({ preventScroll: true });
+      return;
+    }
     const sameRow =
       dialog.id === 'editor'
         ? document.querySelector(`#issues button[data-row="${editIndex + 2}"]`)
@@ -241,9 +250,11 @@ for (const dialog of document.querySelectorAll('dialog:not(#tutorial-dialog)')) 
   });
 }
 let mapOrigin = null;
-function editRow(rowNumber, fromMap = false) {
+let previewOrigin = null;
+function editRow(rowNumber, fromMap = false, fromPreview = false) {
   if (!Number.isInteger(rowNumber) || rowNumber < 2 || rowNumber >= rows.length + 2) return;
   mapOrigin = fromMap ? rowNumber : null;
+  previewOrigin = fromPreview ? rowNumber : null;
   editIndex = rowNumber - 2;
   $('#editor-title').textContent = `Revisar fila ${editIndex + 2}`;
   $('#editor-fields').innerHTML =

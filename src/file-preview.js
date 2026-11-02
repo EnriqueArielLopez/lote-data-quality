@@ -1,9 +1,9 @@
-export function renderFilePreview(container, rows, schema, label) {
+export function renderFilePreview(container, rows, schema, label, { issues = [], onReview } = {}) {
   if (!container || !schema) return;
   const heading = document.createElement('div');
   heading.className = 'preview-file-heading';
   const name = document.createElement('strong');
-  name.textContent = label || 'Archivo de ejemplo';
+  name.textContent = label?.replace(/ · \d+ filas$/, '') || 'Archivo de ejemplo';
   const note = document.createElement('p');
   note.textContent = `${rows.length} filas · vista de las primeras ${Math.min(rows.length, 6)}`;
   heading.append(name, note);
@@ -23,17 +23,37 @@ export function renderFilePreview(container, rows, schema, label) {
     cell.textContent = field.label;
     head.append(cell);
   });
+  if (onReview) {
+    const actionHeading = document.createElement('th');
+    actionHeading.scope = 'col';
+    actionHeading.textContent = 'Fila';
+    head.append(actionHeading);
+  }
   const body = table.createTBody();
-  rows.slice(0, 6).forEach((row) => {
+  rows.slice(0, 6).forEach((row, index) => {
     const line = body.insertRow();
+    const rowNumber = index + 2;
+    const hasErrors = issues.some((issue) => issue.row === rowNumber && issue.severity === 'error');
+    line.className = hasErrors ? 'preview-row-error' : 'preview-row-ready';
     fields.forEach((field) => {
       const cell = line.insertCell();
       cell.textContent = row[field.key] ?? '';
     });
+    if (onReview) {
+      const action = document.createElement('button');
+      action.type = 'button';
+      action.className = 'preview-row-action';
+      action.dataset.previewRow = String(rowNumber);
+      action.textContent = hasErrors ? 'Revisar' : 'Ver fila';
+      action.setAttribute('aria-label', `Revisar fila ${rowNumber} desde vista previa`);
+      action.addEventListener('click', () => onReview(rowNumber));
+      line.insertCell().append(action);
+    }
   });
   scroll.append(table);
   const caption = document.createElement('p');
   caption.className = 'preview-data-note';
-  caption.textContent = 'La revisión señala los problemas sin modificar el archivo original.';
+  caption.textContent =
+    'Abrí una fila para consultar sus datos o corregirla. El archivo original no cambia.';
   container.replaceChildren(heading, scroll, caption);
 }
