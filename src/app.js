@@ -1,4 +1,4 @@
-import { renderFilePreview } from './file-preview.js';
+import { renderFilePreview } from './file-preview.js?v=20261102-life-1';
 import { initReviewFlow } from './review-flow.js';
 import { icon } from './icons.js';
 import { initVideoDemos } from './video.js';
